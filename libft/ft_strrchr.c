@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdell-un <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 01:01:57 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/11 01:13:47 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/11 20:54:56 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char *strrchr(const char *s, int c);
+#include "libft.h"
+
+char *strrchr(const char *s, int c)
 {
 	int i;
 
@@ -20,5 +22,5 @@ char *strrchr(const char *s, int c);
 		if (s[i] == c)
 			break;
 	}
-	return (*s[i]);
+	return (s[i]);
 }

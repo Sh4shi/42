@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 15:42:44 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/11 20:52:15 by sdell-un         ###   ########.fr       */
+/*   Created: 2022/01/11 19:55:36 by sdell-un          #+#    #+#             */
+/*   Updated: 2022/01/11 20:49:11 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_isprint(int carctr)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	if (carctr >= '!' && carctr <= '~')
-		return (1);
-	return (0);
+	char *subs;
+	unsigned int i;
+
+	if (len > 0)
+	{
+		subs = (char *)malloc(sizeof (*s) * len);
+		i = 0;
+		while (s[start] < len)
+		{
+			subs[i] = s[start];
+			start++;
+			i++;
+		}
+			return (subs);
+	}
+	return (NULL);
 }

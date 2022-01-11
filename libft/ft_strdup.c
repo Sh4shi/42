@@ -6,9 +6,11 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 18:12:21 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/11 19:34:37 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/11 20:50:31 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*strdup(const char *s1)
 {

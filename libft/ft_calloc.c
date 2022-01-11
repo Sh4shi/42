@@ -6,9 +6,11 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 18:26:03 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/11 18:47:05 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/11 20:53:32 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	*calloc(size_t count, size_t size)
 {
@@ -19,10 +21,6 @@ void	*calloc(size_t count, size_t size)
 	if(!r)
 		return (NULL);
 	i = 0;
-	while(i < count)
-	{
-		r[i] = 0;
-		i++;
-	}
+	ft_bzero(r, size);
 	return (r);
 }

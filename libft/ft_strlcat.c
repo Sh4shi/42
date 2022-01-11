@@ -1,14 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlcat.c                                          :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdell-un <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 18:33:08 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/10 22:44:28 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/11 20:54:46 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int strlcat(char *dst, const char *src, size_t dstsize)
 {
@@ -31,5 +33,5 @@ int strlcat(char *dst, const char *src, size_t dstsize)
 			i++;
 		}
 	}
-	return ((destlen - 1) + srclen);
+	return ((dstlen - 1) + srclen);
 }
