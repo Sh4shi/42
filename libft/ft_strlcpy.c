@@ -6,24 +6,26 @@
 /*   By: sdell-un <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 17:29:29 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/10 18:32:53 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/10 23:09:50 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int strlcpy(char *restrict dst, const char *restrict src, size_t dstsize)
+size_t strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	char *d;
-	char *s;
+	int i;
+	int j;
 
-	*d = dst;
-	*s = src;
+	i = 0;
+	j = 0;
 	if (dstsize != 0)
 	{
-		while ( src != '\0' && *d = dstsize - 1)
+		while ( j != dstsize - 1)
 		{
-			*d++ = *s++;
-			return (dst);
+			src[i] = dst[j];
+			i++;
+			j++;
 		}
+		return (dst)
 	}
 	return (0);
 }

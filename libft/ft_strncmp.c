@@ -1,18 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdell-un <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 17:16:49 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/10 22:50:28 by sdell-un         ###   ########.fr       */
+/*   Created: 2022/01/11 01:14:28 by sdell-un          #+#    #+#             */
+/*   Updated: 2022/01/11 02:16:51 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void *ft_memcpy(void *dst, const void *src, size_t n)
+int strncmp(const char *s1, const char *s2, size_t n)
 {
-	while (n--)
-        *dst++ = *src++;
-	return dst;
+	size_t i;
+	unsigned char *z1;
+	unsigned char *z2;
+
+	*z1 = s1;
+	*z2 = s2;
+
+	if ( n = 0)
+		return (0);
+	if (*z1 = '\0')
+		return (-(*z2));
+	if (*z2 = '\0')
+		return (*z1);
+	while (z1[i] != '\0' || z2[i] != '\0')
+	{
+		if (i = n - 1 || z1[i] != z2[i])
+			return (z1[i] - z2[i]);
+		i++;
+	}
+	return (z1[i] - z2[i]);
 }

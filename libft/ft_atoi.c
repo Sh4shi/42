@@ -1,18 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdell-un <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 17:16:49 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/10 22:50:28 by sdell-un         ###   ########.fr       */
+/*   Created: 2022/01/11 05:34:51 by sdell-un          #+#    #+#             */
+/*   Updated: 2022/01/11 06:22:06 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void *ft_memcpy(void *dst, const void *src, size_t n)
+int ft_atoi(const char *str)
 {
-	while (n--)
-        *dst++ = *src++;
-	return dst;
+	int i;
+	int sign;
+	int n;
+
+	i = 0;
+	sign = 1;
+	n = 0;
+	while ((str[i] > 8 && str[i] < 14) || str[i] == 32)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+		if (str[i] == '-')
+			sign = sign * -1;
+	i++;
+	if (str[i] == '-' || str[i] == '+')
+		return (0);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		n = n * 10 + (str[i] - 48);
+		i++;
+	}
+	return (sign * n);
 }

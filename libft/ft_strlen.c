@@ -6,16 +6,16 @@
 /*   By: sdell-un <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:56:10 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/10 15:59:22 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/10 23:10:14 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_strlen(*str)
+size_t ft_strlen(const char *s)
 {
 	int i;
 
 	i = 0;
-	while (str[i] != '\0')
+	while (c[i] != '\0')
 	   i++;
 	return (i);
 }

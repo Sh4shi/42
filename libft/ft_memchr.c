@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdell-un <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 17:16:49 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/10 22:50:28 by sdell-un         ###   ########.fr       */
+/*   Created: 2022/01/11 02:18:55 by sdell-un          #+#    #+#             */
+/*   Updated: 2022/01/11 02:34:01 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void *ft_memcpy(void *dst, const void *src, size_t n)
+void *ft_memchr(const void *s, int c, size_t n)
 {
-	while (n--)
-        *dst++ = *src++;
-	return dst;
+	unsigned char *z;
+
+	*z = s;
+	while (n-- > 0)
+	{
+		if (*z == c)
+			return (*z);
+		z++;
+	}
+	return (0);
 }
