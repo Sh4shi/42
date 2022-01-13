@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:42:44 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/11 20:52:15 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/13 05:56:45 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 int ft_isprint(int carctr)
 {
-	if (carctr >= '!' && carctr <= '~')
-		return (1);
+	unsigned char crt;
+
+	crt = (unsigned char)carctr;
+	if (crt >= ' ' && crt <= '~')
+		return (carctr);
 	return (0);
 }

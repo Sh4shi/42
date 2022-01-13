@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 18:33:08 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/12 20:23:29 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/13 10:29:02 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,17 @@ size_t ft_strlcat(char *dst, const char *src, size_t dstsize)
 	j = dstlen;
 	i = 0;
 
-	if (dstsize > 0 && dstlen <= dstsize - 1)
+	if (dstsize > 0 && dstlen < dstsize - 1)
 	{
-		while (src[i] != '\0')
+		while ((dstlen + i) < (dstsize - 1) && src[i])
 		{
 			dst[j] = src[i];
 			j++;
 			i++;
 		}
+		dst[j] = 0;
 	}
-	return ((dstlen - 1) + srclen);
+	if(dstlen >= dstsize)
+		dstlen = dstsize;
+	return (dstlen + srclen);
 }
