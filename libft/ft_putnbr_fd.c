@@ -6,12 +6,12 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 03:51:02 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/13 00:12:28 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/13 01:56:28 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+/*
 void ft_putnbr_fd(int n, int fd)
 {
 	int m;
@@ -31,4 +31,4 @@ void ft_putnbr_fd(int n, int fd)
 	}
 	nbr += '0';
 	write(fd, &nbr, 1);
-}
+}*/

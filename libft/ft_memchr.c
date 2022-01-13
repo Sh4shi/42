@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 02:18:55 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/11 20:52:11 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/13 03:39:30 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,11 @@
 
 void *ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned char *z;
-
-	*z = s;
 	while (n-- > 0)
 	{
-		if (*z == c)
-			return (*z);
-		z++;
+		if ((unsigned char)s == (unsigned char)c)
+			return ((void *)s);
+		s++;
 	}
 	return (0);
 }

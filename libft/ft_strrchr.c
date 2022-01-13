@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 01:01:57 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/11 20:54:56 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/13 01:42:12 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ char *strrchr(const char *s, int c)
 {
 	int i;
 
-	i = ft_strlen(*s);
+	i = ft_strlen(s);
 	while (i--)
 	{
 		if (s[i] == c)
-			break;
+			return ((char *)(s + i));
 	}
-	return (s[i]);
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 00:37:44 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/11 23:54:37 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/13 01:40:59 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char *ft_strchr(const char *s, int c)
 	while (s[i] != '\0')
 	{
 		if (s[i] == c)
-			return (s[i]);
+			return ((char *)(s + i));
 		i++;
 	}
 	return (NULL);

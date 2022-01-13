@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 20:07:54 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/11 20:51:58 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/13 04:09:34 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,25 @@
 
 void *ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char *s1;
-	unsigned char *s2;
+	int	i;
 
-	s1 = (unsigned char*) dst;
-	s2 = (unsigned char*) src;
-	if ((s1 - s2) < 0)
+	if (dst > src)
 	{
-		while (len > 0)
+		i = (int)len - 1;
+		while (i >= 0)
 		{
-			*s1++ = *s2++;
-			len--;
+			*(char *)(dst + i) = *(char *)(src + i);
+			i--;
 		}
 	}
 	else
-		while (len > 0)
+	{
+		i = 0;
+		while (i < (int)len)
 		{
-			s1[len - 1] = s2[len - 2];
-			len--;
+			*(char *)(dst + i) = *(char *)(src + i);
+			i++;
 		}
+	}
 	return (dst);
 }
