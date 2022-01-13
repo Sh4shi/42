@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 18:33:08 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/12 20:23:29 by sdell-un         ###   ########.fr       */
+/*   Created: 2022/01/12 01:37:46 by sdell-un          #+#    #+#             */
+/*   Updated: 2022/01/12 03:34:23 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_strlcat(char *dst, const char *src, size_t dstsize)
+char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	srclen;
-	size_t	dstlen;
-	size_t	i;
-	size_t	j;
+	size_t i;
+	char *snew;
 
-	dstlen = ft_strlen(dst);
-	srclen = ft_strlen(src);
-	j = dstlen;
 	i = 0;
-
-	if (dstsize > 0 && dstlen <= dstsize - 1)
+	snew = ft_strdup(s);
+	if (!snew)
+		return (NULL);
+	while (s[i])
 	{
-		while (src[i] != '\0')
-		{
-			dst[j] = src[i];
-			j++;
-			i++;
-		}
+		snew[i] = (*f)(i, s[i]);
+		i++;
 	}
-	return ((dstlen - 1) + srclen);
+	return (snew);
 }

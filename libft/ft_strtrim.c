@@ -1,37 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 18:33:08 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/12 20:23:29 by sdell-un         ###   ########.fr       */
+/*   Created: 2022/01/11 23:00:06 by sdell-un          #+#    #+#             */
+/*   Updated: 2022/01/12 01:37:39 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_strlcat(char *dst, const char *src, size_t dstsize)
+char *ft_strtrim(char const *s1, char const *set)
 {
-	size_t	srclen;
-	size_t	dstlen;
-	size_t	i;
-	size_t	j;
+	int i;
+	int end;
+	int start;
+	char *snew;
 
-	dstlen = ft_strlen(dst);
-	srclen = ft_strlen(src);
-	j = dstlen;
+	end = ft_strlen(s1);
+	start = 0;
 	i = 0;
-
-	if (dstsize > 0 && dstlen <= dstsize - 1)
+	while (s1[start] && ft_strchr(set, s1[start]) != NULL)
+		start++;
+	while (s1[end] && ft_strchr(set, s1[end]) != NULL)
+		end--;
+	snew = (char *)malloc(end - start +1);
+	if (!snew)
+		return (NULL);
+	while (start < end)
 	{
-		while (src[i] != '\0')
-		{
-			dst[j] = src[i];
-			j++;
-			i++;
-		}
+		snew[i] = s1[start];
+		start++;
+		i++;
 	}
-	return ((dstlen - 1) + srclen);
+	return (snew);
 }

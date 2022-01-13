@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 05:34:51 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/11 20:52:39 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/12 20:01:57 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int ft_atoi(const char *str)
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 		if (str[i] == '-')
-			sign = sign * -1;
+			sign *= -1;
 	i++;
 	if (str[i] == '-' || str[i] == '+')
 		return (0);

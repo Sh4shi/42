@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 03:52:59 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/11 20:49:58 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/11 22:35:24 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char *ft_strnstr(const char *heystack, const char *needle, size_t len)
 		while(len--)
 		{
 			j = 0;
-			while (heystack[i] = needle)
+			while (heystack[i] == needle[j])
 			{
 				if (needle == '\0')
 					return (heystack[i - j]);

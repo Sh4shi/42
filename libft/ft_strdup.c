@@ -6,13 +6,13 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 18:12:21 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/11 20:50:31 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/13 00:12:09 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*strdup(const char *s1)
+char	*ft_strdup(const char *s1)
 {
 	char *s2;
 	int i;
@@ -26,5 +26,5 @@ char	*strdup(const char *s1)
 		s2[i] = s1[i];
 		i++;
 	}
-	return (*s2);
+	return (s2);
 }

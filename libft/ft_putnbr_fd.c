@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 18:33:08 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/12 20:23:29 by sdell-un         ###   ########.fr       */
+/*   Created: 2022/01/12 03:51:02 by sdell-un          #+#    #+#             */
+/*   Updated: 2022/01/13 00:12:28 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_strlcat(char *dst, const char *src, size_t dstsize)
+void ft_putnbr_fd(int n, int fd)
 {
-	size_t	srclen;
-	size_t	dstlen;
-	size_t	i;
-	size_t	j;
+	int m;
+	unsigned int nbr;
 
-	dstlen = ft_strlen(dst);
-	srclen = ft_strlen(src);
-	j = dstlen;
-	i = 0;
-
-	if (dstsize > 0 && dstlen <= dstsize - 1)
+	m = 1;
+	if (n < 0)
 	{
-		while (src[i] != '\0')
-		{
-			dst[j] = src[i];
-			j++;
-			i++;
-		}
+		nbr *= -1;
+		ft_putchar_fd('-', fd);
 	}
-	return ((dstlen - 1) + srclen);
+	while((n / m) > m)
+	{
+		nbr =  ((n / m) % 10) + '0';
+		m *= 10;
+		write(fd, &nbr, 1);
+	}
+	nbr += '0';
+	write(fd, &nbr, 1);
 }
