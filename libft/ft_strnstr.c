@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 03:52:59 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/14 01:54:23 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/14 08:06:45 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,18 @@ char	*ft_strnstr(const char *h, const char *n, size_t len)
 	a = 0;
 	if (*n == 0)
 		return ((char *)h);
-	if (len > 0)
+	while (h[i] && i < len)
 	{
-		while (h[i] && i < len)
+		while (h[i] == n[j] && n[j] && h[i] && i < len)
 		{
-			while (h[i] == n[j] && n[j] && h[i] && i < len)
-			{
-				i++;
-				j++;
-				if (n[j] == 0)
-					return ((char *)(h + (i - j)));
-			}
-			j = 0;
-			a++;
-			i = a;
+			i++;
+			j++;
+			if (n[j] == 0)
+				return ((char *)(h + (i - j)));
 		}
+		j = 0;
+		a++;
+		i = a;
 	}
 	return (NULL);
 }
