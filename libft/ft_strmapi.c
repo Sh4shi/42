@@ -6,16 +6,16 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 01:37:46 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/12 03:34:23 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/14 05:35:47 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t i;
-	char *snew;
+	size_t	i;
+	char	*snew;
 
 	i = 0;
 	snew = ft_strdup(s);

@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 19:55:36 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/14 03:15:08 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/14 05:37:20 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		size = ft_strlen(s);
 	subs = (char *)malloc(sizeof(char) * (size + 1));
 	if (!subs)
-		return (NULL);	
+		return (NULL);
 	i = 0;
 	size = 0;
 	while (s[i])
