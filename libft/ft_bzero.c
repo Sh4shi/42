@@ -6,13 +6,13 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 17:08:30 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/11 20:52:35 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/14 00:42:09 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	ft_memset((void *)s, 0, (size_t)n);
 }

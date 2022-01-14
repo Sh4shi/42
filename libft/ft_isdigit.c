@@ -6,15 +6,15 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 14:59:45 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/11 20:52:18 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/14 00:42:52 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_isdigit(int nbr)
+int	ft_isdigit(int nbr)
 {
 	if (nbr >= '0' && nbr <= '9')
 		return (1);
-	return (0); 
+	return (0);
 }

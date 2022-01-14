@@ -6,13 +6,13 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 14:57:43 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/11 20:52:24 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/14 00:42:40 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_isalpha(int c)
+int	ft_isalpha(int c)
 {
 	if (c >= 'A' && c <= 'Z')
 		return (1);

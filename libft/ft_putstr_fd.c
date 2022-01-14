@@ -6,13 +6,13 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 03:36:22 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/12 03:54:02 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/14 00:43:50 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
 	write (fd, s, ft_strlen(s));
 }

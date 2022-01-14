@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 19:36:28 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/13 08:10:53 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/14 02:13:22 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+void	*ft_calloc(size_t count, size_t size);
 
 
 #endif 

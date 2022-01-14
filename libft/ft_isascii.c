@@ -6,13 +6,13 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:32:09 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/11 20:52:21 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/14 00:42:44 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_isascii(int argmnt)
+int	ft_isascii(int argmnt)
 {
 	if (argmnt >= 0 && argmnt <= 127)
 		return (1);
