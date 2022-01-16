@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mpatrini <mpatrini@student.42.fr>          +#+  +:+       +#+         #
+#    By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/10 16:02:33 by mpatrini          #+#    #+#              #
-#    Updated: 2022/01/13 00:43:54 by mpatrini         ###   ########.fr        #
+#    Updated: 2022/01/16 05:44:00 by sdell-un         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ SRC = ft_isalpha.c \
 	   ft_substr.c \
 	   ft_strjoin.c \
 	   ft_strtrim.c \
-	   ft_split.c \
+	   #ft_split.c
 	   ft_itoa.c \
 	   ft_strmapi.c \
 	   ft_striteri.c \
