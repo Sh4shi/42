@@ -6,30 +6,88 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 20:53:01 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/18 00:12:59 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/18 21:25:07 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_count(char *s, char c)
+int	get_num_el(char const *s, char c)
 {
-	int	i;
-	int	word;
+	char	*p;
+	int		i;
+	int		nbr;
 
-	i = 0;
-	while (s[i] != '\0')
+	i = ft_strlen(s);
+	nbr = 0;
+	p = (char *)s;
+	while (*p)
 	{
-		if (s[i] == c)
-		{
-			word++;
-			i++;
-		}
+		while (*p == c)
+			p++;
+		if (!*p)
+			break ;
+		nbr++;
+		while (*p != c && *p)
+			p++;
 	}
-	return (word);
+	return (nbr);
+}
+
+char	**memall(char *s, char c, int nbr, char **new)
+{
+	int		counter;
+	char	*ptr;
+	int		i;
+
+	counter = 0;
+	i = 0;
+	ptr = (char *)s;
+	while (*ptr == c)
+		ptr++;
+	while (counter < nbr)
+	{
+		i = 0;
+		while (*ptr == c)
+			ptr++;
+		while (*ptr != c && *ptr)
+		{
+			i++;
+			ptr++;
+		}
+		new[counter] = (char *)malloc(sizeof(char) * (i + 1));
+		new[counter][i] = 0;
+		counter++;
+	}
+	new[counter] = 0;
+	return (new);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	
+	int		nbr;
+	char	**new;
+	int		i;
+	int		counter;
+
+	nbr = get_num_el(s, c);
+	new = (char **)malloc(sizeof(char *) * (nbr + 1));
+	if (!new)
+		return (0);
+	new = memall((char *)s, c, nbr, new);
+	counter = 0;
+	while (*s)
+	{
+		i = 0;
+		while (*s == c)
+			s++;
+		while (*s != c && *s)
+		{
+			new[counter][i] = *s;
+			i++;
+			s++;
+		}
+		counter++;
+	}
+	return (new);
 }
