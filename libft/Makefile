@@ -6,7 +6,7 @@
 #    By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/10 16:02:33 by mpatrini          #+#    #+#              #
-#    Updated: 2022/01/16 05:44:00 by sdell-un         ###   ########.fr        #
+#    Updated: 2022/01/17 20:54:37 by sdell-un         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,8 +37,6 @@ SRC = ft_isalpha.c \
 	   ft_strdup.c \
 	   ft_substr.c \
 	   ft_strjoin.c \
-	   ft_strtrim.c \
-	   #ft_split.c
 	   ft_itoa.c \
 	   ft_strmapi.c \
 	   ft_striteri.c \
@@ -47,6 +45,8 @@ SRC = ft_isalpha.c \
 	   ft_putendl_fd.c \
 	   ft_putnbr_fd.c \
 	   ft_memchr.c \
+	   ft_strtrim.c \
+	   ft_split.c \
 
 OBJS	= $(SRC:.c=.o)
 

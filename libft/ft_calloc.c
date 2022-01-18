@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 18:26:03 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/14 02:13:05 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/16 05:42:34 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void	*ft_calloc(size_t count, size_t size)
 	if (!r)
 		return (NULL);
 	i = 0;
-	ft_bzero(r, size);
+	ft_bzero(r, (size * count));
 	return (r);
 }

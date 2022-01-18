@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 23:00:06 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/14 05:37:10 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/17 20:44:48 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 	i = 0;
 	while (s1[start] && ft_strchr(set, s1[start]))
 		start++;
-	while (end > start && ft_strchr(set, s1[end]))
+	while (end > start && ft_strchr(set, s1[end - 1]))
 		end--;
 	snew = (char *)malloc(end - start + 1);
 	if (!snew)
 		return (NULL);
-	while (start <= end)
+	while (start < end)
 	{
 		snew[i] = s1[start];
 		start++;
