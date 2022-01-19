@@ -6,18 +6,15 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:09:20 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/14 00:42:36 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/19 07:15:16 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(int argmnt)
+int	ft_isalnum(int arg)
 {
-	unsigned char	arg;
-
-	arg = (unsigned char)argmnt;
 	if (ft_isalpha(arg) == 1 || ft_isdigit(arg) == 1)
-		return (argmnt);
+		return (1);
 	return (0);
 }

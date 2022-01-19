@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 01:37:46 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/14 05:35:47 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/19 07:19:38 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	size_t	i;
 	char	*snew;
 
+	if (!s)
+		return (NULL);
 	i = 0;
 	snew = ft_strdup(s);
 	if (!snew)

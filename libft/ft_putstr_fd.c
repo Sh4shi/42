@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 03:36:22 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/14 00:43:50 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/19 07:19:51 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
+	if (!s)
+		return ;
 	write (fd, s, ft_strlen(s));
 }

@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 20:07:54 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/14 05:29:46 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/19 07:12:52 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	int	i;
 
+	if (!src && !dst)
+		return (NULL);
 	if (dst > src)
 	{
 		i = (int)len - 1;

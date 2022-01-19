@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 00:13:54 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/19 05:59:24 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/19 07:54:03 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,28 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*nwlist;
-	t_list	*firstnode;
-	int		i;
+	t_list	*new;
+	t_list	*newlst;
 
-	if (!lst || !f || !del)
-		return (NULL);
-	i = 0;
-	while (!lst)
+	new = ft_lstnew(f(lst->content));
+	if (!(new))
 	{
-		while (lst->content)
+		ft_lstclear(&lst, del);
+		return (0);
+	}
+	newlst = new;
+	lst = lst->next;
+	while (lst)
+	{
+		new = ft_lstnew(f(lst->content));
+		if (!(new))
 		{
-			nwlist = ft_lstnew(f(lst->content));
-			if (!nwlist)
-			{
-				ft_lstclear(&lst, del);
-				ft_lstclear(&nwlist, del);
-				return (NULL);
-			}
-			if (i++ == 1)
-				firstnode = nwlist;
+			ft_lstclear(&lst, del);
+			ft_lstclear(&newlst, del);
+			return (0);
 		}
 		lst = lst->next;
+		ft_lstadd_back(&newlst, new);
 	}
-	return (firstnode);
+	return (newlst);
 }

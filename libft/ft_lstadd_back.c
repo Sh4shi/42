@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 23:57:29 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/19 00:59:24 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/01/19 07:49:29 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 
 	if (lst)
 	{
-		if (*lst)
+		if (*lst == NULL)
+			*lst = new;
+		else
 		{
 		last = ft_lstlast(*lst);
 		last->next = new;
