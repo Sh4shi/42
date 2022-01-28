@@ -1,25 +1,26 @@
-J/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 20:57:24 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/18 22:05:45 by sdell-un         ###   ########.fr       */
+/*   Created: 2022/01/20 00:31:35 by sdell-un          #+#    #+#             */
+/*   Updated: 2022/01/21 21:38:04 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-t_list	*ft_lstnew(void *content)
+# include "libft/libft.h"
+# include <stdarg.h>
+
+typedef struct s_flag
 {
-	t_list	*nnode;	
+	va_list arg;
+	int flag;
+	
+}				t_flag;
 
-	nnode = malloc(sizeof(*nnode));
-	if (!nnode)
-		return (NULL);
-	nnode->content = content;
-	nnode->next = NULL;
-	return (nnode);
-}
+#endif
