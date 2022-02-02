@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 01:11:39 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/01 07:00:14 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/02/01 22:31:59 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,18 @@ void	ft_reset_flag(t_flag *args)
 {
 	args->wdt = 0;
 	args->prcsn = 0;
-	args->prcsn = 0;
 	args->zero_padd = 0;
 	args->point = 0;
 	args->dash = 0;
 	args->sign = 0;
 	args->perc = 0;
 	args->space = 0;
+	args->hash = 0;
 }
               
 void	ft_init_flag(t_flag *args)
 {
 	args->wdt = 0;
-	args->prcsn = 0;
 	args->prcsn = 0;
 	args->zero_padd = 0;
 	args->point = 0;
@@ -42,6 +41,7 @@ void	ft_init_flag(t_flag *args)
 	args->len = 0;
 	args->perc = 0;
 	args->space = 0;
+	args->hash = 0;
 }
 
 int	ft_readflag(char *s, int i, t_flag *flag)
@@ -62,14 +62,34 @@ int	ft_readflag(char *s, int i, t_flag *flag)
 			}
 			else
 			{
-				
+				while (ft_isdigit(s[i + 1]))
+				{
+					flag->prcsn = (flag->prcsn * 10) + (s[i + 1] - 48)) 
+					i++;		
+				}
 			}
 		}
 		else if (s[i] == '0' && !ft_isdigit(s[i - 1]))
 			flag->zero_padd = 1;
-		else if (ft_isdigit(s[i]) && s[i] == '*')
+		else if (ft_isdigit(s[i]) || s[i] == '*')
 		{
-			flag->wdt = 1;
+			if (s[i + 1] == '*')
+			{
+				flag->wdt = va_args(flag->args, int);
+				if (flag->wdt < 0)
+				{
+					flag->dash = 1;
+					flag->wdt *= -1;
+				}
+			}
+			else
+			{
+				while (ft_isdigit(s[i + 1]))
+				{
+					flag->prcsn = (flag->prcsn * 10) + (s[i + 1] - 48)) 
+					i++;		
+				}
+			}  
 		}
 		else if (s[i] == '-')
 			flag->dash = 1;
@@ -77,6 +97,8 @@ int	ft_readflag(char *s, int i, t_flag *flag)
 			flag->sign = 1;
 		else if (s[i] == ' ')
 			flag->space = 1;
+		else if (s[i] == '#')
+			flag->hash = 1;
 		i++;
 	}	
 	return (i);
