@@ -6,30 +6,49 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 03:22:24 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/02 02:30:53 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/02/03 06:19:54 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "printf.h"
 
-void	ft_printlike(char *s, int i, t_flag *flag)
+void	ft_printstr(t_flag *flag)
 {
-	if (s[i] == 's')
-		ft_printstr(s, flag);
-	else if (s[i] == 'c')
-		ft_printchr(s);
-	else if (s[i] == 'd')
-
-	else if (s[i] == 'p')
-
-	else if (s[i] == 'i')
-
-	else if (s[i] == 'u')
-
-	else if (s[i] == 'x')
-
-	else if (s[i] == 'X')
+	char *str;
+	char *paddstr;
 	
-	else if (s[i]) == '%')
+	str = va_arg(flag->args, char *);
+	if (flag->point)
+		str = ft_substr(str, 0, flag->prcsn);
+	if (flag->wdt > ft_strlen(str))
+	{
+		paddstr = ft_memset(str, " ", (flag->wdt - ft_strlen(str)));
+		if (flag->dash)
+			str = ft_strjoin(paddstr, str);
+		else
+			str = ft_strjoin(str, paddstr);
+	}
+	ft_print(str, flag);
+	free (str);
+}
+void	ft_printlike(char *str, int i, t_flag *flag)
+{
+	if (str[i] == 's')
+		ft_printstr(flag);
+	else if (str[i] == 'c')
+		ft_printchr(flag);
+	else if (str[i] == 'd')
+
+	else if (str[i] == 'p')
+
+	else if (str[i] == 'i')
+
+	else if (str[i] == 'u')
+
+	else if (str[i] == 'x')
+
+	else if (str[i] == 'X')
+	
+	else if (str[i]) == '%')
 		ft_printchr('%');
 }

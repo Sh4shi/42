@@ -1,57 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_libftprintf.c                                   :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 01:11:39 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/01 22:31:59 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/02/03 06:27:57 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "printf.h"
 
-int	ft_parsflag(char *s, int i, t_flag *flag)
+void	ft_reset_flag(t_flag *flag)
 {
-		
-}
-
-void	ft_reset_flag(t_flag *args)
-{
-	args->wdt = 0;
-	args->prcsn = 0;
-	args->zero_padd = 0;
-	args->point = 0;
-	args->dash = 0;
-	args->sign = 0;
-	args->perc = 0;
-	args->space = 0;
-	args->hash = 0;
+	flag->wdt = 0;
+	flag->prcsn = 0;
+	flag->zero_padd = 0;
+	flag->point = 0;
+	flag->dash = 0;  
+	flag->sign = 0;
+	flag->perc = 0;
+	flag->space = 0;
+	flag->hash = 0;
 }
               
-void	ft_init_flag(t_flag *args)
+void	ft_init_flag(t_flag *flag)
 {
-	args->wdt = 0;
-	args->prcsn = 0;
-	args->zero_padd = 0;
-	args->point = 0;
-	args->dash = 0;
-	args->sign = 0;
-	args->len = 0;
-	args->perc = 0;
-	args->space = 0;
-	args->hash = 0;
+	flag->wdt = 0;
+	flag->prcsn = 0;
+	flag->zero_padd = 0;
+	flag->point = 0;
+	flag->dash = 0;
+	flag->sign = 0;
+	flag->len = 0;
+	flag->perc = 0;
+	flag->space = 0;
+	flag->hash = 0;
 }
 
-int	ft_readflag(char *s, int i, t_flag *flag)
+int	ft_readflag(char *str, int i, t_flag *flag)
 {
-	while (!ft_strchr("dsc%piuxX", s[i]))
+	while (!ft_strchr("dsc%piuxX", str[i]))
 	{
-		if (s[i] == '.')
+		if (str[i] == '.')
 		{
 			flag->point = 1;
-			if (s[i + 1] == '*')
+			if (str[i + 1] == '*')
 			{
 				flag->prcsn = va_args(flag->args, int);
 				if (flag->prcsn < 0)
@@ -62,18 +57,18 @@ int	ft_readflag(char *s, int i, t_flag *flag)
 			}
 			else
 			{
-				while (ft_isdigit(s[i + 1]))
+				while (ft_isdigit(str[i + 1]))
 				{
-					flag->prcsn = (flag->prcsn * 10) + (s[i + 1] - 48)) 
+					flag->prcsn = (flag->prcsn * 10) + (str[i + 1] - 48);
 					i++;		
 				}
 			}
 		}
-		else if (s[i] == '0' && !ft_isdigit(s[i - 1]))
+		else if (str[i] == '0' && !ft_isdigit(str[i - 1]))
 			flag->zero_padd = 1;
-		else if (ft_isdigit(s[i]) || s[i] == '*')
+		else if (ft_isdigit(str[i]) || str[i] == '*')
 		{
-			if (s[i + 1] == '*')
+			if (str[i + 1] == '*')
 			{
 				flag->wdt = va_args(flag->args, int);
 				if (flag->wdt < 0)
@@ -84,20 +79,20 @@ int	ft_readflag(char *s, int i, t_flag *flag)
 			}
 			else
 			{
-				while (ft_isdigit(s[i + 1]))
+				while (ft_isdigit(str[i + 1]))
 				{
-					flag->prcsn = (flag->prcsn * 10) + (s[i + 1] - 48)) 
+					flag->prcsn = (flag->prcsn * 10) + (str[i + 1] - 48); 
 					i++;		
 				}
 			}  
 		}
-		else if (s[i] == '-')
+		else if (str[i] == '-')
 			flag->dash = 1;
-		else if (s[i] == '+')
+		else if (str[i] == '+')
 			flag->sign = 1;
-		else if (s[i] == ' ')
+		else if (str[i] == ' ')
 			flag->space = 1;
-		else if (s[i] == '#')
+		else if (str[i] == '#')
 			flag->hash = 1;
 		i++;
 	}	
@@ -120,9 +115,9 @@ int	ft_printf(const char *str, ...)
 	{	
 		if (str[i] == '%')
 		{
-			ft_reset_flag(flag);
 			i =	ft_readflag(str, (i + 1), flag);
-			i = ft_printlike(str, i, flag);
+			ft_printlike(str, i, flag);
+			ft_reset_flag(flag);
 		}
 		else
 			printed += write(1, str[i], 1);

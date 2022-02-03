@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   printf.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 09:05:54 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/02 02:31:11 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/02/03 05:45:06 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef PRINTF_H
+# define PRINTF_H
 
 # include "libft/libft.h"
 # include <stdarg.h>
@@ -33,11 +33,11 @@ typedef struct s_flag
 }				t_flag;
 
 int		ft_printf(const char *str, ...);
-void	ft_init_flag(t_flag *args);
-int		ft_readflag(char *s, int i, t_flag *flag);
-void	ft_printlike(char *s, int i, t_flag *flag);
+void	ft_init_flag(t_flag *flag);
+int		ft_readflag(char *str, int i, t_flag *flag);
+void	ft_printlike(char *str, int i, t_flag *flag);
 void	ft_printstr(t_flag *flag);
-int		ft_print(char *s, t_flag *flag);
-void	ft_reset_flag(t_flag *args);
+int		ft_print(char *s, t_flag *flag); //------------next
+void	ft_reset_flag(t_flag *flag);
 
 #endif
