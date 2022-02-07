@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 09:05:54 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/03 05:45:06 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/02/04 19:19:31 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_flag
 int		ft_printf(const char *str, ...);
 void	ft_init_flag(t_flag *flag);
 int		ft_readflag(char *str, int i, t_flag *flag);
+int		ft_check_precision(char *str, int i, t_flag *flag);
+int		ft_check_wdt(char *str, int i, t_flag *flag)
 void	ft_printlike(char *str, int i, t_flag *flag);
 void	ft_printstr(t_flag *flag);
 int		ft_print(char *s, t_flag *flag); //------------next
