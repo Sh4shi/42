@@ -1,25 +1,25 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_so_long.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/05 22:19:16 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/07 04:04:07 by sdell-un         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_game_init(t_game *game)
+t_layout ft_init_lay(t_game *game)
 {
-	game->mlx = mlx_init();
-	game->window = mlx_new_window(game->mlx, , 1000, "so_long");
-	mlx_put_image_to_window(game->mlx, game->window);
+	t_layout layout;
+	layout.nbr_row = 0;
+	layout.nbr_col = 0;
+	layout.nbr_collect = 0;
+	layout.nbr_player = 0;
+	layout.nbr_enemy = 0;
+	layout.nbr_exit = 0;
 }
 
-int main(void)
+int main(int arg_c, char **arg_v)
 {
-	
+	char	**map;
+	t_game	*game;
+	void	*mlx;
+	void	*new_wnd;
+
+	map = ft_file_check(arg_c, arg_v, game);
+	mlx = mlx_init();
+	new_wnd = mlx_new_window(mlx, );
 }
