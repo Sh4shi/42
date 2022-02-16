@@ -6,15 +6,24 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 22:23:49 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/14 00:07:45 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/02/17 00:29:07 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "./minilibx/mlx.h"
-# include "./libft2/libft.h"
+# include "./lib/minilibx/mlx.h"
+# include "./lib/libft2/libft.h"
+
+# define FLOOR "img/floor.xmp"
+# define WALL "img/wall.xmp"
+# define DOOR "img/door.xmp"
+# define COLL1 "img/coll1.xmp"
+# define COLL2 "img/coll2.xmp"
+# define ENEMY1 "img/enemy/enemy1.xmp"
+# define ENEMY2 "img/enemy/enemy2.xmp"
+# define ENEMY3 "img/enemy/enemy3.xmp"
 
 typedef	struct s_vector
 {
@@ -32,37 +41,31 @@ typedef	struct s_layout
 	int	nbr_exit;
 }				t_layout;
 
-typedef enum e_type
+typedef struct s_img
 {
-	empty = '0',
-	wall = '1',
-	collectable = 'C',
-	player = 'P',
-	exit = 'E',
-	enemy = 'M', 
-}			t_type;
-
-typedef	enum e_keycode
-{
-	KEY_UP = 13,
-	KEY_DOWN = 1,
-	KEY_LEFT = 0,
-	KEY_RIGHT = 2,
-	RESET = 15,
-	ESC = 53,	
-}			t_keycode;
+	void	*img_floor;
+	void	*img_wall;
+	void	*img_door;
+	void	*img_coll1;
+	void	*img_coll2;
+	void	*img_enemy1;
+	void	*img_enemy2;
+	void	*img_enemy3;
+	int		img_width;
+	int		img_height;
+}				t_img;
 
 typedef struct s_game
 {
-	t_type		*type;
-	t_keycode	*keys;
 	t_layout	*layout;
 	t_game		*game;
+	t_img		*img;
 	void		*mlx;
 	int			width;
 	int			height;
 	void		*new_wnd;
 	int			map_pointer;
+	char		**map;
 	int			moves;
 	t_vector	*vector;
 }				t_game;
@@ -76,5 +79,12 @@ void		ft_type_check(t_game *game, char *buffer);
 char		**ft_alloct_map(t_game *game);
 void		**ft_map_check(char **map, t_game *game);
 void		**ft_map_check_rightdown(char **map, t_game *game, t_layout layout);
+void		ft_init_game(t_game *game);
+void		ft_init_img(t_game *game);
+void		*ft_get_img(char *path, t_game *game);
+void		ft_check_img(t_game *game);
+void		*ft_put_img(t_game *game, void *img, int x, int y);
+void		*ft_put_img_coll(t_game *game, void *img, int x, int y);
+void		*ft_put_img_player(t_game *game, void *img, int x, int y);
 
 #endif

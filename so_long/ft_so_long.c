@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 22:24:04 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/14 00:18:28 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/02/16 19:19:46 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ t_layout ft_init_lay(t_game *game)
 
 int main(int argc, char **argv)
 {
-	char	**map;
 	t_game	*g;
 
-	map = ft_file_check(argc, argv, g);
+	g->map = ft_file_check(argc, argv, g);
 	g->mlx = mlx_init();
 	g->new_wnd = mlx_new_window(g->mlx, g->width, g->height, "so_long");
+	ft_init_game(g);
 	
 }
