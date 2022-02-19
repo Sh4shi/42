@@ -6,26 +6,39 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 19:43:21 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/17 00:30:43 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/02/17 18:46:47 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	*ft_put_img_player(t_game *game, void *img, int x, int y)
+void	*ft_put_img(t_game *game, void *img, int j, int i)
 {
-	t_vector vector;
-		
-	mlx_put_immage_window(game->mlx, game->new_wnd, img, x * 32, y *32);
+	t_vector *vec;
 	
+	mlx_put_immage_window(game->mlx, game->new_wnd, img, j * 32, i *32);
+	if (game->map[i][j] == 'P')
+	{
+		vec->x = j;
+		vec->y = i;
+	}
 }
 
-void	*ft_put_img_coll(t_game *game, void *img, int x, int y)
+void	*ft_iteri_put(t_game *game, int i, int j)
 {
-	mlx_put_immage_window(game->mlx, game->new_wnd, img, x * 32, y *32);
+	t_imgpl		*imgpl;
+	t_imgcoll	*imgcoll;
+	t_imgenemy	*imgenemy;
+	
+	if (game->map[i][j] == 'P')
+		ft_lstiter(imgpl, ft_put_img(game, imgpl, j, i));
+	else if (game->map[i][j] == 'C')
+		ft_lstiter(imgcoll, ft_put_img(game, imgcoll, j, i));
+	else if (game->map[i][j] == 'M')
+		 ft_lstiter(imgenemy, ft_put_img(game, imgenemy, j, i));
 }
 
-void	ft_check_img(t_game *game)
+void	*ft_check_img(t_game *game)
 {
 	t_img	img;
 	int	i;
@@ -43,10 +56,8 @@ void	ft_check_img(t_game *game)
 				ft_put_img(game, img.img_floor, i, j);
 			else if (game->map[i][j] == 'E')
 				ft_put_img(game, img.img_door, i, j);
-			else if (game->map[i][j] == 'C')
-				ft_put_img_coll(game, img. i, j);
-			else if (game->map[i][j] == 'P')
-				ft_put_img_player(game, img. i, j);
+			else
+				ft_iteri_put(game, i, j);
 			j++;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 22:23:49 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/17 00:29:07 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/02/17 18:30:53 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,33 @@ typedef	struct s_layout
 	int	nbr_exit;
 }				t_layout;
 
+typedef struct s_imgcoll
+{
+	void	*img_coll1;
+	void	*img_coll2;	
+}				t_imgcoll;
+
+typedef	struct s_imgenemy
+{
+	void	*img_enemy1;
+	void	*img_enemy2;
+	void	*img_enemy3;	
+}				t_imgenemy;
+
+typedef struct s_imgpl
+{
+	void	*imgplf;
+	void	*imgplb;
+	void	*imgpll;
+	void	*imgplr;
+	void	*imgpld;	
+}				t_imgpl;
+
 typedef struct s_img
 {
 	void	*img_floor;
 	void	*img_wall;
 	void	*img_door;
-	void	*img_coll1;
-	void	*img_coll2;
-	void	*img_enemy1;
-	void	*img_enemy2;
-	void	*img_enemy3;
 	int		img_width;
 	int		img_height;
 }				t_img;
@@ -60,6 +77,9 @@ typedef struct s_game
 	t_layout	*layout;
 	t_game		*game;
 	t_img		*img;
+	t_imgpl		*imgpl;
+	t_imgenemy	*imgenemy;
+	t_imgcoll	*imgcoll;
 	void		*mlx;
 	int			width;
 	int			height;
@@ -80,11 +100,10 @@ char		**ft_alloct_map(t_game *game);
 void		**ft_map_check(char **map, t_game *game);
 void		**ft_map_check_rightdown(char **map, t_game *game, t_layout layout);
 void		ft_init_game(t_game *game);
-void		ft_init_img(t_game *game);
+void		*ft_init_img(t_game *game);
 void		*ft_get_img(char *path, t_game *game);
-void		ft_check_img(t_game *game);
-void		*ft_put_img(t_game *game, void *img, int x, int y);
-void		*ft_put_img_coll(t_game *game, void *img, int x, int y);
-void		*ft_put_img_player(t_game *game, void *img, int x, int y);
+void		*ft_check_img(t_game *game);
+void		*ft_put_img(t_game *game, void *img, int j, int i);
+void		*ft_iteri_put(t_game *game, int i, int j);
 
 #endif
