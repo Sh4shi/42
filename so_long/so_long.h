@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 22:23:49 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/17 18:30:53 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/02/21 03:36:03 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define ENEMY1 "img/enemy/enemy1.xmp"
 # define ENEMY2 "img/enemy/enemy2.xmp"
 # define ENEMY3 "img/enemy/enemy3.xmp"
+# define PLAYERF1 "img/player/playerf1.xmp"
 
 typedef	struct s_vector
 {
@@ -56,10 +57,16 @@ typedef	struct s_imgenemy
 
 typedef struct s_imgpl
 {
-	void	*imgplf;
-	void	*imgplb;
-	void	*imgpll;
-	void	*imgplr;
+	void	*imgplf1;
+	void	*imgplf2;
+	void	*imgplf3;
+	void	*imgplb1;
+	void	*imgplb2;
+	void	*imgplb3;
+	void	*imgpll1;
+	void	*imgpll2;
+	void	*imgplr1;
+	void	*imgplr2;
 	void	*imgpld;	
 }				t_imgpl;
 
@@ -105,5 +112,6 @@ void		*ft_get_img(char *path, t_game *game);
 void		*ft_check_img(t_game *game);
 void		*ft_put_img(t_game *game, void *img, int j, int i);
 void		*ft_iteri_put(t_game *game, int i, int j);
+void		ft_game_hook(t_game *game);
 
 #endif

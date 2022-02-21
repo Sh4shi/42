@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 19:43:21 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/17 18:46:47 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/02/21 00:46:18 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,7 @@
 
 void	*ft_put_img(t_game *game, void *img, int j, int i)
 {
-	t_vector *vec;
-	
 	mlx_put_immage_window(game->mlx, game->new_wnd, img, j * 32, i *32);
-	if (game->map[i][j] == 'P')
-	{
-		vec->x = j;
-		vec->y = i;
-	}
 }
 
 void	*ft_iteri_put(t_game *game, int i, int j)
@@ -29,13 +22,18 @@ void	*ft_iteri_put(t_game *game, int i, int j)
 	t_imgpl		*imgpl;
 	t_imgcoll	*imgcoll;
 	t_imgenemy	*imgenemy;
+	t_vector	*vec;
 	
 	if (game->map[i][j] == 'P')
-		ft_lstiter(imgpl, ft_put_img(game, imgpl, j, i));
+	{
+		ft_lstiter(imgpl, ft_put_img);
+		vec->x = j;
+		vec->y = i;
+	}
 	else if (game->map[i][j] == 'C')
-		ft_lstiter(imgcoll, ft_put_img(game, imgcoll, j, i));
+		ft_lstiter(imgcoll, ft_put_img);
 	else if (game->map[i][j] == 'M')
-		 ft_lstiter(imgenemy, ft_put_img(game, imgenemy, j, i));
+		 ft_lstiter(imgenemy, ft_put_img);
 }
 
 void	*ft_check_img(t_game *game)

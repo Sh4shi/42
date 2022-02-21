@@ -6,11 +6,12 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 22:24:04 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/16 19:19:46 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/02/21 03:34:24 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
 void	ft_wnd_size(t_game *game)
 {
 	t_layout	layout;
@@ -44,5 +45,5 @@ int main(int argc, char **argv)
 	g->mlx = mlx_init();
 	g->new_wnd = mlx_new_window(g->mlx, g->width, g->height, "so_long");
 	ft_init_game(g);
-	
+	ft_game_hook(g);
 }

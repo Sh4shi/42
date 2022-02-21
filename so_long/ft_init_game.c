@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 01:59:56 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/17 18:44:22 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/02/20 19:31:40 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ void	*ft_init_img(t_game *game)
 	img2->img_enemy1 = ft_get_img(ENEMY1, game);
 	img2->img_enemy2 = ft_get_img(ENEMY2, game);
 	img2->img_enemy3 = ft_get_img(ENEMY3, game);
-//	img3->imgplf = ft_get_img(PLAYER1, game);
-//  .....
+	img3->imgplf1 = ft_get_img(PLAYERF1, game);
 }
 
 void	ft_init_game(t_game *game)
