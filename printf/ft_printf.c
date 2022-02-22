@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 01:11:39 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/04 19:19:03 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/02/21 23:51:49 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	ft_reset_flag(t_flag *flag)
 	flag->dash = 0;  
 	flag->sign = 0;
 	flag->perc = 0;
-	flag->space = 0;
 	flag->hash = 0;
 }
               
@@ -35,7 +34,6 @@ void	ft_init_flag(t_flag *flag)
 	flag->sign = 0;
 	flag->len = 0;
 	flag->perc = 0;
-	flag->space = 0;
 	flag->hash = 0;
 }
 
@@ -57,8 +55,6 @@ int	ft_readflag(char *str, int i, t_flag *flag)
 			flag->dash = 1;
 		else if (str[i] == '+')
 			flag->sign = 1;
-		else if (str[i] == ' ')
-			flag->space = 1;
 		else if (str[i] == '#')
 			flag->hash = 1;
 		i++;
@@ -83,7 +79,7 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			i =	ft_readflag(str, (i + 1), flag);
-			ft_printlike(str, i, flag);
+			ft_find_format(str, i, flag);
 			ft_reset_flag(flag);
 		}
 		else
