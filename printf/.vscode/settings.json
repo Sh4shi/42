@@ -1,4 +1,7 @@
 {
 	"42header.email": "sdell-un@student.42roma.it",
-	"42header.username": "sdell-un"
+	"42header.username": "sdell-un",
+    "[c]": {
+        "editor.defaultFormatter": "keyhr.42-c-format"
+    },
 }

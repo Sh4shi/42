@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 01:11:39 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/21 23:51:49 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/02/24 05:56:50 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@ void	ft_reset_flag(t_flag *flag)
 	flag->prcsn = 0;
 	flag->zero_padd = 0;
 	flag->point = 0;
-	flag->dash = 0;  
+	flag->dash = 0;
 	flag->sign = 0;
 	flag->perc = 0;
 	flag->hash = 0;
+	flag->casex = 0;
 }
-              
+
 void	ft_init_flag(t_flag *flag)
 {
 	flag->wdt = 0;
@@ -35,6 +36,7 @@ void	ft_init_flag(t_flag *flag)
 	flag->len = 0;
 	flag->perc = 0;
 	flag->hash = 0;
+	flag->casex = 0;
 }
 
 int	ft_readflag(char *str, int i, t_flag *flag)
@@ -43,7 +45,7 @@ int	ft_readflag(char *str, int i, t_flag *flag)
 	{
 		if (str[i] == '.')
 		{
-			i = ft_check_precision(str, i, flag);
+			i = ft_check_precision(str, i + 1, flag);
 		}
 		else if (str[i] == '0' && !ft_isdigit(str[i - 1]))
 			flag->zero_padd = 1;
@@ -58,7 +60,7 @@ int	ft_readflag(char *str, int i, t_flag *flag)
 		else if (str[i] == '#')
 			flag->hash = 1;
 		i++;
-	}	
+	}
 	return (i);
 }
 
@@ -68,26 +70,45 @@ int	ft_printf(const char *str, ...)
 	t_flag	*flag;
 	int		i;
 
+	printed = 0;
 	flag = (t_flag *)malloc(sizeof(t_flag));
 	if (!flag)
 		return (0);
 	ft_init_flag(flag);
 	va_start(flag->args, str);
-	i = 0;
-	while (str[i])
-	{	
+	i = -1;
+	while (str[++i])
+	{
 		if (str[i] == '%')
 		{
-			i =	ft_readflag(str, (i + 1), flag);
-			ft_find_format(str, i, flag);
-			ft_reset_flag(flag);
+			i = ft_readflag((char *)str, (i + 1), flag);
+			ft_find_format((char *)str, i, flag);
 		}
 		else
-			printed += write(1, str[i], 1);
-		i++;
+			printed += write(1, &str[i], 1);
 	}
 	va_end(flag->args);
 	printed += flag->len;
-	free (flag);
+	free(flag);
 	return (printed);
+}
+
+int	main(void)
+{
+	int len = 0;
+	int len2 = 0;
+	char *a = "iao";
+
+	len = ft_printf("%p\n", a);
+	len2 = printf("%p\n", a);
+	printf("MIO: %d, VERO: %d\n", len, len2);
+	len = ft_printf("%20p\n", "prova");
+	len2 = printf("%20p\n", "prova");
+	printf("MIO: %d, VERO: %d\n", len, len2);
+	len = ft_printf("%-20p\n", "cazzo");
+	len2 = printf("%-20p\n", "cazzo");
+	printf("MIO: %d, VERO: %d\n", len, len2);
+	// len = ft_printf("%2.5s\n", "casa");
+	// len2 = printf("%2.5s\n", "casa");
+	// printf("MIO: %d, VERO: %d\n", len, len2);
 }

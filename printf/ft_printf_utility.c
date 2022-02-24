@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 19:07:23 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/22 03:18:11 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/02/24 05:58:36 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,25 @@ void	ft_find_format(char *str, int i, t_flag *flag)
 	else if (str[i] == 'd' || str[i] == 'i')
 		;
 	else if (str[i] == 'p')
-		ft_printpointer(flag);	
+		ft_printpointer(flag);
 	else if (str[i] == 'u')
 		;
 	else if (str[i] == 'x')
-		;
+	{
+		flag->casex = 1;
+		ft_printx(flag);
+	}	
 	else if (str[i] == 'X')
 		;
 	else if (str[i] == '%')
 		flag->len += write(1, "%", 1);
+	ft_reset_flag(flag);
 }
 
 int	ft_check_precision(char *str, int i, t_flag *flag)
 {
 	flag->point = 1;
-	if (str[i + 1] == '*')
+	if (str[i] == '*')
 	{
 		flag->prcsn = va_arg(flag->args, int);
 		if (flag->prcsn < 0)
@@ -46,18 +50,18 @@ int	ft_check_precision(char *str, int i, t_flag *flag)
 	}
 	else
 	{
-		while (ft_isdigit(str[i + 1]))
+		while (ft_isdigit(str[i]))
 		{
-			flag->prcsn = (flag->prcsn * 10) + (str[i + 1] - '0');
-			i++;		
+			flag->prcsn = (flag->prcsn * 10) + (str[i] - '0');
+			i++;
 		}
 	}
-	return (i);
+	return (i - 1);
 }
 
 int	ft_check_wdt(char *str, int i, t_flag *flag)
 {
-	if (str[i + 1] == '*')
+	if (str[i] == '*')
 	{
 		flag->wdt = va_arg(flag->args, int);
 		if (flag->wdt < 0)
@@ -68,11 +72,7 @@ int	ft_check_wdt(char *str, int i, t_flag *flag)
 	}
 	else
 	{
-		while (ft_isdigit(str[i + 1]))
-		{
-			flag->wdt = (flag->wdt * 10) + (str[i + 1] - 48); 
-			i++;		
-		}
+			flag->wdt = (flag->wdt * 10) + (str[i] - 48);
 	}
 	return (i);
 }
