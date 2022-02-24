@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 03:22:24 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/24 06:01:06 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/02/24 06:22:38 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,45 +21,9 @@ void	ft_printx(t_flag *flag)
 	len = 2 + ft_count_len(nbr, 16);
 	flag->len += len;
 	if (flag->dash == 1 || len >= flag->wdt || flag->wdt == 0)
-	{
-		if (flag->hash == 1)
-			write(1, "0x", 2);
-		else
-			len -= 2;
-		if (flag->prcsn == 1)
-		{
-			ft_put_stuff(flag->prcsn - len, "0", flag);
-		}
-		ft_putnbr_base(nbr, "0123456789abcdef");
-		if (flag->wdt)
-		{
-			if (flag->zero_padd)
-				ft_put_stuff(flag->wdt - flag->len, "0", flag);
-			else
-				ft_put_stuff(flag->wdt - flag->len, " ", flag);
-		}
-	}
+		ft_printx_dash(nbr, len, flag);
 	else
-	{
-		if (flag->zero_padd)
-			ft_put_stuff(flag->wdt - flag->len, "0", flag);
-		else
-			ft_put_stuff(flag->wdt - flag->len, " ", flag);
-		if (flag->hash == 1)
-		{
-			if (flag->casex)
-				write(1, "0x", 2);
-			else
-				write(1, "0X", 2)
-		}
-		else
-			len -= 2;
-		if (flag->prcsn == 1)
-		{
-			ft_put_stuff(flag->prcsn - len, "0", flag);
-		}
-		ft_putnbr_base(nbr, "0123456789abcdef");
-	}
+		ft_printx_off_dash(nbr, len, flag);
 }
 
 void	ft_printpointer(t_flag *flag)

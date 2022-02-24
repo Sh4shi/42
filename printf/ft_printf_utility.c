@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 19:07:23 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/24 05:58:36 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/02/24 06:26:36 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_find_format(char *str, int i, t_flag *flag)
 		ft_printx(flag);
 	}	
 	else if (str[i] == 'X')
-		;
+		ft_printx(flag);
 	else if (str[i] == '%')
 		flag->len += write(1, "%", 1);
 	ft_reset_flag(flag);
@@ -71,8 +71,6 @@ int	ft_check_wdt(char *str, int i, t_flag *flag)
 		}
 	}
 	else
-	{
-			flag->wdt = (flag->wdt * 10) + (str[i] - 48);
-	}
+		flag->wdt = (flag->wdt * 10) + (str[i] - 48);
 	return (i);
 }
