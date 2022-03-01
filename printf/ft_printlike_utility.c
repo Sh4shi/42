@@ -6,62 +6,68 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 01:07:14 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/24 06:23:13 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/02/27 09:55:54 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 void	ft_printx_off_dash(unsigned int nbr, int len, t_flag *flag)
 {
-	if (flag->zero_padd)
-		ft_put_stuff(flag->wdt - flag->len, "0", flag);
-	else
-		ft_put_stuff(flag->wdt - flag->len, " ", flag);
+	int len2;
+	
+	if (len < flag->prcsn)
+		len2 = flag->prcsn;
+	if (flag->hash == 1)
+		len2 += 2;
+	if (flag->zero_padd && flag->wdt - len2 > 0)
+		ft_put_stuff(flag->wdt - len2, 48, flag);
+	else if (flag->wdt - len2 > 0)
+		ft_put_stuff(flag->wdt - len2, 32, flag);
 	if (flag->hash == 1)
 	{
 		if (flag->casex)
 			write(1, "0x", 2);
 		else
 			write(1, "0X", 2);
+		flag->len += 2;
 	}
-	else
-		len -= 2;
-	if (flag->prcsn == 1)
-	{
-		ft_put_stuff(flag->prcsn - len, "0", flag);
-	}
-	if (flag->casex)
+	if (flag->point == 1 && flag->prcsn - len > 0)
+		ft_put_stuff(flag->prcsn - len, 48, flag);
+	if (flag->hash && flag->casex)
 		ft_putnbr_base(nbr, "0123456789abcdef");
-	else
+	else if (flag->hash)
 		ft_putnbr_base(nbr, "0123456789ABCDEF");
+	else
+		ft_putnbr_base(nbr, "0123456789");
 }
 
 void	ft_printx_dash(unsigned int nbr, int len, t_flag *flag)
 {
-	if (flag->hash == 1)
+	 if (flag->hash == 1)
 	{
 		if (flag->casex)
 			write(1, "0x", 2);
 		else
 			write(1, "0X", 2);
+		flag->len += 2;
 	}
-	else
-		len -= 2;
-	if (flag->prcsn == 1)
+	if (flag->point == 1 && flag->prcsn - len > 0)
 	{
-		ft_put_stuff(flag->prcsn - len, "0", flag);
+		ft_put_stuff(flag->prcsn - len, 48, flag);
 	}
-	if (flag->casex)
+	if (flag->hash && flag->casex)
 		ft_putnbr_base(nbr, "0123456789abcdef");
-	else
+	else if (flag->hash)
 		ft_putnbr_base(nbr, "0123456789ABCDEF");
+	else
+		ft_putnbr_base(nbr, "0123456789");
 	if (flag->wdt)
 	{
-		if (flag->zero_padd)
-			ft_put_stuff(flag->wdt - flag->len, "0", flag);
-		else
-			ft_put_stuff(flag->wdt - flag->len, " ", flag);
+		if (flag->zero_padd && flag->wdt - len > 0)
+			ft_put_stuff(flag->wdt - flag->len, 48, flag);
+		else if (flag->wdt - len > 0)
+			ft_put_stuff(flag->wdt - flag->len, 32, flag);
 	}
 }
 

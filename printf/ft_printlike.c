@@ -6,11 +6,27 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 03:22:24 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/24 06:22:38 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/02/27 16:48:26 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
+
+void	ft_printu(t_flag *flag)
+{
+	unsigned int	nbr;
+	int				len;
+
+	nbr = va_arg(flag->args, unsigned int);
+	len = ft_count_len(nbr, 10, flag);
+	flag->len += len;
+	if (flag->dash == 1 && (flag->hash || flag->wdt || flag->point))
+		ft_printx_dash(nbr, len, flag);
+	else if (flag->hash || flag->wdt || flag->point)
+		ft_printx_off_dash(nbr, len, flag);
+	else
+		ft_putnbr_base(nbr, "0123456789");	
+} 
 
 void	ft_printx(t_flag *flag)
 {
@@ -18,21 +34,28 @@ void	ft_printx(t_flag *flag)
 	int				len;
 
 	nbr = va_arg(flag->args, unsigned int);
-	len = 2 + ft_count_len(nbr, 16);
+	len = ft_count_len(nbr, 16, flag);
 	flag->len += len;
-	if (flag->dash == 1 || len >= flag->wdt || flag->wdt == 0)
+	if (flag->dash == 1 && (flag->hash || flag->wdt || flag->point))
 		ft_printx_dash(nbr, len, flag);
-	else
+	else if (flag->hash || flag->wdt || flag->point)
 		ft_printx_off_dash(nbr, len, flag);
+	else
+	{
+		if (flag->casex)
+			ft_putnbr_base(nbr, "0123456789abcdef");
+		else
+			ft_putnbr_base(nbr, "0123456789ABCDEF");	
+	}
 }
 
 void	ft_printpointer(t_flag *flag)
 {
-	size_t	ptr;
-	int		len;
+	unsigned long long	ptr;
+	int			len;
 
 	ptr = va_arg(flag->args, size_t);
-	len = 2 + ft_count_len(ptr, 16);
+	len = 2 + ft_count_len2(ptr, 16, flag);
 	flag->len += len;
 	if (len >= flag->wdt)
 	{
@@ -44,11 +67,11 @@ void	ft_printpointer(t_flag *flag)
 		if (flag->dash == 1)
 		{
 			ft_printpointer2(ptr);
-			ft_put_stuff(flag->wdt - len, " ", flag);
+			ft_put_stuff(flag->wdt - len, 32, flag);
 		}
 		else
 		{
-			ft_put_stuff(flag->wdt - len, " ", flag);
+			ft_put_stuff(flag->wdt - len, 32, flag);
 			write(1, "0x", 2);
 			ft_putnbr_base(ptr, "0123456789abcdef");
 		}

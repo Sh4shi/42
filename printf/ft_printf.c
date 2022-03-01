@@ -6,11 +6,11 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 01:11:39 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/24 05:56:50 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/02/27 17:04:49 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 void	ft_reset_flag(t_flag *flag)
 {
@@ -19,6 +19,7 @@ void	ft_reset_flag(t_flag *flag)
 	flag->zero_padd = 0;
 	flag->point = 0;
 	flag->dash = 0;
+	flag->minus = 0;
 	flag->sign = 0;
 	flag->perc = 0;
 	flag->hash = 0;
@@ -32,6 +33,7 @@ void	ft_init_flag(t_flag *flag)
 	flag->zero_padd = 0;
 	flag->point = 0;
 	flag->dash = 0;
+	flag->minus = 0;
 	flag->sign = 0;
 	flag->len = 0;
 	flag->perc = 0;
@@ -91,24 +93,4 @@ int	ft_printf(const char *str, ...)
 	printed += flag->len;
 	free(flag);
 	return (printed);
-}
-
-int	main(void)
-{
-	int len = 0;
-	int len2 = 0;
-	char *a = "iao";
-
-	len = ft_printf("%p\n", a);
-	len2 = printf("%p\n", a);
-	printf("MIO: %d, VERO: %d\n", len, len2);
-	len = ft_printf("%20p\n", "prova");
-	len2 = printf("%20p\n", "prova");
-	printf("MIO: %d, VERO: %d\n", len, len2);
-	len = ft_printf("%-20p\n", "cazzo");
-	len2 = printf("%-20p\n", "cazzo");
-	printf("MIO: %d, VERO: %d\n", len, len2);
-	// len = ft_printf("%2.5s\n", "casa");
-	// len2 = printf("%2.5s\n", "casa");
-	// printf("MIO: %d, VERO: %d\n", len, len2);
 }

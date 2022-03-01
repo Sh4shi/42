@@ -6,11 +6,11 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 19:07:23 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/24 06:26:36 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/02/27 09:55:38 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 void	ft_find_format(char *str, int i, t_flag *flag)
 {
@@ -19,11 +19,11 @@ void	ft_find_format(char *str, int i, t_flag *flag)
 	else if (str[i] == 'c')
 		ft_printchr(flag);
 	else if (str[i] == 'd' || str[i] == 'i')
-		;
+		ft_printdi(flag);
 	else if (str[i] == 'p')
 		ft_printpointer(flag);
 	else if (str[i] == 'u')
-		;
+		ft_printu(flag);
 	else if (str[i] == 'x')
 	{
 		flag->casex = 1;

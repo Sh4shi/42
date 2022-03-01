@@ -6,11 +6,11 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 00:30:44 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/24 05:10:15 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/02/27 16:47:28 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 void	ft_put_stuff(int i, char c, t_flag *flag)
 {
@@ -22,10 +22,9 @@ void	ft_put_stuff(int i, char c, t_flag *flag)
 	}
 }
 
-void	ft_putnbr_base(long long ptr, char *base)
+void	ft_putnbr_base(unsigned long long ptr, char *base)
 {
-	int	len;
-	int	count;
+	unsigned int	len;
 
 	len = ft_strlen(base);
 	if (ptr < len)
@@ -37,7 +36,7 @@ void	ft_putnbr_base(long long ptr, char *base)
 	}
 }
 
-int	ft_count_len(long long ptr, int base)
+int	ft_count_len(long long ptr, int base, t_flag *flag)
 {
 	int			len;
 	long long	nbr;
@@ -46,10 +45,32 @@ int	ft_count_len(long long ptr, int base)
 	nbr = 1;
 	if (ptr < 0)
 	{
-		len++;
+		flag->minus = 1;
+		flag->len += 1;
 		ptr *= -1;
 	}
 	while (ptr / nbr >= base)
+	{
+		len++;
+		nbr *= base;
+	}
+	return (len);
+}
+
+int	ft_count_len2(unsigned long long ptr, int base, t_flag *flag)
+{
+	int			len;
+	unsigned long long	nbr;
+
+	len = 1;
+	nbr = 1;
+	if (ptr < 0)
+	{
+		flag->minus = 1;
+		flag->len += 1;
+		ptr *= -1;
+	}
+	while (ptr / nbr >= (unsigned long long)base)
 	{
 		len++;
 		nbr *= base;
