@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 00:30:44 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/27 16:47:28 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/03/14 22:08:08 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	ft_count_len(long long ptr, int base, t_flag *flag)
 
 int	ft_count_len2(unsigned long long ptr, int base, t_flag *flag)
 {
-	int			len;
+	int					len;
 	unsigned long long	nbr;
 
 	len = 1;

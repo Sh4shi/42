@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 09:05:54 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/27 16:57:53 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/03/14 22:02:19 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ void	ft_printdi_dash(long long nbr, int len, t_flag *flag);
 void	ft_printdi_off_dash(long long nbr, int len, t_flag *flag);
 void	ft_reset_flag(t_flag *flag);
 int		ft_count_len2(unsigned long long ptr, int base, t_flag *flag);
+void	ft_printx_utils(t_flag *flag);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 01:07:14 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/27 09:55:54 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/03/14 22:04:09 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_printx_off_dash(unsigned int nbr, int len, t_flag *flag)
 {
-	int len2;
-	
+	int	len2;
+
 	if (len < flag->prcsn)
 		len2 = flag->prcsn;
 	if (flag->hash == 1)
@@ -25,13 +25,7 @@ void	ft_printx_off_dash(unsigned int nbr, int len, t_flag *flag)
 	else if (flag->wdt - len2 > 0)
 		ft_put_stuff(flag->wdt - len2, 32, flag);
 	if (flag->hash == 1)
-	{
-		if (flag->casex)
-			write(1, "0x", 2);
-		else
-			write(1, "0X", 2);
-		flag->len += 2;
-	}
+		ft_printx_utils(flag);
 	if (flag->point == 1 && flag->prcsn - len > 0)
 		ft_put_stuff(flag->prcsn - len, 48, flag);
 	if (flag->hash && flag->casex)
@@ -44,7 +38,7 @@ void	ft_printx_off_dash(unsigned int nbr, int len, t_flag *flag)
 
 void	ft_printx_dash(unsigned int nbr, int len, t_flag *flag)
 {
-	 if (flag->hash == 1)
+	if (flag->hash == 1)
 	{
 		if (flag->casex)
 			write(1, "0x", 2);

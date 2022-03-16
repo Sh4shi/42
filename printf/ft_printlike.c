@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 03:22:24 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/02/27 16:48:26 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/03/14 21:56:15 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	ft_printu(t_flag *flag)
 	else if (flag->hash || flag->wdt || flag->point)
 		ft_printx_off_dash(nbr, len, flag);
 	else
-		ft_putnbr_base(nbr, "0123456789");	
-} 
+		ft_putnbr_base(nbr, "0123456789");
+}
 
 void	ft_printx(t_flag *flag)
 {
@@ -45,14 +45,14 @@ void	ft_printx(t_flag *flag)
 		if (flag->casex)
 			ft_putnbr_base(nbr, "0123456789abcdef");
 		else
-			ft_putnbr_base(nbr, "0123456789ABCDEF");	
+			ft_putnbr_base(nbr, "0123456789ABCDEF");
 	}
 }
 
 void	ft_printpointer(t_flag *flag)
 {
 	unsigned long long	ptr;
-	int			len;
+	int					len;
 
 	ptr = va_arg(flag->args, size_t);
 	len = 2 + ft_count_len2(ptr, 16, flag);

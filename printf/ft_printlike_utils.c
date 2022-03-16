@@ -6,16 +6,25 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 19:53:44 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/03/01 19:53:48 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/03/14 22:07:16 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+void	ft_printx_utils(t_flag *flag)
+{
+	if (flag->casex)
+		write(1, "0x", 2);
+	else
+		write(1, "0X", 2);
+	flag->len += 2;
+}
+
 void	ft_printdi_off_dash(long long nbr, int len, t_flag *flag)
 {
-	int sp;
-	int dif;
+	int	sp;
+	int	dif;
 
 	dif = flag->prcsn - len;
 	if (dif < 0)
@@ -41,8 +50,8 @@ void	ft_printdi_off_dash(long long nbr, int len, t_flag *flag)
 
 void	ft_printdi_dash(long long nbr, int len, t_flag *flag)
 {
-	int dif;
-	int sp;
+	int	dif;
+	int	sp;
 
 	if (!(flag->prcsn && flag->point))
 		dif = 0;
@@ -60,19 +69,12 @@ void	ft_printdi_dash(long long nbr, int len, t_flag *flag)
 	ft_putnbr_base(nbr, "0123456789");
 	if (dif < 0)
 		dif = 0;
-	if (flag->wdt && flag->wdt > dif + len)
-	{
-		if (flag->zero_padd)
-			ft_put_stuff(sp, 48, flag);
-		else
-			ft_put_stuff(sp, 32, flag);
-	}
 }
 
 void	ft_printdi(t_flag *flag)
 {
-	long long nbr;
-	int	len;
+	long long	nbr;
+	int			len;
 
 	nbr = va_arg(flag->args, int);
 	len = ft_count_len(nbr, 10, flag);
