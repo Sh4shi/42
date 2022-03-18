@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 21:44:45 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/03/16 01:12:43 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/03/16 03:59:26 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ static void	send(int pid, char *txt)
 	char	c;
 
 	i = 0;
-	bit = 0;
 	while (txt[i])
 	{
+		bit = 0;
 		c = txt[i];
-		while (bit != 8)
+		while (bit < 8)
 		{
-			if (c == 0x80)
+			if (c & 0x80)
 				kill(pid, SIGUSR2);
 			else
 				kill(pid, SIGUSR1);
@@ -47,16 +47,16 @@ int	main(int argc, char **argv)
 		if (pid > 0)
 		{
 			ft_putstr_fd(SNDINGM, 1);
-			ft_putchr_fd("\n", 1);
+			ft_putchar_fd('\n', 1);
 			send(pid, argv[2]);
-			usleep(200);
+			usleep(500);
 			ft_putstr_fd(ARRIVED, 1);
-			ft_putchr_fd("\n", 1);
+			ft_putchar_fd('\n', 1);
 			exit(EXIT_SUCCESS);
 		}
 		else
 		{
-			ft_putstr_fd(PID_ERR, 1);
+			ft_putstr_fd(SOP_ERR, 1);
 			exit(EXIT_FAILURE);
 		}
 	}

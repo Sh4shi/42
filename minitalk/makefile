@@ -1,35 +1,45 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/03/16 03:05:41 by sdell-un          #+#    #+#              #
+#    Updated: 2022/03/16 03:06:57 by sdell-un         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-CC	= gcc
-LIBC	= ar rc
-CFLAGS	+= -Wall -Werror -Wextra
+SRC_SERVER = server.c utils.c
+SRC_CLIENT = client.c utils.c
 
-LIBFT = libft
+NAME_SERVER = server
+NAME_CLIENT = client
 
-SRC = client.c \
-		server.c \
+OBJ_SRV = server.o utils.o
+OBJ_CLIENT = client.o utils.o
 
-OBJS	= $(src:.c=.o)
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra -I.
 
-NAME	= minitalk.a
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-.PHONY:	all clean fclean re
+all: $(NAME_CLIENT) $(NAME_SERVER)
 
-.c.o:
-	${CC} ${CFLAGS} -I includes -c $< -o ${<:.c=.o}
+$(NAME_SERVER): $(OBJ_SRV)
+	$(CC) $(CFLAGS) -o $@ $(OBJ_SRV)
 
-$(NAME): ${OBJS}
-	@make -C $(LIBFT)
-	@cp libft/libft.a ./$(NAME)
-	@ar rcs ${NAME} ${OBJS}
+$(NAME_CLIENT): $(OBJ_CLIENT)
+	$(CC) $(CFLAGS) -o $@ $(OBJ_CLIENT)
 
-all: $(NAME)
 
 clean:
-	rm -f $(OBJS)
-	@make clean -C $(LIBFT)
+	rm -f $(OBJ_CLIENT) $(OBJ_SRV)
 
-fclean: clean
-		rm -f *~ $(NAME)
-	@make fclean -C $(LIBFT)
+fclean:	clean
+	rm -f $(OBJ_CLIENT) $(OBJ_SRV) $(NAME_SERVER) $(NAME_CLIENT)
 
-re: fclean all 
+re: fclean all
+
+.PHONY: server client all re fclean clean

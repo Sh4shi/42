@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 15:16:26 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/03/16 01:07:13 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/03/16 03:48:49 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ void	check(int num, siginfo_t *inf, void *p)
 	static int		cur_pid;
 
 	(void)p;
+	cur_pid = inf->si_pid;
 	if (!cli_pid)
 		cli_pid = inf->si_pid;
-	cur_pid = inf->si_pid;
 	if (cur_pid != cli_pid)
-		reset(&cur_pid, &cli_pid, &i, &bit);
+		reset(cur_pid, cli_pid, i, bit);
 	if (num == SIGUSR2)
 	{
 		(bit |= (0x80 >> i));
@@ -53,7 +53,7 @@ int	main(int argc, char **argv)
 	int					pid;
 
 	(void)argv;
-	pid = getpid;
+	pid = getpid();
 	info.sa_sigaction = check;
 	info.sa_flags = SA_SIGINFO;
 	if (argc == 1)

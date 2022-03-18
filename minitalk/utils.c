@@ -1,16 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/11 05:34:51 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/01/28 07:04:35 by sdell-un         ###   ########.fr       */
+/*   Created: 2022/03/16 03:07:25 by sdell-un          #+#    #+#             */
+/*   Updated: 2022/03/16 03:14:54 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minitalk.h"
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	if (!s)
+		return ;
+	write (fd, s, ft_strlen(s));
+}
+
+size_t	ft_strlen(const char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
+}
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	if (n == -2147483648)
+	{
+		write(fd, "-2147483648", 11);
+		return ;
+	}
+	else if (n < 0)
+	{
+		n *= -1;
+		ft_putchar_fd('-', fd);
+	}
+	if (n > 9)
+	{	
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
+	else
+		ft_putchar_fd(n + '0', fd);
+}
+
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}
 
 int	ft_atoi(const char *str)
 {
