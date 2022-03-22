@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 04:02:03 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/03/21 04:37:05 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/03/22 16:41:08 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,22 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <stdbool.h>
+# include "libft/libft.h"
 
 typedef struct s_node
 {
-	long int		data;
-	struct t_node	*next;
-	struct t_node	*prev;	
+	int				data;
+	int				nbr;
+	struct s_node	*next;
+	struct s_node	*prev;	
 }				t_node;
-
-typedef struct s_info
-{
-	
-}				t_info;
-
-void	check(int argc, char **argv, t_node *node);
-int		change_type(char **argv, int i, int j, t_node *node);
-void	add_node(long int num, t_node *node, int count);
+//input_checker.c
+bool	are_numb0rs(char **argv);
+bool	is_string(char **argv);
+//ft_split.c
+int		get_num_el(char const *s, char c);
+char	**memall(char *s, char c, int nbr, char **new);
+char	**ft_split(char const *s, char c);
 
 #endif

@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/18 04:01:29 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/03/22 16:51:49 by sdell-un         ###   ########.fr       */
+/*   Created: 2022/01/10 15:56:10 by sdell-un          #+#    #+#             */
+/*   Updated: 2022/03/22 02:12:07 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft/libft.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlen(const char *s)
 {
-	t_node		*node;
+	int	i;
 
-	if (argc < 2)
-		return (write(2, "Error\n", 6));
-	if (!are_numbers(argv))
-		return (write(2, "Error\n", 6));
-	if (argc == 2 && !is_string(argv))
-		return (write(2, "Error\n", 6));
-	node->nbr = get_numbers(argv);
+	i = 0;
+	while (s[i] != '\0')
+	i++;
+	return (i);
 }
