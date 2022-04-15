@@ -6,40 +6,25 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 07:40:26 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/03/25 10:04:25 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/04/06 13:20:57 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "libft/libft.h"
+#include "../push_swap.h"
 
-void	find_min_val(t_ptr *ptr)
+void	add_index(t_ptr *ptr)
 {
 	t_node	*node;
-	t_node	*min_nbr;
+	int		i;
+	int		num;
 
-	node = ptr->stack_a->head;
-	while (node->next != ptr->stack_a->head)
+	node = ptr->stack_a->min_val;
+	i = 0;
+	num = node->data;
+	while (check_index_value(ptr))
 	{
-		if (node->data < ptr->stack_a->min_val)
-		{
-			ptr->stack_a->min_val = node->data;
-			node->index += 1;
-		}
+		node->index = i + 1;
 		node = node->next;
-	}
-	if (node == ptr->stack_a->tail)
-	{
-		if (node->data < ptr->stack_a->min_val)
-		{
-			ptr->stack_a->min_val = node->data;
-			node->index += 1;
-		}
-		node = node->next;
-		if (node->data < ptr->stack_a->min_val)
-		{
-			ptr->stack_a->min_val = node->data;
-			node->index += 1;
-		}
+		
 	}
 }

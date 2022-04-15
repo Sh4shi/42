@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 04:02:03 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/03/25 08:32:53 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/04/06 13:04:04 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,15 @@ typedef struct s_ptr
 	struct s_list	*stack_b;
 }				t_ptr;
 
+//utility.c
+void	set_list(t_ptr *ptr, t_node *node);
+bool	check_index_value(t_ptr *ptr);
+int		ft_atoi(const char *str);
+size_t	ft_strlen(const char *s);
+void	is_the_next_num(t_ptr *ptr);
+
 //check_value.c
-void	find_min_val(t_ptr *ptr);
+void	add_index(t_ptr *ptr);
 
 //input_checker.c
 int		get_numbers(char **argv);

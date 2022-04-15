@@ -6,12 +6,11 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 04:01:29 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/03/25 08:33:34 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/04/06 13:16:30 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft/libft.h"
 
 void	add_node(int num, t_ptr *ptr, int first_num)
 {
@@ -20,6 +19,7 @@ void	add_node(int num, t_ptr *ptr, int first_num)
 	node = (t_node *)malloc(sizeof(t_node));
 	if (!node)
 		return (write(2, "Error\n", 6));
+	node->index = 0;
 	if (first_num == 0)
 	{
 		ptr->stack_a->head = node;
@@ -27,8 +27,8 @@ void	add_node(int num, t_ptr *ptr, int first_num)
 		node->data = num;
 		node->next = node;
 		node->prev = node;
-		node->index = 0;
 		ptr->stack_a->min_val = node->data;
+		ptr->stack_a->max_val = node->data;
 	}
 	else
 	{
@@ -36,7 +36,10 @@ void	add_node(int num, t_ptr *ptr, int first_num)
 		node->next = ptr->stack_a->head;
 		node->data = num;
 		ptr->stack_a->tail = node;
-		find_min_val(ptr);
+		if (node->data < ptr->stack_a->min_val)
+			ptr->stack_a->min_val = node->data;
+		else if (node->data > ptr->stack_a->max_val)
+			ptr->stack_a->max_val = node->data;
 	}
 }
 
@@ -86,6 +89,7 @@ void	change_type(int argc, char **argv, t_ptr *ptr)
 			i++;
 		}
 	}
+	add_index(ptr);
 }
 
 int	main(int argc, char **argv)

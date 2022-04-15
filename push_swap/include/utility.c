@@ -10,7 +10,33 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
+
+void	is_the_next_num(t_ptr *ptr)
+{
+	
+}
+
+void	set_list(t_ptr *ptr, t_node *node)
+{
+	node->prev = NULL;
+	ptr->stack_a->tail->next = NULL;
+}
+
+bool	check_index_value(t_ptr *ptr)
+{
+	t_node	*node;
+
+	node = ptr->stack_a->head;
+	set_list(ptr, node);
+	while (node->next != NULL)
+	{
+		if (node->index == 0)
+			return (true);
+		node = node->next;
+	}
+	return (false);
+}
 
 int	ft_atoi(const char *str)
 {
