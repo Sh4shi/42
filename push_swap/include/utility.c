@@ -6,15 +6,19 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:56:10 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/03/24 21:47:33 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/04/15 16:08:05 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	is_the_next_num(t_ptr *ptr)
+void	set_list_circular(t_ptr *ptr)
 {
-	
+	t_node	*node;
+
+	node = ptr->stack_a->head;
+	node->prev = ptr->stack_a->tail;
+	ptr->stack_a->tail->next = node;
 }
 
 void	set_list(t_ptr *ptr, t_node *node)
@@ -32,9 +36,13 @@ bool	check_index_value(t_ptr *ptr)
 	while (node->next != NULL)
 	{
 		if (node->index == 0)
+		{
+			set_list_circular(ptr);
 			return (true);
+		}
 		node = node->next;
 	}
+	set_list_circular(ptr);
 	return (false);
 }
 

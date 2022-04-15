@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 07:40:26 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/04/06 13:20:57 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/04/15 15:48:43 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ void	add_index(t_ptr *ptr)
 	num = node->data;
 	while (check_index_value(ptr))
 	{
-		node->index = i + 1;
+		if (node->data == num)
+			node->index = i + 1;
 		node = node->next;
-		
+		num++;
 	}
 }
