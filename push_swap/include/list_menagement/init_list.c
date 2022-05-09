@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_value.c                                      :+:      :+:    :+:   */
+/*   init_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/25 07:40:26 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/04/15 15:48:43 by sdell-un         ###   ########.fr       */
+/*   Created: 2022/05/09 15:48:40 by sdell-un          #+#    #+#             */
+/*   Updated: 2022/05/09 17:55:52 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	add_index(t_ptr *ptr)
+void	init_b(t_stacks *stacks)
 {
-	t_node	*node;
-	int		i;
-	int		num;
+	stacks->b->head = NULL;
+	stacks->b->tail = NULL;
+	stacks->b->max = NULL;
+	stacks->b->min = NULL;
+}
 
-	node = ptr->stack_a->min_val;
-	i = 0;
-	num = node->data;
-	while (check_index_value(ptr))
-	{
-		if (node->data == num)
-			node->index = i + 1;
-		node = node->next;
-		num++;
-	}
+void	init_a(t_stacks *stacks)
+{
+	stacks->a->head = NULL;
+	stacks->a->tail = NULL;
+	stacks->a->max = NULL;
+	stacks->a->min = NULL;
+}
+
+void	init_list(t_stacks *stacks)
+{
+	init_a(stacks);
+	init_b(stacks);
+	stacks->a = NULL;
+	stacks->b = NULL;
 }

@@ -1,44 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_checker.c                                    :+:      :+:    :+:   */
+/*   input_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/22 16:04:08 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/03/23 23:43:18 by sdell-un         ###   ########.fr       */
+/*   Created: 2022/04/26 21:15:04 by sdell-un          #+#    #+#             */
+/*   Updated: 2022/05/09 15:46:55 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../include/push_swap.h"
 
-bool	is_string(char **argv)
+bool	next_is_nbr(char *av)
 {
 	int	i;
 
 	i = 0;
-	while (argv[i])
+	while (av[i])
 	{
-		if (argv[i] == ' ')
-			return (true);
+		if (av[i] < '0' && av[i] > '9' || av[i] != '+' || av[i] != '-')
+			return (false);
 		i++;
 	}
-	return (false);
+	return (true);
 }
 
-bool	are_numbers(char **argv)
+bool	are_numbers(char **av)
 {
 	int	i;
 	int	j;
 
 	i = 1;
-	while (argv[i])
+	j = 0;
+	while (av[i])
 	{
 		j = 0;
-		while (argv[i][j])
+		while (av[i][j])
 		{
-			if ((argv[i][j] != ' ' && argv[i][j] != '+' && argv[i][j] != '-') \
-				|| (argv[i][j] < '0' && argv[i][j] > '9'))
+			if ((av[i][j] != '+' && av[i][j] != '-' && av[i][j] != ' ') \
+			|| (av[i][j] < '0' && av[i][j] > '9'))
 				return (false);
 			j++;
 		}
@@ -47,19 +48,19 @@ bool	are_numbers(char **argv)
 	return (true);
 }
 
-int	get_numbers(char **argv)
+bool	is_string(char *av)
 {
-	int	count;
 	int	i;
 
-	count = 0;
 	i = 0;
-	while (argv[i])
+	while (av[i])
 	{
-		if (is_string(argv[i]))
-			count += get_num_el(argv[i], ' ');
-		else
-			count++;
+		if (av[i] == ' ')
+		{
+			if (next_is_nbr(av[i + 1]))
+				return (true);
+		}
+		i++;
 	}
-	return (count);
+	return (false);
 }
