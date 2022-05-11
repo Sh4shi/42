@@ -6,11 +6,11 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:48:40 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/05/09 17:55:52 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/05/11 18:32:51 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../include/push_swap.h"
 
 void	init_b(t_stacks *stacks)
 {

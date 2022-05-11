@@ -1,26 +1,53 @@
-TARGET	=	push_swap
-CC		=	gcc
-CFLAGS 	=	-Wall -Wextra -Werror
-SRC 	=	./source/push_swap.c \
-			./source/check/input_check.c \
-			./source/utility/utility.c \
-			./include/list_menagement/init_list.c \
-			./include/list_menagement/set_list.c \
-OBJ		=	$(SRC:.c=.o)
-RM		=	rm -rf
+NAME = push_swap
+LIBFT = libft.a
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+CFLAG = -c
+OFLAG = -o
+IFLAG = -I
+MAKE = make -c
+MAKE_CLEAN = make clean -c
+MAKE_FCLEAN =  make fclean -c
+MKDIR =  mkdir -p
+CP =  cp
+RM =  rm -f
+SRCDIR =  ./source
+OBJDIR =  ./objs
+INCDIR =  ./include
+LIBFTDIR =  ./libft
+FILES =         init_list.c \
+                set_list.c \
+			 	input_check.c \
+			 	utility.c \
+			 	push_swap.c \
 
-%.o : %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+SRCS = $(foreach FILE, $(FILES), $(shell find $(SRCDIR) -name $(FILE)))
 
-all: $(TARGET)
+OBJS = $(patsubst $(SRCDIR)/%, $(OBJDIR)/%, $(SRCS:.c=.o))
 
-$(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) $^ -o $(TARGET)
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+	@$(MKDIR) $(@D)
+	@$(CC) $(CFLAGS) $(IFLAG) $(INCDIR) $(CFLAG) $(OFLAG) $@ $< 
+
+all: $(NAME)
+
+$(NAME): $(OBJS) $(LIBFT)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(OFLAG) $(NAME)
+
+$(LIBFT):
+	@$(MAKE) $(LIBFTDIR)
+	@$(CP) $(LIBFTDIR)/$(LIBFT) .
 
 clean:
-	$(RM) $(OBJ)
+	@$(RM) $(OBJDIR) $(OBJS) $(LIBFT)
+	@$(RM) ./libft.a
+	@$(MAKE_CLEAN) $(LIBFTDIR)
 
 fclean: clean
-	$(RM) $(TARGET)
+	@$(RM) $(NAME)
+	@$(RM) ./libft.a
+	@$(MAKE_FCLEAN) $(LIBFTDIR)
 
 re: fclean all
+
+.PHONY: all norm clean fclean re

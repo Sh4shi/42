@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:15:04 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/05/09 15:46:55 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/05/11 18:29:29 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ bool	next_is_nbr(char *av)
 	i = 0;
 	while (av[i])
 	{
-		if (av[i] < '0' && av[i] > '9' || av[i] != '+' || av[i] != '-')
+		if ((av[i] < '0' && av[i] > '9') || (av[i] != '+' && av[i] != '-'))
 			return (false);
 		i++;
 	}
@@ -38,7 +38,7 @@ bool	are_numbers(char **av)
 		j = 0;
 		while (av[i][j])
 		{
-			if ((av[i][j] != '+' && av[i][j] != '-' && av[i][j] != ' ') \
+			if (((av[i][j] != '+' && av[i][j] != '-') && av[i][j] != ' ') \
 			|| (av[i][j] < '0' && av[i][j] > '9'))
 				return (false);
 			j++;
@@ -57,7 +57,7 @@ bool	is_string(char *av)
 	{
 		if (av[i] == ' ')
 		{
-			if (next_is_nbr(av[i + 1]))
+			if (next_is_nbr(&av[i + 1]))
 				return (true);
 		}
 		i++;
