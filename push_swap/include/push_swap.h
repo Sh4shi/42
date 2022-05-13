@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 12:54:11 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/05/11 18:22:38 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/05/13 20:36:17 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,7 @@ typedef struct s_stacks
 //------------------------------------check
 //
 //      input_check.c
-bool	is_string(char *av);
-bool	are_numbers(char **av);
-bool	next_is_nbr(char *av);
+bool	is_nbr(int ac, char **av);
 
 //------------------------------------add numbers
 //
