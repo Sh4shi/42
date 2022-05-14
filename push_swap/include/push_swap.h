@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 12:54:11 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/05/13 20:36:17 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/05/14 01:26:43 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ typedef struct s_stack
 
 typedef struct s_stacks
 {
-	struct s_stack	*a;
-	struct s_stack	*b;
+	struct s_stack	a;
+	struct s_stack	b;
 }				t_stacks;
 
 //------------------------------------check
@@ -48,27 +48,12 @@ bool	is_nbr(int ac, char **av);
 //------------------------------------add numbers
 //
 //      push_swap.c
-void	add_nbr(int ac, char **av, t_stacks *stacks);
 
-//------------------------------------add numbers utility
+//------------------------------------utility
 //
 //      utility.c
-int		add_nbr_str(char *av, t_stacks *stacks);
-void	add_nbr_ac(char *av, t_stacks *stacks);
-void	add_nbr_multi_ac(char **av, t_stacks *stacks);
+long	ft_atol(const char *str);
 
-//------------------------------------list menagement
-//
-//      set_list.c
-
-void	add_node(t_stacks *stacks, int num);
-void	add_first_node(t_stacks *stacks, int num);
-void	new_node(t_stacks *stacks, int num);
-//void	add_index(t_stacks *stacks);
-
-//      init_list.c
-void	init_a(t_stacks *stacks);
-void	init_b(t_stacks *stacks);
-void	init_list(t_stacks *stacks);
+bool	add_node(t_stack *source, int nbr);
 
 #endif
