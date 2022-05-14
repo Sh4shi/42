@@ -6,9 +6,24 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 23:18:09 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/05/13 23:21:49 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/05/14 04:44:31 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../../include/push_swap.h"
+
+void	free_matrix(char **str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free (str);	
+}
 
 long	ft_atol(const char *str)
 {

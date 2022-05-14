@@ -59,7 +59,9 @@ RM = rm -rf
 LIBFT = ./libft
 SRCS = ./source/check/input_check.c \
 	./source/push_swap.c \
-	./source/list_menagement/set_list.c
+	./source/list_menagement/set_list.c \
+	./source/list_menagement/list_utility.c \
+	./source/utility/utility.c 
 OBJS = $(SRCS:.c=.o)
 
 %.o : %.c

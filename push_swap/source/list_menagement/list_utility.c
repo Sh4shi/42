@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   list_utility.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/26 21:10:43 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/05/14 04:53:03 by sdell-un         ###   ########.fr       */
+/*   Created: 2022/05/14 03:27:24 by sdell-un          #+#    #+#             */
+/*   Updated: 2022/05/14 03:33:26 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../../include/push_swap.h"
 
-int	main(int ac, char **av)
+void free_list(t_stack *stack)
 {
-	t_stacks	stack;
-	
-	ft_bzero(&stack, sizeof(t_stacks));
-	if (ac < 2 || !is_nbr(ac, av) || !get_num(&stack.a, ac, av))
-		return (write(2, "Error\n", 6));
+	t_node *node;
+	t_node *save;
 
-	#include <stdlib.h>
-	for (t_node *tmp = stack.a.head; tmp; tmp = tmp->next)
-		printf("%d ", tmp->data);
+	node = stack->head;
+	while (node->next)
+	{
+		save = node->next;
+		free (node);
+		node = save;
+	}
 }

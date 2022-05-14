@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 12:54:11 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/05/14 01:26:43 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/05/14 04:40:40 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdbool.h>
+# include <limits.h>
 # include "../libft/libft.h"
 
 typedef struct s_node
@@ -44,6 +45,8 @@ typedef struct s_stacks
 //
 //      input_check.c
 bool	is_nbr(int ac, char **av);
+bool	get_num(t_stack *stack, int ac, char **av);
+bool	add_num(t_stack *stack, char **strs, char *str);
 
 //------------------------------------add numbers
 //
@@ -53,7 +56,10 @@ bool	is_nbr(int ac, char **av);
 //
 //      utility.c
 long	ft_atol(const char *str);
-
+void	free_matrix(char **str);
+//------------------------------------list menagement
+//
 bool	add_node(t_stack *source, int nbr);
+void	free_list(t_stack *stack);
 
 #endif
