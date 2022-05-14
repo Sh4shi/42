@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 12:54:11 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/05/14 05:17:51 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/05/14 16:13:47 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,10 @@ typedef struct s_stacks
 bool	is_nbr(int ac, char **av);
 bool	get_num(t_stack *stack, int ac, char **av);
 bool	add_num(t_stack *stack, char **strs, char *str);
+bool	is_ordered(t_stack *stack);
+bool	duplicated(t_stack *stack);
 
-//------------------------------------add numbers
+//------------------------------------main
 //
 //      push_swap.c
 
@@ -60,7 +62,14 @@ void	free_matrix(char **str);
 
 //------------------------------------list menagement
 //
+//       set_list.c
 bool	add_node(t_stack *source, int nbr);
+t_node	*new_node(int nbr);
+//
+//
+//       list_utility.c
 void	free_list(t_stack *stack);
-
+void	set_circular(t_stack *stack);
+void	set_linear(t_stack *stack);
+t_stack	*create_list(t_stack *stack);
 #endif

@@ -6,11 +6,55 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:15:04 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/05/14 04:56:04 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/05/14 14:53:53 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
+
+bool	duplicated(t_stack *stack)
+{
+	t_node *parse;
+	t_node *twin;
+	
+	parse = stack->head;
+	twin = parse;
+	set_circular(stack);
+	while (1)
+	{
+		twin = parse;
+		while (twin->next != parse)
+		{
+			if (twin->next->data == parse->data)
+				return (false);
+			twin = twin->next;
+		}
+		parse = parse->next;
+		if (parse->prev == stack->tail)
+		{
+			set_linear(stack);
+			return (true);
+		}
+	}	
+}
+
+bool	is_ordered(t_stack *stack)
+{
+	t_node *markup;
+	t_node *parse;
+	
+	parse = stack->head;
+	markup = parse;
+	while (parse->next)
+	{
+		if (parse->next->data > markup->data)
+			markup = parse->next;
+		parse = parse->next;
+		if (markup != parse)
+			return (true);
+	}
+	return (false);
+}
 
 bool	add_num(t_stack *stack, char **strs, char *str)
 {
