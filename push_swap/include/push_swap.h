@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 12:54:11 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/05/14 04:40:40 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/05/14 05:17:51 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ bool	add_num(t_stack *stack, char **strs, char *str);
 //      utility.c
 long	ft_atol(const char *str);
 void	free_matrix(char **str);
+
 //------------------------------------list menagement
 //
 bool	add_node(t_stack *source, int nbr);
