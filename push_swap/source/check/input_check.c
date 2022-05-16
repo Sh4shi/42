@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:15:04 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/05/14 14:53:53 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/05/16 20:56:24 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ bool	duplicated(t_stack *stack)
 	t_node *twin;
 	
 	parse = stack->head;
-	twin = parse;
 	set_circular(stack);
 	while (1)
 	{

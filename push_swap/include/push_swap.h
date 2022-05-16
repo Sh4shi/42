@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 12:54:11 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/05/14 16:13:47 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/05/16 20:51:57 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,5 @@ t_node	*new_node(int nbr);
 void	free_list(t_stack *stack);
 void	set_circular(t_stack *stack);
 void	set_linear(t_stack *stack);
-t_stack	*create_list(t_stack *stack);
+
 #endif
