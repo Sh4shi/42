@@ -18,7 +18,7 @@ bool	add_index(t_stack *stack)
 	t_node	*node;
 
 	arr = list_copy(&stack);
-	arr = radixsort(&arr, &stack);
+	arr = radix_sort(&arr, &stack);
 }
 
 t_node	*new_node(int nbr)

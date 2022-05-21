@@ -17,6 +17,7 @@ int		list_len(t_stack *stack)
 	t_node *node;
 	int		len;
 
+    len = 0;
 	node = stack->head;
 	while (node->next)
 	{

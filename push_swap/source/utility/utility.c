@@ -17,7 +17,7 @@ int	sort_arr(int *arr, int size, int decimal)
 
 }
 
-int	*radixsort(int *arr, t_stack  *stack)
+int	*radix_sort(int *arr, t_stack  *stack)
 {
 	int size;
 	int max;

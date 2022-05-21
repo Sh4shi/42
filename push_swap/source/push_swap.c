@@ -21,7 +21,7 @@ int	main(int ac, char **av)
 		!is_ordered(&stack.a) || !duplicated(&stack.a))
 		return (write(2, "Error\n", 6));
 	else
-		add_index(&stack);
+		add_index(&stack.a);
 	
 	#include <stdlib.h>
 	for (t_node *tmp = stack.a.head; tmp; tmp = tmp->next)
