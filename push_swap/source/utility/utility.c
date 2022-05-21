@@ -12,6 +12,45 @@
 
 #include "../../include/push_swap.h"
 
+int	sort_arr(int *arr, int size, int decimal)
+{
+
+}
+
+int	*radixsort(int *arr, t_stack  *stack)
+{
+	int size;
+	int max;
+	int	decimal;
+
+	max = stack->max->data;
+	size = SIZE_ARR(arr);
+	decimal = 1;
+	while (max / decimal > 0)
+	{
+		sort_arr(arr, size, decimal);
+		decimal *= 10;
+	}
+}
+
+int	*list_copy(t_stack *stack)
+{
+	int	*arr;
+	int i;
+	t_node *node;
+
+	node = stack->head;
+	arr = (int *)malloc(sizeof(int) * list_len(&stack));
+	i = 0;
+	while (node)
+	{
+		arr[i] = node->data;
+		node = node->next;
+		i++;
+	}
+	return (arr);
+}
+
 void	free_matrix(char **str)
 {
 	int i;

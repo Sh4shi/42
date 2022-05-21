@@ -18,6 +18,7 @@
 # include <stdbool.h>
 # include <limits.h>
 # include "../libft/libft.h"
+# define SIZE_ARR(arr) sizeof(arr) / sizeof(arr[0])
 
 typedef struct s_node
 {
@@ -59,17 +60,21 @@ bool	duplicated(t_stack *stack);
 //      utility.c
 long	ft_atol(const char *str);
 void	free_matrix(char **str);
+int		*list_copy(t_stack *stack);
+int 	*radixsort(int *arr, t_stack *stack);
 
 //------------------------------------list menagement
 //
 //       set_list.c
 bool	add_node(t_stack *source, int nbr);
 t_node	*new_node(int nbr);
+bool	add_index(t_stack *stack);
 //
 //
 //       list_utility.c
 void	free_list(t_stack *stack);
 void	set_circular(t_stack *stack);
 void	set_linear(t_stack *stack);
+int		list_len(t_stack *stack);
 
 #endif

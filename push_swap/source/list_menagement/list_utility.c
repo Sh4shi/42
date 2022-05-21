@@ -12,6 +12,20 @@
 
 #include "../../include/push_swap.h"
 
+int		list_len(t_stack *stack)
+{
+	t_node *node;
+	int		len;
+
+	node = stack->head;
+	while (node->next)
+	{
+		len++;
+		node = node->next;
+	}
+	return (len);
+}
+
 void	set_linear(t_stack *stack)
 {
 	stack->head->prev = NULL;

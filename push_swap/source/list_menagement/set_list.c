@@ -12,9 +12,13 @@
 
 #include "../../include/push_swap.h"
 
-void	add_index(t_stack *stack)
+bool	add_index(t_stack *stack)
 {
-	
+	int		*arr;
+	t_node	*node;
+
+	arr = list_copy(&stack);
+	arr = radixsort(&arr, &stack);
 }
 
 t_node	*new_node(int nbr)
