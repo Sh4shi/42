@@ -62,6 +62,7 @@ long	ft_atol(const char *str);
 void	free_matrix(char **str);
 int		*list_copy(t_stack *stack);
 int 	*radix_sort(int *arr, t_stack *stack);
+int	    sort_arr(int *arr, int nbr, int decimal);
 
 //------------------------------------list menagement
 //

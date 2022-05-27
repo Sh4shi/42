@@ -24,7 +24,7 @@ int		list_len(t_stack *stack)
 		len++;
 		node = node->next;
 	}
-	return (len);
+	return (len + 1);
 }
 
 void	set_linear(t_stack *stack)
