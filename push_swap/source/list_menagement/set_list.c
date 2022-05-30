@@ -6,19 +6,18 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 23:23:37 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/05/16 20:52:26 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/05/30 21:47:02 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-bool	add_index(t_stack *stack)
+void	add_index(t_stack *stack)
 {
 	int		*arr;
-	t_node	*node;
 
-	arr = list_copy(&stack);
-	arr = radix_sort(&arr, &stack);
+	arr = list_copy(stack);
+	arr = radix_sort(arr, stack);
 }
 
 t_node	*new_node(int nbr)

@@ -6,25 +6,23 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 03:27:24 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/05/16 20:51:49 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/05/30 22:02:33 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-int		list_len(t_stack *stack)
+int		list_len(t_node *node)
 {
-	t_node *node;
 	int		len;
 
     len = 0;
-	node = stack->head;
-	while (node->next)
+	while (node)
 	{
 		len++;
 		node = node->next;
 	}
-	return (len + 1);
+	return (len);
 }
 
 void	set_linear(t_stack *stack)

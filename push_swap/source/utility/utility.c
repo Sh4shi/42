@@ -6,13 +6,13 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 23:18:09 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/05/22 21:00:32 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/05/30 22:45:13 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-int sorrt_arr(int *arr, int nbr, int decimal)
+void sorrt_arr(int *arr, int nbr, int decimal)
 {
     t_list     *bucket[10];
     int         count;
@@ -23,28 +23,26 @@ int sorrt_arr(int *arr, int nbr, int decimal)
     ft_memset(&bucket,0, sizeof(t_list *) * 10);
     while (count < nbr)
     {
-        box = (arr[count] / decimal) % 10;
+        box = (arr[count] % 10) / decimal;
         if (bucket[box] == 0)
-            bucket[box] = ft_lstnew(arr[count]);
+            bucket[box] = ft_lstnew(&arr[count]);
         else
         {
-            node = ft_lstnew(arr[count]);
+            node = ft_lstnew(&arr[count]);
             ft_lstadd_back(&bucket[box], node);
         }
         count++;
     }
 }
 
-int	*radix_sort(int *arr, t_stack  *stack)
+void	radix_sort(int *arr, t_stack  *stack)
 {
-	int nbr;
-	int max;
+	size_t nbr;
 	int	decimal;
 
-	max = stack->max->data;
-	nbr = SIZE_ARR(arr);
+	nbr = (sizeof(arr) / sizeof(arr[0]));
 	decimal = 1;
-	while (max / decimal > 0)
+	while (stack->max->data / decimal > 0)
 	{
 		sort_arr(arr, nbr, decimal);
 		decimal *= 10;
@@ -58,9 +56,9 @@ int	*list_copy(t_stack *stack)
 	t_node *node;
 
 	node = stack->head;
-	arr = (int *)malloc(sizeof(int) * list_len(&stack));
+	arr = (int *)malloc(sizeof(int) * list_len(node));
 	i = 0;
-	while (i < list_len(&stack))
+	while (i < list_len(node))
 	{
 		arr[i] = node->data;
 		node = node->next;
