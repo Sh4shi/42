@@ -20,6 +20,7 @@
 #			 	input_check.c \
 #			 	utility.c \
 #			 	push_swap.c \
+#				radix.c \
 #
 #SRCS = $(foreach FILE, $(FILES), $(shell find $(SRCDIR) -name $(FILES)))
 #
@@ -61,7 +62,8 @@ SRCS = ./source/check/input_check.c \
 	./source/push_swap.c \
 	./source/list_menagement/set_list.c \
 	./source/list_menagement/list_utility.c \
-	./source/utility/utility.c 
+	./source/utility/utility.c \
+	./source/utility/radix.c
 OBJS = $(SRCS:.c=.o)
 
 %.o : %.c

@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 23:23:37 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/05/30 21:47:02 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/05/31 16:56:25 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	add_index(t_stack *stack)
 {
 	int		*arr;
-
+	
 	arr = list_copy(stack);
 	arr = radix_sort(arr, stack);
 }

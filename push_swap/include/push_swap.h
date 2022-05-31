@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 12:54:11 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/05/30 22:45:20 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/05/31 16:36:42 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,13 @@ bool	duplicated(t_stack *stack);
 long	ft_atol(const char *str);
 void	free_matrix(char **str);
 int		*list_copy(t_stack *stack);
-void 	radix_sort(int *arr, t_stack *stack);
-void    sort_arr(int *arr, int nbr, int decimal);
+
+//
+//
+//       radix.c
+int 	*radix_sort(int *arr, t_stack *stack);
+int		*sort_arr(int *arr, int nbr, int decimal);
+int		*copy_sorted(int *arr, t_list **bucket);
 
 //------------------------------------list menagement
 //
