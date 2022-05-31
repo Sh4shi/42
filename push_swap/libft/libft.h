@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 19:36:28 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/05/30 22:13:42 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/05/31 20:03:52 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 typedef struct s_list
 {
-	int				*content;
+	int					*content;
 	struct s_list		*next;
 }				t_list;
 

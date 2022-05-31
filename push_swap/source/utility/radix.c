@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 16:22:51 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/05/31 16:58:07 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/05/31 19:55:36 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	*sorrt_arr(int *arr, int nbr, int decimal)
     t_list      *node;
 
     count = 0;
-    ft_memset(&bucket,0, sizeof(t_list *) * 10);
+    ft_memset(&bucket, 0, sizeof(t_list *) * 10);
     while (count < nbr)
     {
         box = (arr[count] % 10) / decimal;
@@ -61,7 +61,7 @@ int	*sorrt_arr(int *arr, int nbr, int decimal)
 
 int	*radix_sort(int *arr, t_stack  *stack)
 {
-	size_t	nbr;
+	int		nbr;
 	int		decimal;
 
 	nbr = (sizeof(*arr) / sizeof(arr[0]));
