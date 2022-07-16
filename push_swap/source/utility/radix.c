@@ -12,7 +12,31 @@
 
 #include "../../include/push_swap.h"
 
-int	*copy_sorted(int *arr, t_list **bucket)
+void free_bucket(t_list **bucket, int len)
+{
+    int i;
+    t_list *ptr;
+    t_list *tmp;
+
+    i = 0;
+    while (i < len)
+    {
+        ptr = bucket[i];
+        if (ptr)
+        {
+            while (ptr->next)
+            {
+                tmp = ptr;
+                ptr = ptr->next;
+                free(tmp->content);
+                free(tmp);
+            }
+        }
+        i++;
+    }
+}
+
+int	*copy_sorted(int *arr, t_list **bucket, int len_array)
 {
 	t_list	*node;
 	int		box;
@@ -20,19 +44,19 @@ int	*copy_sorted(int *arr, t_list **bucket)
 
 	i = 0;
 	box = 0;
-	arr =  ft_memset(arr, 0, sizeof(int) * sizeof(*arr));
+	arr =  ft_memset(arr, 0, len_array* sizeof(int));
 	while (box < 10)
 	{
 		node = bucket[box];
-		while(node->next)
+		while(node)
 		{
-			arr[i] = *((int *)node->content);
+			arr[i] = *((int *)(node->content));
 			node = node->next;
-			i++;	
+			i++;
 		}
 		box += 1;
 	}
-	return (arr);
+    return (arr);
 }
 
 int	*sort_arr(int *arr, int nbr, int decimal)
@@ -40,23 +64,23 @@ int	*sort_arr(int *arr, int nbr, int decimal)
     t_list     *bucket[10];
     int         count;
     int         box;
-    t_list      *node;
+    int         *ret;
+    int         *ntmp;
 
     count = 0;
     ft_memset(&bucket, 0, sizeof(t_list *) * 10);
     while (count < nbr)
     {
         box = (arr[count] % 10) / decimal;
-        if (bucket[box] == 0)
-            bucket[box] = ft_lstnew( (void *)(&arr[count]) );
-        else
-        {
-            node = ft_lstnew( (void *)(&arr[count]) );
-            ft_lstadd_back(&bucket[box], node);
-        }
+        ntmp = malloc(sizeof(int));
+        *ntmp = arr[count];
+        ft_lstadd_back(&bucket[box],
+                       ft_lstnew( (void *)(ntmp) ));
         count++;
     }
-	return (copy_sorted(arr, bucket));
+    ret = copy_sorted(arr, bucket, nbr);
+	free_bucket(bucket, 10);
+    return (ret);
 }
 
 int	*radix_sort(int *arr, t_stack  *stack, int nbr)

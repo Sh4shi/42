@@ -66,7 +66,7 @@ int		*list_to_array(t_stack *stack);
 //       radix.c
 int 	*radix_sort(int *arr, t_stack *stack, int nbr);
 int		*sort_arr(int *arr, int nbr, int decimal);
-int		*copy_sorted(int *arr, t_list **bucket);
+int     *copy_sorted(int *arr, t_list **bucket, int len_array);
 
 //------------------------------------list menagement
 //
