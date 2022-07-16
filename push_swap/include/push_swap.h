@@ -59,12 +59,12 @@ bool	duplicated(t_stack *stack);
 //      utility.c
 long	ft_atol(const char *str);
 void	free_matrix(char **str);
-int		*list_copy(t_stack *stack);
+int		*list_to_array(t_stack *stack);
 
 //
 //
 //       radix.c
-int 	*radix_sort(int *arr, t_stack *stack);
+int 	*radix_sort(int *arr, t_stack *stack, int nbr);
 int		*sort_arr(int *arr, int nbr, int decimal);
 int		*copy_sorted(int *arr, t_list **bucket);
 

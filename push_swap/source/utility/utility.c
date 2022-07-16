@@ -12,21 +12,22 @@
 
 #include "../../include/push_swap.h"
 
-int	*list_copy(t_stack *stack)
+int	*list_to_array(t_stack *stack)
 {
 	int	*arr;
 	int i;
 	t_node *node;
+    int len;
 
-	node = stack->head;
-	arr = (int *)malloc(sizeof(int) * list_len(node));
+    node = stack->head;
+    len = list_len(node);
+    arr = (int *)malloc(sizeof(int) * len);
 	i = 0;
-	while (i < list_len(node))
-	{
-		arr[i] = node->data;
-		node = node->next;
-		i++;
-	}
+    while (node)
+    {
+        arr[i++] = node->data;
+        node = node->next;
+    }
 	return (arr);
 }
 

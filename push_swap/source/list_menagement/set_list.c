@@ -15,9 +15,15 @@
 void	add_index(t_stack *stack)
 {
 	int		*arr;
-	
-	arr = list_copy(stack);
-	arr = radix_sort(arr, stack);
+    int     len;
+
+    len = list_len(stack->head);
+	arr = list_to_array(stack);
+	arr = radix_sort(arr, stack, len);
+
+    for (int i = 0; i < len; ++i)
+        printf("%d ", arr[i]);
+    puts("");
 }
 
 t_node	*new_node(int nbr)

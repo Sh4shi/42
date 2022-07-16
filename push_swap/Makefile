@@ -18,7 +18,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(TARGET)
 
 $(TARGET) : $(OBJS)
-	make -C $(LIBFT)
+	make -C $(LIBFT) bonus
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT)/libft.a -o $(TARGET)
 
 clean:

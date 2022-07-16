@@ -25,7 +25,10 @@ bool	duplicated(t_stack *stack)
 		while (twin->next != parse)
 		{
 			if (twin->next->data == parse->data)
-				return (false);
+            {
+                free_list(stack);
+                return (false);
+            }
 			twin = twin->next;
 		}
 		parse = parse->next;
@@ -52,6 +55,7 @@ bool	is_ordered(t_stack *stack)
 		if (markup != parse)
 			return (true);
 	}
+    free_list(stack);
 	return (false);
 }
 

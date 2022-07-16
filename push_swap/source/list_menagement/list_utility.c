@@ -49,4 +49,5 @@ void free_list(t_stack *stack)
 		free (node);
 		node = save;
 	}
+    free(stack->head);
 }

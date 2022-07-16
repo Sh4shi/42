@@ -26,7 +26,7 @@ int	*copy_sorted(int *arr, t_list **bucket)
 		node = bucket[box];
 		while(node->next)
 		{
-			arr[i] = *node->content;
+			arr[i] = *((int *)node->content);
 			node = node->next;
 			i++;	
 		}
@@ -35,7 +35,7 @@ int	*copy_sorted(int *arr, t_list **bucket)
 	return (arr);
 }
 
-int	*sorrt_arr(int *arr, int nbr, int decimal)
+int	*sort_arr(int *arr, int nbr, int decimal)
 {
     t_list     *bucket[10];
     int         count;
@@ -48,10 +48,10 @@ int	*sorrt_arr(int *arr, int nbr, int decimal)
     {
         box = (arr[count] % 10) / decimal;
         if (bucket[box] == 0)
-            bucket[box] = ft_lstnew(&arr[count]);
+            bucket[box] = ft_lstnew( (void *)(&arr[count]) );
         else
         {
-            node = ft_lstnew(&arr[count]);
+            node = ft_lstnew( (void *)(&arr[count]) );
             ft_lstadd_back(&bucket[box], node);
         }
         count++;
@@ -59,12 +59,10 @@ int	*sorrt_arr(int *arr, int nbr, int decimal)
 	return (copy_sorted(arr, bucket));
 }
 
-int	*radix_sort(int *arr, t_stack  *stack)
+int	*radix_sort(int *arr, t_stack  *stack, int nbr)
 {
-	int		nbr;
 	int		decimal;
 
-	nbr = (sizeof(*arr) / sizeof(arr[0]));
 	decimal = 1;
 	while (stack->max->data / decimal > 0)
 	{

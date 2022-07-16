@@ -19,7 +19,7 @@
 
 typedef struct s_list
 {
-	int					*content;
+	void					*content;
 	struct s_list		*next;
 }				t_list;
 
@@ -59,7 +59,7 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	*ft_calloc(size_t count, size_t size);
-t_list	*ft_lstnew(int *content);
+t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
