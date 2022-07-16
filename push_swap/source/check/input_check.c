@@ -55,7 +55,7 @@ bool	is_ordered(t_stack *stack)
 		if (markup != parse)
 			return (true);
 	}
-    free_list(stack);
+    //free_list(stack); ?? perchè se sono ordinati non devo fare il free?
 	return (false);
 }
 

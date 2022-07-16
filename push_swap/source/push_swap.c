@@ -23,8 +23,7 @@ int	main(int ac, char **av)
 	else
 		add_index(&stack.a);
 	
-	/*
+
     for (t_node *tmp = stack.a.head; tmp; tmp = tmp->next)
 		printf("%d ", tmp->data);
-    */
 }

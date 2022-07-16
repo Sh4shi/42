@@ -59,7 +59,7 @@ bool	duplicated(t_stack *stack);
 //      utility.c
 long	ft_atol(const char *str);
 void	free_matrix(char **str);
-int		*list_to_array(t_stack *stack);
+int		*list_to_array(t_stack *stack, int len);
 
 //
 //
