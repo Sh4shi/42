@@ -44,7 +44,7 @@ int	*copy_sorted(int *arr, t_list **bucket, int len_array)
 
 	i = 0;
 	box = 0;
-	arr =  ft_memset(arr, 0, len_array* sizeof(int));
+    arr =  ft_memset(arr, 0, len_array* sizeof(int));
 	while (box < 10)
 	{
 		node = bucket[box];
@@ -71,7 +71,7 @@ int	*sort_arr(int *arr, int nbr, int decimal)
     ft_memset(&bucket, 0, sizeof(t_list *) * 10);
     while (count < nbr)
     {
-        box = (arr[count] % 10) / decimal;
+        box = (arr[count] % (10 * decimal)) / decimal;
         ntmp = malloc(sizeof(int));
         *ntmp = arr[count];
         ft_lstadd_back(&bucket[box],

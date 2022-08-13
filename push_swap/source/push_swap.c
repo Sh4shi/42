@@ -26,4 +26,5 @@ int	main(int ac, char **av)
 
     for (t_node *tmp = stack.a.head; tmp; tmp = tmp->next)
 		printf("%d ", tmp->data);
+    free_list(&stack.a);
 }
