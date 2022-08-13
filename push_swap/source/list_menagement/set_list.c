@@ -41,7 +41,13 @@ void	add_index(t_stack *stack)
 
     len = list_len(stack->head);
 	arr = list_to_array(stack, len);
-	arr = radix_sort(arr, stack, len);
+	//arr = radix_sort(arr, stack, len);
+    bubble_sort(arr, len);
+
+    for (int i = 0; i < len; ++i)
+        printf("%d ", arr[i]);
+    puts("");
+
     set_index(stack, arr);
     free(arr);
 }

@@ -68,6 +68,11 @@ int 	*radix_sort(int *arr, t_stack *stack, int nbr);
 int		*sort_arr(int *arr, int nbr, int decimal);
 int     *copy_sorted(int *arr, t_list **bucket, int len_array);
 
+//
+//
+//       bubble_sort.c
+void    bubble_sort(int *arr, int len);
+
 //------------------------------------list menagement
 //
 //       set_list.c
