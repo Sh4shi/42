@@ -12,6 +12,28 @@
 
 #include "../../include/push_swap.h"
 
+int     search_num(int *arr, int num)
+{
+    int i;
+
+    i = 0;
+    while (arr[i] != num)
+        i++;
+    return (i);
+}
+
+void    set_index(t_stack *stack, int *arr)
+{
+    t_node  *node;
+
+    node = stack->head;
+    while (node)
+    {
+        node->index = search_num(arr, node->data);
+        node = node->next;
+    }
+}
+
 void	add_index(t_stack *stack)
 {
 	int		*arr;
@@ -20,10 +42,8 @@ void	add_index(t_stack *stack)
     len = list_len(stack->head);
 	arr = list_to_array(stack, len);
 	arr = radix_sort(arr, stack, len);
-
-    for (int i = 0; i < len; ++i)
-        printf("%d ", arr[i]);
-    puts("");
+    set_index(stack, arr);
+    free(arr);
 }
 
 t_node	*new_node(int nbr)

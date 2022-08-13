@@ -24,7 +24,7 @@ void free_bucket(t_list **bucket, int len)
         ptr = bucket[i];
         if (ptr)
         {
-            while (ptr->next)
+            while (ptr)
             {
                 tmp = ptr;
                 ptr = ptr->next;

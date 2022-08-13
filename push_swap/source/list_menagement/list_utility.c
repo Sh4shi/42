@@ -43,10 +43,10 @@ void free_list(t_stack *stack)
 	t_node *save;
 
 	node = stack->head;
-	while (node->next)
+	while (node)
 	{
-		save = node->next;
-		free (node);
-		node = save;
+		save = node;
+        node = node->next;
+		free (save);
 	}
 }

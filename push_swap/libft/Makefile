@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sdell-un <sdell-un@student.42.fr>          +#+  +:+       +#+         #
+#    By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/10 16:02:33 by mpatrini          #+#    #+#              #
-#    Updated: 2022/01/28 07:05:11 by sdell-un         ###   ########.fr        #
+#    Updated: 2022/08/13 16:51:34 by sdell-un         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC	= gcc
 LIBC	= ar rc
-CFLAGS	+= -Wall -Werror -Wextra
+CFLAGS	+= -Wall -Werror -Wextra -g
 SRC = ft_isalpha.c \
 	   ft_isdigit.c \
 	   ft_isalnum.c \

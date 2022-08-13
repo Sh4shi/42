@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 12:54:11 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/05/31 16:36:42 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/08/13 16:45:30 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int     *copy_sorted(int *arr, t_list **bucket, int len_array);
 bool	add_node(t_stack *source, int nbr);
 t_node	*new_node(int nbr);
 void	add_index(t_stack *stack);
+void    set_index(t_stack *stack, int *arr);
+int     search_num(int *arr, int num);
 //
 //
 //       list_utility.c
