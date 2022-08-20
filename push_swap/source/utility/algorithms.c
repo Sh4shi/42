@@ -1,51 +1,19 @@
 
 #include "../../include/push_swap.h"
 
-int     max(int one, int two)
-{
-    if ( one > two)
-        return (one);
-    else
-        return (two);
-}
-
-void    put_num(int *liss, int num, int len)
-{
-    int i;
-
-    i = 0;
-    while(i < len)
-    {
-        liss[i] = num;
-        i++;
-    }
-}
-
 void    liss(t_stack *stack)
 {
     int *liss;
     int *arr;
+    int *subseq;
     int len;
-    int j;
-    int i;
 
     len = list_len(stack->head);
     arr = list_to_array(stack, len);
     liss = (int *)malloc(sizeof(int) * len);
     put_num(liss, 1, len);
-    i = 1;
-
-    while(i < len)
-    {
-        j = 0;
-        while(j < i)
-        {
-            if (arr[j] < arr[i])
-                liss[i] = max(liss[i], liss[j] + 1);
-            j++;
-        }
-        i++;
-    }
+    find_subsequence(liss, arr);
+    subseq = get_subsequence(liss, arr, len);
 }
 
 void    bubble_sort(int *arr, int len)
