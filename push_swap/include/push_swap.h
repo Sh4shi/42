@@ -72,9 +72,9 @@ int     *liss(t_stack *stack);
 //       lis_utility.c
 void    put_num(int *liss, int num, int len);
 int     max(int one, int two);
-void    find_subsequence(int *liss, int *arr, int len);
+void    find_subsequence(int *liss, const int *arr, int len);
 int    *get_subsequence(int *liss, int *arr, int len);
-int     find_lis_len(int *liss, int len);
+int     find_lis_len(int *liss, int len, int *pos);
 
 //------------------------------------list menagement
 //

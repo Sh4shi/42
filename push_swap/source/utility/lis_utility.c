@@ -1,17 +1,17 @@
 
 #include "../../include/push_swap.h"
 
-int     find_lis_len(int *liss, int len)
+int     find_lis_len(int *liss, int len, int *pos)
 {
     int i;
     int lenght;
 
     i = 0;
-    lenght = 1;
+    lenght = liss[0];
     while (i < len)
     {
-        if (lenght < liss[i])
-            lenght += 1;
+       lenght = max(lenght, liss[i]);
+       *pos = i;
         i++;
     }
     return (lenght);
@@ -22,23 +22,16 @@ int *get_subsequence(int *liss, int *arr, int len)
     int *subseq;
     int i;
     int lenght;
-    int x;
+    int pos;
 
-    lenght = find_lis_len(liss, len);
-    i = lenght;
-    x = lenght;
+    lenght = find_lis_len(liss, len, &pos);
+    i = lenght - 1;
     subseq = (int *)malloc(sizeof(int) * lenght);
-    while (i > 0)
+    while (i >= 0 && pos >= 0)
     {
-        while (len > 0 && x > 0)
-        {
-            if (x == liss[i])
-            {
-                subseq[i] = arr[len];
-                x -= 1;
-            }
-            len--;
-        }
+        subseq[i] = arr[pos];
+        while ( pos >= 0 && (liss[pos] == (i + 1) || liss[pos] != i ))
+            pos--;
         i--;
     }
     return (subseq);
@@ -52,7 +45,7 @@ int     max(int one, int two)
         return (two);
 }
 
-void    find_subsequence(int *liss, int *arr, int len)
+void    find_subsequence(int *liss, const int *arr, int len)
 {
     int i;
     int j;

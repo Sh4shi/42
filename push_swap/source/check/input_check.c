@@ -26,6 +26,7 @@ bool	duplicated(t_stack *stack)
 		{
 			if (twin->next->data == parse->data)
             {
+                set_linear(stack);
                 free_list(stack);
                 return (false);
             }

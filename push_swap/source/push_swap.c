@@ -15,7 +15,7 @@
 int	main(int ac, char **av)
 {
 	t_stacks	stack;
-    //int         *subseq;
+    int         *subseq;
 	
 	ft_bzero(&stack, sizeof(t_stacks));
 	if (ac < 2 || !is_nbr(ac, av) || !get_num(&stack.a, ac, av) ||
@@ -28,8 +28,5 @@ int	main(int ac, char **av)
 
     for (t_node *tmp = stack.a.head; tmp; tmp = tmp->next)
 		printf("%d: %d\n", tmp->index, tmp->data);
-   /for (int i = 0; i < 7; i++)
-       printf("sub: %d", subseq[i]);
     free_list(&stack.a);
-    free (subseq);
 }

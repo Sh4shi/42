@@ -13,6 +13,10 @@ int    *liss(t_stack *stack)
     liss = (int *)malloc(sizeof(int) * len);
     put_num(liss, 1, len);
     find_subsequence(liss, arr, len);
+    for (int i = 0; i < len; i++)
+        printf("%d  ", liss[i]);
+    puts(" ");
+
     subseq = get_subsequence(liss, arr, len);
     free (liss);
     free (arr);
