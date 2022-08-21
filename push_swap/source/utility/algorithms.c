@@ -1,7 +1,7 @@
 
 #include "../../include/push_swap.h"
 
-void    liss(t_stack *stack)
+int    *liss(t_stack *stack)
 {
     int *liss;
     int *arr;
@@ -12,8 +12,11 @@ void    liss(t_stack *stack)
     arr = list_to_array(stack, len);
     liss = (int *)malloc(sizeof(int) * len);
     put_num(liss, 1, len);
-    find_subsequence(liss, arr);
+    find_subsequence(liss, arr, len);
     subseq = get_subsequence(liss, arr, len);
+    free (liss);
+    free (arr);
+    return (subseq);
 }
 
 void    bubble_sort(int *arr, int len)

@@ -41,7 +41,6 @@ void	add_index(t_stack *stack)
 
     len = list_len(stack->head);
 	arr = list_to_array(stack, len);
-	//arr = radix_sort(arr, stack, len);
     bubble_sort(arr, len);
 
     for (int i = 0; i < len; ++i)
@@ -49,7 +48,7 @@ void	add_index(t_stack *stack)
     puts("");
 
     set_index(stack, arr);
-    free(arr);
+    free (arr);
 }
 
 t_node	*new_node(int nbr)

@@ -63,8 +63,18 @@ int		*list_to_array(t_stack *stack, int len);
 
 //
 //
-//       bubble_sort.c
+//       algorithms.c
 void    bubble_sort(int *arr, int len);
+int     *liss(t_stack *stack);
+
+//
+//
+//       lis_utility.c
+void    put_num(int *liss, int num, int len);
+int     max(int one, int two);
+void    find_subsequence(int *liss, int *arr, int len);
+int    *get_subsequence(int *liss, int *arr, int len);
+int     find_lis_len(int *liss, int len);
 
 //------------------------------------list menagement
 //
@@ -74,6 +84,7 @@ t_node	*new_node(int nbr);
 void	add_index(t_stack *stack);
 void    set_index(t_stack *stack, int *arr);
 int     search_num(int *arr, int num);
+
 //
 //
 //       list_utility.c

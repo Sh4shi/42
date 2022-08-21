@@ -9,7 +9,8 @@ SRCS = ./source/check/input_check.c \
 		./source/list_menagement/set_list.c \
 		./source/list_menagement/list_utility.c \
 		./source/utility/utility.c \
-		./source/utility/bubble_sort.c
+		./source/utility/algorithms.c \
+		./source/utility/lis_utility.c
 OBJS = $(SRCS:.c=.o)
 
 %.o : %.c
