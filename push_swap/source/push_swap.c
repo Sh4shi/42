@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:10:43 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/08/13 16:45:38 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/08/24 21:05:23 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,5 @@ int	main(int ac, char **av)
 	else
 		add_index(&stack.a);
     subseq = liss(&stack.a);
-	
-
-    for (t_node *tmp = stack.a.head; tmp; tmp = tmp->next)
-		printf("%d: %d\n", tmp->index, tmp->data);
     free_list(&stack.a);
 }

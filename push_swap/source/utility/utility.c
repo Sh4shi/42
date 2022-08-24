@@ -6,11 +6,19 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 23:18:09 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/05/31 16:24:24 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/08/24 20:34:00 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
+
+int     max(int one, int two)
+{
+    if ( one > two)
+        return (one);
+    else
+        return (two);
+}
 
 int	*list_to_array(t_stack *stack, int len)
 {

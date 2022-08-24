@@ -1,6 +1,19 @@
 
 #include "../../include/push_swap.h"
 
+void	rotate_arr(int len, int *arr, t_node *min)
+{
+	int	save;
+
+	save = 0;
+	while (arr[0] != min->data)
+	{
+		save = arr[0];
+		ft_memmove(arr, &arr[1], ((len - 1) * sizeof(int)));
+		arr[len - 1] = save;
+	}
+}
+
 int     find_lis_len(int *liss, int len, int *pos)
 {
     int i;
@@ -35,14 +48,6 @@ int *get_subsequence(int *liss, int *arr, int len)
         i--;
     }
     return (subseq);
-}
-
-int     max(int one, int two)
-{
-    if ( one > two)
-        return (one);
-    else
-        return (two);
 }
 
 void    find_subsequence(int *liss, const int *arr, int len)

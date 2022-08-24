@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 12:54:11 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/08/13 16:45:30 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/08/24 20:44:02 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ bool	duplicated(t_stack *stack);
 long	ft_atol(const char *str);
 void	free_matrix(char **str);
 int		*list_to_array(t_stack *stack, int len);
+int     max(int one, int two);
 
 //
 //
@@ -71,10 +72,10 @@ int     *liss(t_stack *stack);
 //
 //       lis_utility.c
 void    put_num(int *liss, int num, int len);
-int     max(int one, int two);
 void    find_subsequence(int *liss, const int *arr, int len);
 int    *get_subsequence(int *liss, int *arr, int len);
 int     find_lis_len(int *liss, int len, int *pos);
+void	rotate_arr(int len, int *arr, t_node *min);
 
 //------------------------------------list menagement
 //

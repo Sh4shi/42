@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 23:23:37 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/05/31 16:56:25 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/08/24 21:05:35 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,6 @@ void	add_index(t_stack *stack)
     len = list_len(stack->head);
 	arr = list_to_array(stack, len);
     bubble_sort(arr, len);
-
-    for (int i = 0; i < len; ++i)
-        printf("%d ", arr[i]);
-    puts("");
-
     set_index(stack, arr);
     free (arr);
 }
