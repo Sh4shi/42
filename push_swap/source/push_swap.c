@@ -24,5 +24,9 @@ int	main(int ac, char **av)
 	else
 		add_index(&stack.a);
     subseq = liss(&stack.a);
+    sa_sb(&stack.a);
+
+    for (t_node *node = stack.a.head; node; node = node->next)
+        printf("%d", node->data);
     free_list(&stack.a);
 }

@@ -17,6 +17,8 @@ int		list_len(t_node *node)
 	int		len;
 
     len = 0;
+    if (!node)
+        return (0);
 	while (node)
 	{
 		len++;

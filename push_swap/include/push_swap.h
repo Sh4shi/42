@@ -94,4 +94,11 @@ void	set_circular(t_stack *stack);
 void	set_linear(t_stack *stack);
 int		list_len(t_node *node);
 
+//------------------------------------move
+//
+//        move.c
+void    sa_sb(t_stack *stack);
+void    ss(t_stacks *stack); //b commentato RICORDATI!!!!!!!!!!!!!!!!!!!!!!!!!
+//void    ra_rb(t_stack *stack);
+
 #endif
