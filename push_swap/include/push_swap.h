@@ -6,7 +6,7 @@
 /*   By: sdell-un <sdell-un@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 12:54:11 by sdell-un          #+#    #+#             */
-/*   Updated: 2022/08/24 20:44:02 by sdell-un         ###   ########.fr       */
+/*   Updated: 2022/08/29 00:04:18 by sdell-un         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,14 @@ int		list_len(t_node *node);
 //
 //        move.c
 void    sa_sb(t_stack *stack);
-void    ss(t_stacks *stack); //b commentato RICORDATI!!!!!!!!!!!!!!!!!!!!!!!!!
-//void    ra_rb(t_stack *stack);
-
+void    ra_rb(t_stack *stack);
+void    rra_rrb(t_stack *stack);
+void    pa(t_stacks *stack);
+void    pb(t_stacks *stack);
+//
+//
+//        double_move.c
+void    ss(t_stacks *stack);
+void    rr(t_stacks *stack);
+void    rrr(t_stacks *stack);
 #endif

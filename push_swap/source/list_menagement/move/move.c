@@ -5,39 +5,66 @@
 
 #include "../../../include/push_swap.h"
 
-//void    sa_sb(t_node *node)
+//void    swap_head_tail(t_stack *stack)
 //{
-//    if (list_len(node) < 2)
+//    if (list_len(stack->head) < 2)
 //        return ;
-//    node = node->next;
-//    node->prev->next = node->next;
-//    node->prev->prev = node;
-//    if (node->next)
-//        node->next->prev = node->prev;
-//    node->next = node->prev;
-//    node->prev = 0;
+//    stack->tail->next = stack->head->next;
+//    stack->tail->prev->next = stack->head;
+//    stack->head->prev = stack->tail->prev;
+//    stack->head->next->prev = stack->tail;
+//    stack->tail = stack->tail->prev->next;
+//    stack->head = stack->head->next->prev;
+//    stack->tail->next = 0;
+//    stack->head->prev = 0;
 //}
 
-//void    ra_rb(t_stack *stack)
-//{
-//    set_circular(stack);
-//    sa_sb(stack->tail);
-//    set_linear(stack);
-//}
-
-void    ss(t_stacks *stack)
+void    pb(t_stacks *stack)
 {
-    if (list_len(stack->a.head) < 2 && list_len(stack->b.head))
+    if (!(stack->a.head))
         return ;
-    else if (list_len(stack->b.head) < 2)
-        sa_sb(&stack->a);
-   else if (list_len(stack->a.head) < 2)
-        sa_sb(&stack->b);
-    else
-    {
-        sa_sb(&stack->a);
-        sa_sb(&stack->b);
-    }
+    stack->b.head->prev = stack->a.head;
+    stack->a.head = stack->a.head->next;
+    stack->a.head->prev = 0;
+    stack->b.head->prev->next = stack->b.head;
+    stack->b.head = stack->b.head->prev;
+    stack->b.head->prev = 0;
+}
+
+void    pa(t_stacks *stack)
+{
+    if (!(stack->b.head))
+        return ;
+    stack->a.head->prev = stack->b.head;
+    stack->b.head = stack->b.head->next;
+    stack->b.head->prev = 0;
+    stack->a.head->prev->next = stack->a.head;
+    stack->a.head = stack->a.head->prev;
+    stack->a.head->prev = 0;
+}
+
+void    rra_rrb(t_stack *stack)
+{
+    if (list_len(stack->head) < 2)
+        return ;
+    stack->tail->next = stack->head;
+    stack->head->prev = stack->tail;
+    stack->tail = stack->tail->prev;
+    stack->tail->next = 0;
+    stack->head->prev->prev = 0;
+    stack->head = stack->head->prev;
+}
+
+void    ra_rb(t_stack *stack)
+{
+    if (list_len(stack->head) < 2)
+        return ;
+    stack->head->prev = stack->tail;
+    stack->tail->next = stack->head;
+    stack->head = stack->head->next;
+    stack->head->prev = 0;
+    stack->tail->next->next = 0;
+    stack->tail = stack->tail->next;
 }
 
 void    sa_sb(t_stack *stack)
@@ -51,4 +78,4 @@ void    sa_sb(t_stack *stack)
         stack->head->next->prev = stack->head->prev;
     stack->head->next = stack->head->prev;
     stack->head->prev = 0;
-}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     }

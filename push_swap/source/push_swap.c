@@ -16,7 +16,12 @@ int	main(int ac, char **av)
 {
 	t_stacks	stack;
     int         *subseq;
-	
+    int         *num;
+    int         i = 0;
+
+    num = malloc(sizeof(int) * 2);
+    num[0] = 4;
+    num[1] = 5;
 	ft_bzero(&stack, sizeof(t_stacks));
 	if (ac < 2 || !is_nbr(ac, av) || !get_num(&stack.a, ac, av) ||
 		!is_ordered(&stack.a) || !duplicated(&stack.a))
@@ -24,9 +29,18 @@ int	main(int ac, char **av)
 	else
 		add_index(&stack.a);
     subseq = liss(&stack.a);
-    sa_sb(&stack.a);
+
+    while (i < 2)
+    {
+        add_node(&stack.b, num[i]);
+        i++;
+    }
+    pb (&stack);
+
 
     for (t_node *node = stack.a.head; node; node = node->next)
-        printf("%d", node->data);
+        printf("stack A:%d\n", node->data);
+    for(t_node *node = stack.b.head; node; node = node->next)
+        printf("stack B:%d\n", node->data);
     free_list(&stack.a);
 }
