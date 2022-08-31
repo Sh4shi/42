@@ -23,6 +23,15 @@ void    pb(t_stacks *stack)
 {
     if (!(stack->a.head))
         return ;
+    if (!(stack->b.head))
+    {
+        stack->b.head = stack->a.head;
+        stack->a.head = stack->a.head->next;
+        stack->a.head->prev = 0;
+        stack->b.head->prev = 0;
+        stack->b.head->next = 0;
+        return ;
+    }
     stack->b.head->prev = stack->a.head;
     stack->a.head = stack->a.head->next;
     stack->a.head->prev = 0;
@@ -35,6 +44,15 @@ void    pa(t_stacks *stack)
 {
     if (!(stack->b.head))
         return ;
+    if (!(stack->a.head))
+    {
+        stack->a.head = stack->b.head;
+        stack->b.head = stack->b.head->next;
+        stack->b.head->prev = 0;
+        stack->a.head->prev = 0;
+        stack->a.head->next = 0;
+        return ;
+    }
     stack->a.head->prev = stack->b.head;
     stack->b.head = stack->b.head->next;
     stack->b.head->prev = 0;

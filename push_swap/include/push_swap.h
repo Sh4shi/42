@@ -50,9 +50,17 @@ bool	add_num(t_stack *stack, char **strs, char *str);
 bool	is_ordered(t_stack *stack);
 bool	duplicated(t_stack *stack);
 
-//------------------------------------main
+//------------------------------------source
 //
 //      push_swap.c
+void    start(t_stacks *stack);
+
+//
+//
+//       start_move.c
+void    push_liss(t_stacks *stack, int *subseq, int lenght);
+bool    data_is_in_lis(int data, int *subseq, int len);
+void    check_bigger(t_stacks *stack, int *subseq, int lenght);
 
 //------------------------------------utility
 //
@@ -66,14 +74,14 @@ int     max(int one, int two);
 //
 //       algorithms.c
 void    bubble_sort(int *arr, int len);
-int     *liss(t_stack *stack);
+int     *liss(t_stack *stack, int *lenght);
 
 //
 //
 //       lis_utility.c
 void    put_num(int *liss, int num, int len);
 void    find_subsequence(int *liss, const int *arr, int len);
-int    *get_subsequence(int *liss, int *arr, int len);
+int     *get_subsequence(int *liss, int *arr, int len, int *lenliss);
 int     find_lis_len(int *liss, int len, int *pos);
 void	rotate_arr(int len, int *arr, t_node *min);
 

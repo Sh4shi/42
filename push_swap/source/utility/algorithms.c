@@ -1,12 +1,12 @@
 
 #include "../../include/push_swap.h"
 
-int    *liss(t_stack *stack)
+int    *liss(t_stack *stack, int *lenght)
 {
     int *liss;
     int *arr;
-    int *subseq;
     int len;
+    int *subseq;
 
     len = list_len(stack->head);
     arr = list_to_array(stack, len);
@@ -14,7 +14,7 @@ int    *liss(t_stack *stack)
     liss = (int *)malloc(sizeof(int) * len);
     put_num(liss, 1, len);
     find_subsequence(liss, arr, len);
-    subseq = get_subsequence(liss, arr, len);
+    subseq = get_subsequence(liss, arr, len, lenght);
     free (liss);
     free (arr);
     return (subseq);

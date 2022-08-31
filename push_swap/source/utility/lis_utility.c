@@ -30,14 +30,15 @@ int     find_lis_len(int *liss, int len, int *pos)
     return (lenght);
 }
 
-int *get_subsequence(int *liss, int *arr, int len)
+int *get_subsequence(int *liss, int *arr, int len, int *lenliss)
 {
-    int *subseq;
     int i;
     int lenght;
     int pos;
+    int *subseq;
 
     lenght = find_lis_len(liss, len, &pos);
+    *lenliss = lenght;
     i = lenght - 1;
     subseq = (int *)malloc(sizeof(int) * lenght);
     while (i >= 0 && pos >= 0)
