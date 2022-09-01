@@ -1,6 +1,23 @@
 
 #include "../include/push_swap.h"
 
+bool     check_index(t_stack *stack)
+{
+    t_node *node;
+    int index;
+
+    index = 0;
+    node = stack->head;
+    while (node)
+    {
+        if (index != node->index)
+            return (false);
+        index++;
+        node = node->next;
+    }
+    return (true);
+}
+
 void     check_bigger(t_stacks *stack, int *subseq, int lenght)
 {
     if (!data_is_in_lis(stack->a.tail->data, subseq, lenght))
@@ -36,7 +53,7 @@ void    push_liss(t_stacks *stack, int *subseq, int lenght)
     {
         if (!data_is_in_lis(stack->a.head->data, subseq, lenght))
         {
-            //check_bigger(stack, subseq, lenght);
+            check_bigger(stack, subseq, lenght);
             pb(stack);
         }
         else if (list_len(stack->a.head) != lenght)
@@ -45,7 +62,7 @@ void    push_liss(t_stacks *stack, int *subseq, int lenght)
                 ra_rb(&stack->a);
         }
     }
+    check_index(&stack->a);
     for (int i = 0; i < lenght; i++)
        printf("sub:%d\n", subseq[i]);
-    printf("len liss: %d\n", lenght);
 }

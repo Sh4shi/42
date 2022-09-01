@@ -61,6 +61,7 @@ void    start(t_stacks *stack);
 void    push_liss(t_stacks *stack, int *subseq, int lenght);
 bool    data_is_in_lis(int data, int *subseq, int len);
 void    check_bigger(t_stacks *stack, int *subseq, int lenght);
+bool    check_index(t_stack *stack);
 
 //------------------------------------utility
 //
