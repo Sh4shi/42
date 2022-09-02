@@ -1,21 +1,28 @@
 
 #include "../include/push_swap.h"
 
-bool     check_index(t_stack *stack)
+void     check_index(t_stack *stack, int lenght)
 {
     t_node *node;
     int index;
+    int count;
 
-    index = 0;
+    count = 0;
     node = stack->head;
-    while (node)
+    set_circular(stack);
+    while (count < lenght)
     {
-        if (index != node->index)
-            return (false);
-        index++;
+        index = node->index;
+        if (index > node->next->index)
+        {
+            set_linear(stack);
+            rra_rrb(stack);
+            set_circular(stack);
+        }
         node = node->next;
+        count++;
     }
-    return (true);
+    set_linear(stack);
 }
 
 void     check_bigger(t_stacks *stack, int *subseq, int lenght)
@@ -62,7 +69,7 @@ void    push_liss(t_stacks *stack, int *subseq, int lenght)
                 ra_rb(&stack->a);
         }
     }
-    check_index(&stack->a);
+    check_index(&stack->a, lenght);
     for (int i = 0; i < lenght; i++)
        printf("sub:%d\n", subseq[i]);
 }

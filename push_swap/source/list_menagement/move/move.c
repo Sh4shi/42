@@ -33,11 +33,16 @@ void    pb(t_stacks *stack)
         return ;
     }
     stack->b.head->prev = stack->a.head;
-    stack->a.head = stack->a.head->next;
-    stack->a.head->prev = 0;
-    stack->b.head->prev->next = stack->b.head;
-    stack->b.head = stack->b.head->prev;
-    stack->b.head->prev = 0;
+    if (list_len(stack->a.head) > 0)
+    {
+        stack->a.head = stack->a.head->next;
+        stack->a.head->prev = 0;
+        stack->b.head->prev->next = stack->b.head;
+        stack->b.head = stack->b.head->prev;
+        stack->b.head->prev = 0;
+    }
+    else
+        ft_bzero(&stack->a, sizeof(t_stack));
 }
 
 void    pa(t_stacks *stack)
@@ -54,11 +59,16 @@ void    pa(t_stacks *stack)
         return ;
     }
     stack->a.head->prev = stack->b.head;
-    stack->b.head = stack->b.head->next;
-    stack->b.head->prev = 0;
-    stack->a.head->prev->next = stack->a.head;
-    stack->a.head = stack->a.head->prev;
-    stack->a.head->prev = 0;
+    if (list_len(stack->b.head) > 0)
+    {
+        stack->b.head = stack->b.head->next;
+        stack->b.head->prev = 0;
+        stack->a.head->prev->next = stack->a.head;
+        stack->a.head = stack->a.head->prev;
+        stack->a.head->prev = 0;
+    }
+    else
+        ft_bzero(&stack->b, sizeof(t_stack));
 }
 
 void    rra_rrb(t_stack *stack)

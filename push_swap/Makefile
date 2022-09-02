@@ -13,7 +13,8 @@ SRCS = ./source/check/input_check.c \
 		./source/utility/lis_utility.c \
 		./source/list_menagement/move/move.c \
 		./source/list_menagement/move/double_move.c \
-		./source/start_move.c
+		./source/start_move.c \
+		./source/moving.c
 OBJS = $(SRCS:.c=.o)
 
 %.o : %.c
