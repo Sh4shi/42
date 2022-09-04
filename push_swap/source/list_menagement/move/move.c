@@ -29,20 +29,27 @@ void    pb(t_stacks *stack)
         stack->a.head = stack->a.head->next;
         stack->a.head->prev = 0;
         stack->b.head->prev = 0;
-        stack->b.head->next = 0;
+        stack->b.tail = stack->b.head;
+        stack->b.head->next = stack->b.tail;
+        stack->b.tail->prev = stack->b.head;
+        stack->b.tail->next = 0;
         return ;
     }
-    stack->b.head->prev = stack->a.head;
-    if (list_len(stack->a.head) > 0)
+    if (list_len(stack->a.head) == 1)
     {
-        stack->a.head = stack->a.head->next;
-        stack->a.head->prev = 0;
+        stack->b.head->prev = stack->a.head;
+        ft_bzero(&stack->a, sizeof(t_stack));
         stack->b.head->prev->next = stack->b.head;
         stack->b.head = stack->b.head->prev;
         stack->b.head->prev = 0;
+        return ;
     }
-    else
-        ft_bzero(&stack->a, sizeof(t_stack));
+    stack->b.head->prev = stack->a.head;
+    stack->a.head = stack->a.head->next;
+    stack->b.head->prev->next = stack->b.head;
+    stack->a.head->prev = 0;
+    stack->b.head = stack->b.head->prev;
+    stack->b.head->prev = 0;
 }
 
 void    pa(t_stacks *stack)
@@ -55,20 +62,27 @@ void    pa(t_stacks *stack)
         stack->b.head = stack->b.head->next;
         stack->b.head->prev = 0;
         stack->a.head->prev = 0;
-        stack->a.head->next = 0;
+        stack->a.tail = stack->a.head;
+        stack->a.head->next = stack->a.tail;
+        stack->a.tail->prev = stack->a.head;
+        stack->a.tail->next = 0;
         return ;
     }
-    stack->a.head->prev = stack->b.head;
-    if (list_len(stack->b.head) > 0)
+    if (list_len(stack->b.head) == 1)
     {
-        stack->b.head = stack->b.head->next;
-        stack->b.head->prev = 0;
+        stack->a.head->prev = stack->b.head;
+        ft_bzero(&stack->b, sizeof(t_stack));
         stack->a.head->prev->next = stack->a.head;
         stack->a.head = stack->a.head->prev;
         stack->a.head->prev = 0;
+        return ;
     }
-    else
-        ft_bzero(&stack->b, sizeof(t_stack));
+    stack->a.head->prev = stack->b.head;
+    stack->b.head = stack->b.head->next;
+    stack->a.head->prev->next = stack->a.head;
+    stack->b.head->prev = 0;
+    stack->a.head = stack->a.head->prev;
+    stack->a.head->prev = 0;
 }
 
 void    rra_rrb(t_stack *stack)
@@ -91,8 +105,8 @@ void    ra_rb(t_stack *stack)
     stack->tail->next = stack->head;
     stack->head = stack->head->next;
     stack->head->prev = 0;
-    stack->tail->next->next = 0;
     stack->tail = stack->tail->next;
+    stack->tail->next = 0;
 }
 
 void    sa_sb(t_stack *stack)

@@ -70,6 +70,4 @@ void    push_liss(t_stacks *stack, int *subseq, int lenght)
         }
     }
     check_index(&stack->a, lenght);
-    for (int i = 0; i < lenght; i++)
-       printf("sub:%d\n", subseq[i]);
 }

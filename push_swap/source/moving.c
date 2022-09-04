@@ -21,8 +21,13 @@ void fix_b(t_stacks *stack)
 {
     while(list_len(stack->b.head) > 0)
     {
-        if (stack->b.head->index != bigger_num(&stack->b))
-            ra_rb(&stack->b);
+        if (list_len(stack->b.head) > 1)
+        {
+            if (stack->b.head->index != bigger_num(&stack->b))
+                ra_rb(&stack->b);
+            else
+                pa(stack);
+        }
         else
             pa(stack);
     }

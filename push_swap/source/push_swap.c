@@ -21,12 +21,9 @@ void    start(t_stacks *stack)
     subseq = liss(&stack->a, &lenght);
     if (list_len(stack->a.head) != lenght)
         push_liss(stack, subseq, lenght);
-    if (list_len(stack->b.head) > 0)
-    {
-        fix_b(stack);
-        while (stack->a.head->index > 0)
-            ra_rb(&stack->a);
-    }
+    fix_b(stack);
+    while (stack->a.head->index > 0)
+        ra_rb(&stack->a);
 }
 
 int	main(int ac, char **av)
@@ -40,10 +37,13 @@ int	main(int ac, char **av)
 	else
 		add_index(&stack.a);
     start(&stack);
+    printf("stack A:");
     for (t_node *node = stack.a.head; node; node = node->next)
-        printf("stack A:%d   i)%d\n", node->data, node->index);
+        printf("%d|%d| ->  ", node->index, node->data);
+    printf("\n");
+    printf("stack b:");
     for(t_node *node = stack.b.head; node; node = node->next)
-        printf("stack B:%d   i)%d\n", node->data, node->index);
+        printf("%d|%d| ->  ", node->index, node->data);
     free_list(&stack.a);
     free_list(&stack.b);
 }
