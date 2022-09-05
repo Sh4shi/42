@@ -1,15 +1,13 @@
 
 #include "../include/push_swap.h"
 
-int bigger_num(t_stack *stack)
-{
+int bigger_num(t_stack *stack) {
     int num;
-    t_node  *node;
+    t_node *node;
 
     node = stack->head;
     num = node->index;
-    while (node)
-    {
+    while (node) {
         if (node->index > num)
             num = node->index;
         node = node->next;
@@ -17,18 +15,22 @@ int bigger_num(t_stack *stack)
     return (num);
 }
 
-void fix_b(t_stacks *stack)
-{
-    while(list_len(stack->b.head) > 0)
-    {
-        if (list_len(stack->b.head) > 1)
-        {
+int fix_b(t_stacks *stack) {
+    int count;
+
+    count = 0;
+    while (list_len(stack->b.head) > 0) {
+        if (list_len(stack->b.head) > 1) {
             if (stack->b.head->index != bigger_num(&stack->b))
                 ra_rb(&stack->b);
-            else
+            else {
                 pa(stack);
-        }
-        else
+                count += 1;
+            }
+        } else {
             pa(stack);
+            count += 1;
+        }
     }
+    return (count);
 }

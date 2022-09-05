@@ -14,7 +14,7 @@
 
 int		list_len(t_node *node)
 {
-	int		len;
+	int len;
 
     len = 0;
     if (!node)

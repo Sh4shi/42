@@ -39,6 +39,7 @@ typedef struct s_stacks
 {
 	struct s_stack	a;
 	struct s_stack	b;
+    int     moves;
 }				t_stacks;
 
 //------------------------------------check
@@ -61,12 +62,11 @@ void    start(t_stacks *stack);
 void    push_liss(t_stacks *stack, int *subseq, int lenght);
 bool    data_is_in_lis(int data, int *subseq, int len);
 void    check_bigger(t_stacks *stack, int *subseq, int lenght);
-void    check_index(t_stack *stack, int lenght);
 
 //
 //
 //       moving.c
-void fix_b(t_stacks *stack);
+int fix_b(t_stacks *stack);
 int bigger_num(t_stack *stack);
 
 //------------------------------------utility

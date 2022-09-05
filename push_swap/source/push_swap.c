@@ -16,14 +16,22 @@ void    start(t_stacks *stack)
 {
     int *subseq;
     int lenght;
+    int count;
+    int to_push;
 
     lenght = 0;
+    count = 0;
     subseq = liss(&stack->a, &lenght);
     if (list_len(stack->a.head) != lenght)
         push_liss(stack, subseq, lenght);
-    fix_b(stack);
-    while (stack->a.head->index > 0)
+    to_push = fix_b(stack);
+    while (count < to_push)
+    {
         ra_rb(&stack->a);
+        count++;
+        stack->moves += 1;
+    }
+    free(subseq);
 }
 
 int	main(int ac, char **av)
@@ -44,6 +52,7 @@ int	main(int ac, char **av)
     printf("stack b:");
     for(t_node *node = stack.b.head; node; node = node->next)
         printf("%d|%d| ->  ", node->index, node->data);
+    printf("moves: %d\n", stack.moves);
     free_list(&stack.a);
     free_list(&stack.b);
 }

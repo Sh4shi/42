@@ -1,42 +1,24 @@
 
 #include "../include/push_swap.h"
 
-void     check_index(t_stack *stack, int lenght)
-{
-    t_node *node;
-    int index;
-    int count;
-
-    count = 0;
-    node = stack->head;
-    set_circular(stack);
-    while (count < lenght)
-    {
-        index = node->index;
-        if (index > node->next->index)
-        {
-            set_linear(stack);
-            rra_rrb(stack);
-            set_circular(stack);
-        }
-        node = node->next;
-        count++;
-    }
-    set_linear(stack);
-}
-
 void     check_bigger(t_stacks *stack, int *subseq, int lenght)
 {
     if (!data_is_in_lis(stack->a.tail->data, subseq, lenght))
     {
         if ((stack->a.tail->data < stack->a.head->data) &&
                 (stack->a.tail->data < stack->a.head->next->data))
+        {
             rra_rrb(&stack->a);
+            stack->moves += 1;
+        }
     }
     if (!data_is_in_lis(stack->a.head->next->data, subseq, lenght))
     {
         if (stack->a.head->next->data < stack->a.head->data)
+        {
             sa_sb(&stack->a);
+            stack->moves += 1;
+        }
     }
 }
 
@@ -62,12 +44,20 @@ void    push_liss(t_stacks *stack, int *subseq, int lenght)
         {
             check_bigger(stack, subseq, lenght);
             pb(stack);
+            stack->moves += 1;
         }
         else if (list_len(stack->a.head) != lenght)
         {
             while (data_is_in_lis(stack->a.head->data, subseq, lenght))
+            {
                 ra_rb(&stack->a);
+                stack->moves += 1;
+            }
         }
     }
-    check_index(&stack->a, lenght);
+    while (stack->a.head->index != 0)
+    {
+        ra_rb(&stack->a);
+        stack->moves += 1;
+    }
 }

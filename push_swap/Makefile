@@ -1,6 +1,6 @@
 TARGET = push_swap
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS = #-fsanitize=address -g # -Wall -Wextra -Werror
 RM = rm -rf
 
 LIBFT = ./libft

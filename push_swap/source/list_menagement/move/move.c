@@ -4,21 +4,21 @@
 
 
 #include "../../../include/push_swap.h"
-
-//void    swap_head_tail(t_stack *stack)
-//{
-//    if (list_len(stack->head) < 2)
-//        return ;
-//    stack->tail->next = stack->head->next;
-//    stack->tail->prev->next = stack->head;
-//    stack->head->prev = stack->tail->prev;
-//    stack->head->next->prev = stack->tail;
-//    stack->tail = stack->tail->prev->next;
-//    stack->head = stack->head->next->prev;
-//    stack->tail->next = 0;
-//    stack->head->prev = 0;
-//}
-
+/*
+void    swap_head_tail(t_stack *stack)
+{
+    if (list_len(stack->head) < 2)
+        return ;
+    stack->tail->next = stack->head->next;
+    stack->tail->prev->next = stack->head;
+    stack->head->prev = stack->tail->prev;
+    stack->head->next->prev = stack->tail;
+    stack->tail = stack->tail->prev->next;
+    stack->head = stack->head->next->prev;
+    stack->tail->next = 0;
+    stack->head->prev = 0;
+}
+*/
 void    pb(t_stacks *stack)
 {
     if (!(stack->a.head))
@@ -120,4 +120,4 @@ void    sa_sb(t_stack *stack)
         stack->head->next->prev = stack->head->prev;
     stack->head->next = stack->head->prev;
     stack->head->prev = 0;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     }
+}
