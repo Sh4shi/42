@@ -1,6 +1,6 @@
 TARGET = push_swap
 CC = gcc
-CFLAGS = #-fsanitize=address -g # -Wall -Wextra -Werror
+CFLAGS = -g#-fsanitize=address -Wall -Wextra -Werror
 RM = rm -rf
 
 LIBFT = ./libft
@@ -14,6 +14,8 @@ SRCS = ./source/check/input_check.c \
 		./source/list_menagement/move/move.c \
 		./source/list_menagement/move/double_move.c \
 		./source/start_move.c \
+		./source/three.c \
+		./source/five.c \
 		./source/moving.c
 OBJS = $(SRCS:.c=.o)
 

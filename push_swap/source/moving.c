@@ -1,6 +1,14 @@
 
 #include "../include/push_swap.h"
 
+int lower_num(t_stack *stack)
+{
+    int num;
+    t_node *min;
+
+
+}
+
 int bigger_num(t_stack *stack) {
     int num;
     t_node *node;

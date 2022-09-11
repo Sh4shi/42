@@ -55,7 +55,8 @@ bool	duplicated(t_stack *stack);
 //
 //      push_swap.c
 void    start(t_stacks *stack);
-
+void    three_sort(t_stack *stack);
+void    five_sort(t_stacks *stacks, int len);
 //
 //
 //       start_move.c
