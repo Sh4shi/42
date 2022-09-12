@@ -90,7 +90,7 @@ void    pa(t_stacks *stack)
     write(1, "pa\n", 3);
 }
 
-void    rra_rrb(t_stack *stack, char s)
+void    rra_rrb(t_stack *stack, char s, char print)
 {
     if (list_len(stack->head) < 2)
         return ;
@@ -100,13 +100,16 @@ void    rra_rrb(t_stack *stack, char s)
     stack->tail->next = 0;
     stack->head->prev->prev = 0;
     stack->head = stack->head->prev;
-    if (s == 'a')
-        write(1, "rra\n", 4);
-    else
-        write(1, "rrb\n", 4);
+    if (print)
+    {
+        if (s == 'a')
+            write(1, "rra\n", 4);
+        else
+            write(1, "rrb\n", 4);
+    }
 }
 
-void    ra_rb(t_stack *stack, char s)
+void    ra_rb(t_stack *stack, char s, char print)
 {
     if (list_len(stack->head) < 2)
         return ;
@@ -116,13 +119,16 @@ void    ra_rb(t_stack *stack, char s)
     stack->head->prev = 0;
     stack->tail = stack->tail->next;
     stack->tail->next = 0;
+    if (print)
+    {
     if (s == 'a')
         write(1, "ra\n", 3);
     else
         write(1, "rb\n", 3);
+    }
 }
 
-void    sa_sb(t_stack *stack, char s)
+void    sa_sb(t_stack *stack, char s, char print)
 {
     if (list_len(stack->head) < 2)
         return ;
@@ -133,8 +139,12 @@ void    sa_sb(t_stack *stack, char s)
         stack->head->next->prev = stack->head->prev;
     stack->head->next = stack->head->prev;
     stack->head->prev = 0;
+    if (print)
+    {
     if (s == 'a')
         write(1, "sa\n", 3);
     else
         write(1, "sb\n", 3);
+
+    }
 }

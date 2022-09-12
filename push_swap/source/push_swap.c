@@ -55,23 +55,23 @@ void    empty_stackb(t_stacks *stack)
     if (a > 0)
     {
         while (i++ < a)
-            ra_rb(&stack->a, 'a');
+            ra_rb(&stack->a, 'a', 1);
     }
     else
     {
         while (i++ < ABS(a))
-            rra_rrb(&stack->a, 'a');
+            rra_rrb(&stack->a, 'a', 1);
     }
     i = 0;
     if (b > 0)
     {
         while (i++ < b)
-            ra_rb(&stack->b, 'b');
+            ra_rb(&stack->b, 'b', 1);
     }
     else
     {
         while (i++ < ABS(b))
-            rra_rrb(&stack->b, 'b');
+            rra_rrb(&stack->b, 'b', 1);
     }
     pa(stack);
 }
@@ -87,7 +87,7 @@ void    start(t_stacks *stack)
     while (list_len(stack->b.head) > 0)
         empty_stackb(stack);
     while (stack->a.head->index != 1)
-        ra_rb(&stack->a, 'a');
+        ra_rb(&stack->a, 'a', 1);
     free(subseq);
 }
 
@@ -97,9 +97,10 @@ int	main(int ac, char **av)
     int         len;
 
 	ft_bzero(&stack, sizeof(t_stacks));
-	if (ac < 2 || !is_nbr(ac, av) || !get_num(&stack.a, ac, av) ||
-		!is_ordered(&stack.a) || !duplicated(&stack.a))
+	if (ac < 2 || !is_nbr(ac, av) || !get_num(&stack.a, ac, av) || !duplicated(&stack.a))
 		return (write(2, "Error\n", 6));
+    if (!is_ordered(&stack.a))
+        return 0;
     add_index(&stack.a);
     len = list_len(stack.a.head);
     if (len == 3)
@@ -108,6 +109,7 @@ int	main(int ac, char **av)
         five_sort(&stack, len);
     else
         start(&stack);
+
     /*printf("stack A:");
     for (t_node *node = stack.a.head; node; node = node->next)
         printf("%d|%d| ->  ", node->index, node->data);

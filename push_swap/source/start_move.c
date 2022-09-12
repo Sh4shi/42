@@ -7,12 +7,12 @@ void     check_bigger(t_stacks *stack, int *subseq, int lenght)
     {
         if ((stack->a.tail->data < stack->a.head->data) &&
                 (stack->a.tail->data < stack->a.head->next->data))
-            rra_rrb(&stack->a, 'a');
+            rra_rrb(&stack->a, 'a', 1);
     }
     if (!data_is_in_lis(stack->a.head->next->data, subseq, lenght))
     {
         if (stack->a.head->next->data < stack->a.head->data)
-            sa_sb(&stack->a, 'a');
+            sa_sb(&stack->a, 'a', 1);
     }
 }
 
@@ -37,6 +37,6 @@ void    push_liss(t_stacks *stack, int *subseq, int lenght)
         if (!data_is_in_lis(stack->a.head->data, subseq, lenght))
             pb(stack);
         else
-            ra_rb(&stack->a, 'a');
+            ra_rb(&stack->a, 'a', 1);
     }
 }

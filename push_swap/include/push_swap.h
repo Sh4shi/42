@@ -122,9 +122,9 @@ int		list_len(t_node *node);
 //------------------------------------move
 //
 //        move.c
-void    sa_sb(t_stack *stack, char s);
-void    ra_rb(t_stack *stack, char s);
-void    rra_rrb(t_stack *stack, char s);
+void    sa_sb(t_stack *stack, char s, char print);
+void    ra_rb(t_stack *stack, char s, char print);
+void    rra_rrb(t_stack *stack, char s, char print);
 void    pa(t_stacks *stack);
 void    pb(t_stacks *stack);
 //
