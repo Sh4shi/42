@@ -2,7 +2,6 @@
 // Created by Sharon Dell unto on 8/24/22.
 //
 
-
 #include "../../../include/push_swap.h"
 /*
 void    swap_head_tail(t_stack *stack)
@@ -33,6 +32,7 @@ void    pb(t_stacks *stack)
         stack->b.head->next = stack->b.tail;
         stack->b.tail->prev = stack->b.head;
         stack->b.tail->next = 0;
+        write(1, "pb\n", 3);
         return ;
     }
     if (list_len(stack->a.head) == 1)
@@ -42,6 +42,7 @@ void    pb(t_stacks *stack)
         stack->b.head->prev->next = stack->b.head;
         stack->b.head = stack->b.head->prev;
         stack->b.head->prev = 0;
+        write(1, "pb\n", 3);
         return ;
     }
     stack->b.head->prev = stack->a.head;
@@ -50,6 +51,7 @@ void    pb(t_stacks *stack)
     stack->a.head->prev = 0;
     stack->b.head = stack->b.head->prev;
     stack->b.head->prev = 0;
+    write(1, "pb\n", 3);
 }
 
 void    pa(t_stacks *stack)
@@ -66,6 +68,7 @@ void    pa(t_stacks *stack)
         stack->a.head->next = stack->a.tail;
         stack->a.tail->prev = stack->a.head;
         stack->a.tail->next = 0;
+        write(1, "pa\n", 3);
         return ;
     }
     if (list_len(stack->b.head) == 1)
@@ -75,6 +78,7 @@ void    pa(t_stacks *stack)
         stack->a.head->prev->next = stack->a.head;
         stack->a.head = stack->a.head->prev;
         stack->a.head->prev = 0;
+        write(1, "pa\n", 3);
         return ;
     }
     stack->a.head->prev = stack->b.head;
@@ -83,9 +87,10 @@ void    pa(t_stacks *stack)
     stack->b.head->prev = 0;
     stack->a.head = stack->a.head->prev;
     stack->a.head->prev = 0;
+    write(1, "pa\n", 3);
 }
 
-void    rra_rrb(t_stack *stack)
+void    rra_rrb(t_stack *stack, char s)
 {
     if (list_len(stack->head) < 2)
         return ;
@@ -95,9 +100,13 @@ void    rra_rrb(t_stack *stack)
     stack->tail->next = 0;
     stack->head->prev->prev = 0;
     stack->head = stack->head->prev;
+    if (s == 'a')
+        write(1, "rra\n", 4);
+    else
+        write(1, "rrb\n", 4);
 }
 
-void    ra_rb(t_stack *stack)
+void    ra_rb(t_stack *stack, char s)
 {
     if (list_len(stack->head) < 2)
         return ;
@@ -107,9 +116,13 @@ void    ra_rb(t_stack *stack)
     stack->head->prev = 0;
     stack->tail = stack->tail->next;
     stack->tail->next = 0;
+    if (s == 'a')
+        write(1, "ra\n", 3);
+    else
+        write(1, "rb\n", 3);
 }
 
-void    sa_sb(t_stack *stack)
+void    sa_sb(t_stack *stack, char s)
 {
     if (list_len(stack->head) < 2)
         return ;
@@ -120,4 +133,8 @@ void    sa_sb(t_stack *stack)
         stack->head->next->prev = stack->head->prev;
     stack->head->next = stack->head->prev;
     stack->head->prev = 0;
+    if (s == 'a')
+        write(1, "sa\n", 3);
+    else
+        write(1, "sb\n", 3);
 }

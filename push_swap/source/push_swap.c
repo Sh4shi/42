@@ -53,18 +53,26 @@ void    empty_stackb(t_stacks *stack)
     find_best(stack, &a, &b);
     reverse(stack, &a, &b);
     if (a > 0)
+    {
         while (i++ < a)
-            ra_rb(&stack->a);
+            ra_rb(&stack->a, 'a');
+    }
     else
+    {
         while (i++ < ABS(a))
-            rra_rrb(&stack->a);
+            rra_rrb(&stack->a, 'a');
+    }
     i = 0;
     if (b > 0)
+    {
         while (i++ < b)
-            ra_rb(&stack->b);
+            ra_rb(&stack->b, 'b');
+    }
     else
-        while (i++ < ABS(a))
-            rra_rrb(&stack->b);
+    {
+        while (i++ < ABS(b))
+            rra_rrb(&stack->b, 'b');
+    }
     pa(stack);
 }
 
@@ -75,23 +83,11 @@ void    start(t_stacks *stack)
 
     lenght = 0;
     subseq = liss(&stack->a, &lenght);
-
-    puts("SUBSEQ");
-    for (int i = 0; i < lenght; ++i)
-        printf("%d ", subseq[i]);
-    puts("");
-
     push_liss(stack, subseq, lenght);
-
-    printf("stack A:");
-    for (t_node *node = stack->a.head; node; node = node->next)
-        printf("%d|%d| ->  ", node->index, node->data);
-    printf("\n");
-
     while (list_len(stack->b.head) > 0)
         empty_stackb(stack);
     while (stack->a.head->index != 1)
-        ra_rb(&stack->a);
+        ra_rb(&stack->a, 'a');
     free(subseq);
 }
 
@@ -104,7 +100,6 @@ int	main(int ac, char **av)
 	if (ac < 2 || !is_nbr(ac, av) || !get_num(&stack.a, ac, av) ||
 		!is_ordered(&stack.a) || !duplicated(&stack.a))
 		return (write(2, "Error\n", 6));
-
     add_index(&stack.a);
     len = list_len(stack.a.head);
     if (len == 3)
@@ -113,14 +108,14 @@ int	main(int ac, char **av)
         five_sort(&stack, len);
     else
         start(&stack);
-
-    printf("stack A:");
+    /*printf("stack A:");
     for (t_node *node = stack.a.head; node; node = node->next)
         printf("%d|%d| ->  ", node->index, node->data);
     printf("\n");
     printf("stack b:");
     for(t_node *node = stack.b.head; node; node = node->next)
-        printf("%d|%d| ->  ", node->index, node->data);
+        printf("%d|%d| ->  ", node->index, node->data);*/
+
     free_list(&stack.a);
     free_list(&stack.b);
 }

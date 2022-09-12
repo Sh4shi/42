@@ -11,22 +11,10 @@ int    *liss(t_stack *stack, int *lenght)
     len = list_len(stack->head);
     arr = list_to_array(stack, len);
 	rotate_arr(len, arr, stack->min);
-
-    puts("ROTATE");
-    for (int i = 0; i < len; i++)
-        printf("%d ", arr[i]);
-    puts("");
-
     liss = (int *)malloc(sizeof(int) * len);
     ft_memset(liss, 0, sizeof(int) * len);
     put_num(liss, 1, len);
     find_subsequence(liss, arr, len);
-
-    puts("LISS");
-    for (int i = 0; i < len; i++)
-        printf("%d ", liss[i]);
-    puts("");
-
     subseq = get_subsequence(liss, arr, len, lenght);
     free (liss);
     free (arr);
