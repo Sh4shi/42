@@ -23,9 +23,12 @@ int     find_lis_len(int *liss, int len, int *pos)
     lenght = liss[0];
     while (i < len)
     {
-       lenght = max(lenght, liss[i]);
-       *pos = i;
-        i++;
+        if (lenght < liss[i])
+        {
+            lenght = liss[i];
+            *pos = i;
+        }
+       i++;
     }
     return (lenght);
 }
