@@ -18,6 +18,9 @@
 # include <stdbool.h>
 # include <limits.h>
 # include "../libft/libft.h"
+# define MAX(x, y) ((x > y) ? x : y)
+# define MIN(x, y) ((x < y) ? x : y)
+# define ABS(x) ((x > 0) ? x : -x)
 
 typedef struct s_node
 {
@@ -39,7 +42,6 @@ typedef struct s_stacks
 {
 	struct s_stack	a;
 	struct s_stack	b;
-    int     moves;
 }				t_stacks;
 
 //------------------------------------check
@@ -53,10 +55,15 @@ bool	duplicated(t_stack *stack);
 
 //------------------------------------source
 //
-//      push_swap.c
-void    start(t_stacks *stack);
+//
 void    three_sort(t_stack *stack);
 void    five_sort(t_stacks *stacks, int len);
+//
+//
+//      push_swap.c
+void    start(t_stacks *stack);
+void    empty_stackb(t_stacks *stack);
+void    reverse(t_stacks *stack, int *a, int *b);
 //
 //
 //       start_move.c
@@ -64,11 +71,6 @@ void    push_liss(t_stacks *stack, int *subseq, int lenght);
 bool    data_is_in_lis(int data, int *subseq, int len);
 void    check_bigger(t_stacks *stack, int *subseq, int lenght);
 
-//
-//
-//       moving.c
-int fix_b(t_stacks *stack);
-int bigger_num(t_stack *stack);
 
 //------------------------------------utility
 //
@@ -76,8 +78,9 @@ int bigger_num(t_stack *stack);
 long	ft_atol(const char *str);
 void	free_matrix(char **str);
 int		*list_to_array(t_stack *stack, int len);
+int     *list_to_array_index(t_stack *stack, int len);
 int     max(int one, int two);
-
+int     find_max(int *index_a, int len_a);
 //
 //
 //       algorithms.c
@@ -92,7 +95,13 @@ void    find_subsequence(int *liss, const int *arr, int len);
 int     *get_subsequence(int *liss, int *arr, int len, int *lenliss);
 int     find_lis_len(int *liss, int len, int *pos);
 void	rotate_arr(int len, int *arr, t_node *min);
-
+//
+//
+//        push_algorithms_utility.c
+void    find_best(t_stacks *stack, int *a, int *b);
+int     operations(int a, int b);
+void     compare_op(int save1, int save2, int *a, int *b);
+int     find_pos(int *index_a, int i_nbr, int len_a);
 //------------------------------------list menagement
 //
 //       set_list.c

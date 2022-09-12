@@ -29,7 +29,7 @@ void    set_index(t_stack *stack, int *arr)
     node = stack->head;
     while (node)
     {
-        node->index = search_num(arr, node->data);
+        node->index = search_num(arr, node->data) + 1;
         node = node->next;
     }
 }

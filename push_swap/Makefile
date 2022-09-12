@@ -11,12 +11,12 @@ SRCS = ./source/check/input_check.c \
 		./source/utility/utility.c \
 		./source/utility/algorithms.c \
 		./source/utility/lis_utility.c \
+		./source/utility/push_algorithms_utility.c \
 		./source/list_menagement/move/move.c \
 		./source/list_menagement/move/double_move.c \
 		./source/start_move.c \
 		./source/three.c \
-		./source/five.c \
-		./source/moving.c
+		./source/five.c
 OBJS = $(SRCS:.c=.o)
 
 %.o : %.c

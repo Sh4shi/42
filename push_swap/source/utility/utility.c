@@ -12,6 +12,27 @@
 
 #include "../../include/push_swap.h"
 
+int     find_max(int *index_a, int len_a)
+{
+    int		pos;
+    int		max;
+    int		i;
+
+    i = 0;
+    max = index_a[i];
+    pos = 0;
+    while (i < len_a)
+    {
+        if (index_a[i] > max)
+        {
+            max = index_a[i];
+            pos = i;
+        }
+        i++;
+    }
+    return (pos);
+}
+
 int     max(int one, int two)
 {
     if ( one > two)
@@ -35,6 +56,23 @@ int	*list_to_array(t_stack *stack, int len)
         node = node->next;
     }
 	return (arr);
+}
+
+int	*list_to_array_index(t_stack *stack, int len)
+{
+    int	*arr;
+    int i;
+    t_node *node;
+
+    node = stack->head;
+    arr = (int *)malloc(sizeof(int) * len);
+    i = 0;
+    while (node)
+    {
+        arr[i++] = node->index;
+        node = node->next;
+    }
+    return (arr);
 }
 
 void	free_matrix(char **str)

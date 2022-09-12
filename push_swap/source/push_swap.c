@@ -12,31 +12,86 @@
 
 #include "../include/push_swap.h"
 
+void    reverse(t_stacks *stack, int *a, int *b)
+{
+    int i;
+    int tmp;
+
+    i = 0;
+    if (*a > 0)
+        tmp = MIN(*a, *b);
+    else
+        tmp = MAX(*a, *b);
+    if (*a * *b > 0)
+    {
+        if (*a > 0)
+        {
+            while (i++ < ABS(tmp))
+            {
+                rr(stack);
+                (*a)--;
+                (*b)--;
+            }
+        }
+        else
+            while (i++ < ABS(tmp))
+            {
+                rrr(stack);
+                (*a)++;
+                (*b)++;
+            }
+    }
+}
+
+void    empty_stackb(t_stacks *stack)
+{
+    int i;
+    int a;
+    int b;
+
+    i = 0;
+    find_best(stack, &a, &b);
+    reverse(stack, &a, &b);
+    if (a > 0)
+        while (i++ < a)
+            ra_rb(&stack->a);
+    else
+        while (i++ < ABS(a))
+            rra_rrb(&stack->a);
+    i = 0;
+    if (b > 0)
+        while (i++ < b)
+            ra_rb(&stack->b);
+    else
+        while (i++ < ABS(a))
+            rra_rrb(&stack->b);
+    pa(stack);
+}
+
 void    start(t_stacks *stack)
 {
     int *subseq;
     int lenght;
-    int count;
-    int to_push;
 
     lenght = 0;
-    count = 0;
     subseq = liss(&stack->a, &lenght);
-    puts("LIS:");
+
+    puts("SUBSEQ");
     for (int i = 0; i < lenght; ++i)
         printf("%d ", subseq[i]);
-    puts("\n-------------------");
-    if (list_len(stack->a.head) != lenght)
-    {
-        push_liss(stack, subseq, lenght);
-        to_push = fix_b(stack);
-    }
-    while (count < to_push)
-    {
+    puts("");
+
+    push_liss(stack, subseq, lenght);
+
+    printf("stack A:");
+    for (t_node *node = stack->a.head; node; node = node->next)
+        printf("%d|%d| ->  ", node->index, node->data);
+    printf("\n");
+
+    while (list_len(stack->b.head) > 0)
+        empty_stackb(stack);
+    while (stack->a.head->index != 1)
         ra_rb(&stack->a);
-        count++;
-        stack->moves += 1;
-    }
     free(subseq);
 }
 
@@ -49,9 +104,8 @@ int	main(int ac, char **av)
 	if (ac < 2 || !is_nbr(ac, av) || !get_num(&stack.a, ac, av) ||
 		!is_ordered(&stack.a) || !duplicated(&stack.a))
 		return (write(2, "Error\n", 6));
-	else
-		add_index(&stack.a);
 
+    add_index(&stack.a);
     len = list_len(stack.a.head);
     if (len == 3)
         three_sort(&stack.a);
@@ -67,9 +121,6 @@ int	main(int ac, char **av)
     printf("stack b:");
     for(t_node *node = stack.b.head; node; node = node->next)
         printf("%d|%d| ->  ", node->index, node->data);
-    printf("\nmoves: %d\n", stack.moves);
-
-
     free_list(&stack.a);
     free_list(&stack.b);
 }
