@@ -100,7 +100,10 @@ int	main(int ac, char **av)
 	if (ac < 2 || !is_nbr(ac, av) || !get_num(&stack.a, ac, av) || !duplicated(&stack.a))
 		return (write(2, "Error\n", 6));
     if (!is_ordered(&stack.a))
+    {
+        free_list(&stack.a);
         return 0;
+    }
     add_index(&stack.a);
     len = list_len(stack.a.head);
     if (len == 3)
