@@ -1,6 +1,5 @@
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,clion,macos,c
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,clion,macos,c
-push_swap
 ### C ###
 # Prerequisites
 *.d
