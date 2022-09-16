@@ -12,40 +12,11 @@
 
 #include "../../include/push_swap.h"
 
-bool	duplicated(t_stack *stack)
-{
-	t_node *parse;
-	t_node *twin;
-	
-	parse = stack->head;
-	set_circular(stack);
-	while (1)
-	{
-		twin = parse;
-		while (twin->next != parse)
-		{
-			if (twin->next->data == parse->data)
-            {
-                set_linear(stack);
-                free_list(stack);
-                return (false);
-            }
-			twin = twin->next;
-		}
-		parse = parse->next;
-		if (parse->prev == stack->tail)
-		{
-			set_linear(stack);
-			return (true);
-		}
-	}	
-}
-
 bool	is_ordered(t_stack *stack)
 {
-	t_node *markup;
-	t_node *parse;
-	
+	t_node	*markup;
+	t_node	*parse;
+
 	parse = stack->head;
 	markup = parse;
 	while (parse->next)
@@ -56,15 +27,14 @@ bool	is_ordered(t_stack *stack)
 		if (markup != parse)
 			return (true);
 	}
-    //free_list(stack); ?? perchè se sono ordinati non devo fare il free?
 	return (false);
 }
 
 bool	add_num(t_stack *stack, char **strs, char *str)
 {
-	long nbr;
+	long	nbr;
 
-	nbr = ft_atol((const char *)str); 
+	nbr = ft_atol((const char *)str);
 	if (nbr > INT_MAX || nbr < INT_MIN || !add_node(stack, (int)nbr))
 	{
 		free_list(stack);
@@ -74,54 +44,41 @@ bool	add_num(t_stack *stack, char **strs, char *str)
 	}
 	return (true);
 }
-bool	get_num(t_stack *stack, int ac, char **av)
+
+bool	dispatcher_args(t_stack *stack, char *s)
 {
-	int i;
-	int j;
-	char **str;
-	
-	i = 1;
-	j = 0;
-	while (i < ac)
+	int		j;
+	char	**str;
+
+	str = 0;
+	if (ft_strchr((const char *)s, ' '))
 	{
-		if (ft_strchr((const char*)av[i], ' '))
+		str = ft_split(s, ' ');
+		j = 0;
+		while (str[j])
 		{
-			str = ft_split(av[i], ' ');
-			j = 0;
-			while (str[j])
-			{
-				if (!add_num(stack, str, str[j]))
-					return (false);
-				j++;
-			}
-			free_matrix(str);
-			str = 0;
-		}
-		else 
-			if (!add_num(stack, str, av[i]))
+			if (!add_num(stack, str, str[j]))
 				return (false);
-		i++;
+			j++;
+		}
+		free_matrix(str);
+		str = 0;
 	}
+	else
+		if (!add_num(stack, str, s))
+			return (false);
 	return (true);
 }
 
-bool	is_nbr(int ac, char **av)
+bool	get_num(t_stack *stack, int ac, char **av)
 {
-	int	i;
-	int	j;
+	int		i;
 
 	i = 1;
-	j = 0;
 	while (i < ac)
 	{
-		j = 0;
-		while (av[i][j])
-		{
-			if (!ft_isdigit(av[i][j]) &&
-				av[i][j] != ' ' && av[i][j] != '+' && av[i][j] != '-')
-				return (false);
-			j++;
-		}	
+		if (!dispatcher_args(stack, av[i]))
+			return (false);
 		i++;
 	}
 	return (true);

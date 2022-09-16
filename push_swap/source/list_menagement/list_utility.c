@@ -12,13 +12,13 @@
 
 #include "../../include/push_swap.h"
 
-int		list_len(t_node *node)
+int	list_len(t_node *node)
 {
-	int len;
+	int	len;
 
-    len = 0;
-    if (!node)
-        return (0);
+	len = 0;
+	if (!node)
+		return (0);
 	while (node)
 	{
 		len++;
@@ -30,7 +30,7 @@ int		list_len(t_node *node)
 void	set_linear(t_stack *stack)
 {
 	stack->head->prev = NULL;
-	stack->tail->next = NULL;	
+	stack->tail->next = NULL;
 }
 
 void	set_circular(t_stack *stack)
@@ -39,16 +39,16 @@ void	set_circular(t_stack *stack)
 	stack->tail->next = stack->head;
 }
 
-void free_list(t_stack *stack)
+void	free_list(t_stack *stack)
 {
-	t_node *node;
-	t_node *save;
+	t_node	*node;
+	t_node	*save;
 
 	node = stack->head;
 	while (node)
 	{
 		save = node;
-        node = node->next;
+		node = node->next;
 		free (save);
 	}
 }
