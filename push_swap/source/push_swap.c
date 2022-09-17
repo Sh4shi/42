@@ -93,8 +93,10 @@ int	main(int ac, char **av)
 	t_stacks	stack;
 	int			len;
 
+	if (ac < 2)
+		return (0);
 	ft_bzero(&stack, sizeof(t_stacks));
-	if (ac < 2 || !is_nbr(ac, av) || !get_num(&stack.a, ac, av)
+	if (!is_nbr(ac, av) || !get_num(&stack.a, ac, av)
 		|| !duplicated(&stack.a))
 		return (write(2, "Error\n", 6));
 	if (!is_ordered(&stack.a))
