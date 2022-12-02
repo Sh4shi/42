@@ -1,9 +1,7 @@
-//#include "./../include/so_long.h"
 
-#include <stdio.h>
-#include <mlx.h>
+#include "./../include/so_long.h"
 
-int main(void)
+/*int main(void)
 {
     void *mlx_ptr = mlx_init();
 
@@ -16,4 +14,14 @@ int main(void)
         return puts("win_ptr");
 
     mlx_loop(mlx_ptr);
+}
+ */
+
+int main(int ac, char **av)
+{
+    t_game game;
+
+    ft_bzero(&game, sizeof(t_game));
+    check_file(ac, av, &game);
+    return (0);
 }

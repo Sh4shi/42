@@ -1,6 +1,6 @@
 TARGET = so_long
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -g#-Wall -Wextra -Werror
 RM = rm -rf
 SRCS = $(wildcard ./src/*.c)
 OBJS = $(SRCS:.c=.o)
@@ -19,7 +19,7 @@ LIBDINAMIC = $(MLXDIR)/libmlx.dylib
 all: libs $(TARGET)
 
 libs:
-	make -C $(LIBFTDIR)
+	make bonus -C $(LIBFTDIR)
 	make -C $(MLXDIR)
 	cp $(LIBDINAMIC) .
 

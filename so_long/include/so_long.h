@@ -3,5 +3,43 @@
 #define SO_LONG_H
 
 #include "./../lib/libft/libft.h"
+#include <stdbool.h>
+#include <fcntl.h>
+#include <mlx.h>
 
+typedef struct s_map
+{
+    s_list  *list_map;
+    char    **map_matrix;
+    int     n_row;
+    int     n_col;
+    int     nbr_coll;
+}               t_map;
+
+typedef struct s_game
+{
+    void    *mlx;
+    void    *windows_p;
+    s_map   *map;
+}               t_game;
+
+//---------------------------------------------------- CHECK INPUT FILE
+
+//checker.c
+
+void    check_file(int ac, char **av, t_game *game);
+void    check_map(char *map, t_game *game);
+void    read_file(char *map, t_game *game);
+void    check_layout(t_game *game);
+
+//check utility.c
+
+bool continuous_wall(t_list *list);
+int all_one(char *str);
+int side_wall(char *str);
+
+//---------------------------------------------------- UTILITY
+
+//error.c
+int error(char *str);
 # endif

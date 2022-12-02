@@ -12,7 +12,7 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
-
+#define BUFFER_SIZE 1024
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -69,5 +69,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_list	*ft_lstlast(t_list *lst);
 int     ft_printf(const char *str, ...);
+char	*get_next_line(int fd);
 
 #endif 

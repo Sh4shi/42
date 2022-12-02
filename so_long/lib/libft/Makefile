@@ -12,7 +12,7 @@
 
 CC	= gcc
 LIBC	= ar rc
-CFLAGS	= -Wall -Werror -Wextra
+CFLAGS	= -g -Wall -Werror -Wextra
 SRC = ft_isalpha.c \
 	   ft_isdigit.c \
 	   ft_isalnum.c \
