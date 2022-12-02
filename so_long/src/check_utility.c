@@ -12,15 +12,11 @@ int side_wall(char *str)
        return (1);
 }
 
-int all_one(char *str)
+char all_one(char *str)
 {
-    while (*str)
-    {
-        if (*str != '1')
-            return (0);
+    while (*str && *str == '1')
         str++;
-    }
-    return (1);
+    return (*str);
 }
 
 bool continuous_wall(t_list *list)
@@ -32,7 +28,7 @@ bool continuous_wall(t_list *list)
     {
         if (list == first_row || list->next == NULL)
         {
-            if (!all_one((char *)list->content))
+            if (all_one((char *)list->content) != '1')
                 return (false);
         }
         else

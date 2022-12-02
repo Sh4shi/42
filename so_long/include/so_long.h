@@ -35,7 +35,7 @@ void    check_layout(t_game *game);
 //check utility.c
 
 bool continuous_wall(t_list *list);
-int all_one(char *str);
+char all_one(char *str);
 int side_wall(char *str);
 
 //---------------------------------------------------- UTILITY
