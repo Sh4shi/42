@@ -1,12 +1,11 @@
 #include "./../include/so_long.h"
-#undef CHECK_WALL
 
 int side_wall(char *str)
 {
    int i;
 
    i = ft_strlen(str);
-   if (*str != '1' && *(str + i) != '1')
+   if (*str != '1' && *(str + (i - 1)) != '1')
        return (0);
    else
        return (1);

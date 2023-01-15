@@ -4,12 +4,13 @@
 
 #include "./../lib/libft/libft.h"
 #include <stdbool.h>
+#include <stdio.h>
 #include <fcntl.h>
 #include <mlx.h>
 
 typedef struct s_map
 {
-    s_list  *list_map;
+    t_list  *list_map;
     char    **map_matrix;
     int     n_row;
     int     n_col;
@@ -20,8 +21,11 @@ typedef struct s_game
 {
     void    *mlx;
     void    *windows_p;
-    s_map   *map;
+    t_map   map;
 }               t_game;
+
+
+
 
 //---------------------------------------------------- CHECK INPUT FILE
 
@@ -42,4 +46,8 @@ int side_wall(char *str);
 
 //error.c
 int error(char *str);
+
+//map_utility.c
+void   print_shell_map(t_game *game);
+
 # endif
