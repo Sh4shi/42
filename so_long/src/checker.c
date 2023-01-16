@@ -29,8 +29,10 @@
      str = get_next_line(fd);
      while (str)
      {
+         str[ft_strlen(str) - 1] = 0;
          ft_lstadd_back(&game->map.list_map,ft_lstnew(str));
          str = get_next_line(fd);
+         game->map.n_row += 1;
      }
 }
 
@@ -38,6 +40,7 @@
 {
     read_file(map, game);
     check_layout(game);
+    check_char(game);
    // print_shell_map(game);
 }
 

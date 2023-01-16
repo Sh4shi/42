@@ -1,16 +1,19 @@
 #include "./../include/so_long.h"
 
-/*void    alloc_map(t_game *game)
+void    alloc_map(t_game *game)
 {
-    int size;
+    t_list  *node;
+    char    matrix[game->map.n_row][game->map.n_col];
+    int     i;
+    int     j;
 
-    size = ((game->map->n_col) * (game->map->n_row));
-    game->map->(*map_matrix) = (char *)malloc(sizeof(char) * size);
+    i = 0;
+    j = 0;
+    node = game->map.list_map;
+    ft_bzero(matrix, game->map.n_row * game->map.n_col);
+    game->map.map_matrix = matrix;
+    while (j < game->map.n_row && i < game->map.n_col)
+    {
 
+    }
 }
-
-void   print_shell_map(t_game *game)
-{
-    if (!(game->map->map_matrix))
-        alloc_map(game);
-}*/

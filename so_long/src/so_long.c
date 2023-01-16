@@ -23,5 +23,6 @@ int main(int ac, char **av)
 
     ft_bzero(&game, sizeof(t_game));
     check_file(ac, av, &game);
+    alloc_map(&game);
     return (0);
 }

@@ -1,21 +1,59 @@
 #include "./../include/so_long.h"
 
-int side_wall(char *str)
+void    add_char(char *str, char *arr)
+{
+    while (*str)
+    {
+       arr[(unsigned char)(*str)]++;
+       ++str;
+    }
+}
+
+void    check_char(t_game *game)
+{
+    t_list *node;
+    char arr[256];
+    int i;
+
+    i = 0;
+    ft_bzero(arr, 256);
+    node = game->map.list_map;
+    while (node)
+    {
+        add_char(node->content, arr);
+        node = node->next;
+    }
+    if (!(arr['P'] == 1 && arr['E'] == 1 && arr['C'] >= 1))
+        error("Error\nMust be one P, one E and at least one C\n");
+    while (i < 256)
+    {
+        if (arr[i] != 0 && i != 'P' && i != 'E' && i != 'C' &&
+                i != '\n' && i != '0' && i != '1')
+            error("Error\nFound invalid character!\n");
+        i++;
+    }
+}
+
+bool side_wall(char *str)
 {
    int i;
 
    i = ft_strlen(str);
-   if (*str != '1' && *(str + (i - 1)) != '1')
-       return (0);
+   if (*str != '1' && str[i - 1] != '1')
+       return (false);
    else
-       return (1);
+       return (true);
 }
 
-char all_one(char *str)
+bool all_one(char *str)
 {
-    while (*str && *str == '1')
-        str++;
-    return (*str);
+    while (*str)
+    {
+        if (*str != '1')
+            return false;
+        ++str;
+    }
+    return (true);
 }
 
 bool continuous_wall(t_list *list)
@@ -27,7 +65,7 @@ bool continuous_wall(t_list *list)
     {
         if (list == first_row || list->next == NULL)
         {
-            if (all_one((char *)list->content) != '1')
+            if (!all_one((char *)list->content))
                 return (false);
         }
         else

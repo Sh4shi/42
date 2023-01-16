@@ -39,8 +39,11 @@ void    check_layout(t_game *game);
 //check utility.c
 
 bool continuous_wall(t_list *list);
-char all_one(char *str);
-int side_wall(char *str);
+bool all_one(char *str);
+bool side_wall(char *str);
+void check_char(t_game *game);
+void add_char(char *str, char *arr);
+
 
 //---------------------------------------------------- UTILITY
 
@@ -48,6 +51,6 @@ int side_wall(char *str);
 int error(char *str);
 
 //map_utility.c
-void   print_shell_map(t_game *game);
+void   alloc_map(t_game *game);
 
 # endif
