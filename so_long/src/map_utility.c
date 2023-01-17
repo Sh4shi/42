@@ -3,24 +3,15 @@
 void    alloc_map(t_game *game)
 {
     t_list  *node;
-    char    matrix[game->map.n_row][game->map.n_col + 1];
     int     i;
-    int     x;
 
-    x = 0;
     i = 0;
     node = game->map.list_map;
-    ft_bzero(matrix, (game->map.n_row * game->map.n_col) + game->map.n_row);
-    game->map.map_matrix = &(*matrix);
-    while (i < game->map.n_row)
+    game->map.map_matrix = ft_calloc(sizeof(char *), game->map.n_row);
+    while(node)
     {
-        ft_memcpy(&(matrix[i]), node->content, game->map.n_col + 1);
+        game->map.map_matrix[i] = node->content;
         node = node->next;
         i++;
-    }
-    while (x < game->map.n_row)
-    {
-        printf("%s\n", matrix[x]);
-        x++;
     }
 }
