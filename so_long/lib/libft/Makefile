@@ -71,23 +71,23 @@ BONUS_OBJS	= $(BONUS:.c=.o)
 
 NAME	= libft.a
 
-.PHONY: all clean fclean re
-
-.c.o:
-	${CC} ${CFLAGS} -I includes -c $< -o ${<:.c=.o}
-
-$(NAME): ${OBJS}
-	ar rcs ${NAME} ${OBJS}
+%.o: %.c
+	$(CC) $(CFLAGS) -I includes -c $< -o $@
 
 all: $(NAME)
+
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
+
+bonus: $(OBJS) $(BONUS_OBJS)
+	ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
 
 clean:
 	rm -f $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
-	rm -f *~ $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
-bonus: $(OBJS) $(BONUS_OBJS)
-	ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+.PHONY: all clean fclean re

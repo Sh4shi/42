@@ -5,7 +5,6 @@ RM = rm -rf
 SRCS = $(wildcard ./src/*.c)
 OBJS = $(SRCS:.c=.o)
 
-
 LIBDIR = ./lib
 LIBFTDIR = $(LIBDIR)/libft
 MLXDIR = $(LIBDIR)/minilibx_mms_20200219
@@ -16,14 +15,14 @@ LIBDINAMIC = $(MLXDIR)/libmlx.dylib
 %.o: %.c
 	$(CC) $(CFLAGS) -c $^ -o $@ -I ./include -I $(MLXDIR)
 
-all: libs $(TARGET)
+all: $(TARGET)
 
 libs:
 	make bonus -C $(LIBFTDIR)
 	make -C $(MLXDIR)
 	cp $(LIBDINAMIC) .
 
-$(TARGET) : $(OBJS)
+$(TARGET) : libs $(OBJS)
 	$(CC) $(CFLAGS) -o $(TARGET) $(LIBSTATIC) $(OBJS) -L $(MLXDIR) -lmlx
 
 clean:
