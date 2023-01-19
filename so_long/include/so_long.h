@@ -20,7 +20,7 @@ typedef struct s_map
 typedef struct s_game
 {
     void    *mlx;
-    void    *windows_p;
+    void    *win_ptr;
     t_map   map;
 }               t_game;
 

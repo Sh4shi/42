@@ -1,22 +1,6 @@
 
 #include "./../include/so_long.h"
 
-/*int main(void)
-{
-    void *mlx_ptr = mlx_init();
-
-    if (!mlx_ptr)
-        return puts("mlx_ptr");
-
-    void *win_ptr = mlx_new_window(mlx_ptr, 200, 200, "Sharon");
-
-    if (!win_ptr)
-        return puts("win_ptr");
-
-    mlx_loop(mlx_ptr);
-}
- */
-
 int main(int ac, char **av)
 {
     t_game game;
@@ -24,5 +8,9 @@ int main(int ac, char **av)
     ft_bzero(&game, sizeof(t_game));
     check_file(ac, av, &game);
     alloc_map(&game);
+    game.mlx = mlx_init();
+    game.win_ptr = mlx_new_window(game.mlx, 200, 200, "So_long");
+    mlx_loop(game.mlx);
     return (0);
 }
+

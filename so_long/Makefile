@@ -1,7 +1,7 @@
 TARGET = so_long
 CC = gcc
 CFLAGS = -g#-Wall -Wextra -Werror
-RM = rm -rf
+RM = rm -f
 SRCS = $(wildcard ./src/*.c)
 OBJS = $(SRCS:.c=.o)
 
@@ -17,13 +17,13 @@ LIBDINAMIC = $(MLXDIR)/libmlx.dylib
 
 all: $(TARGET)
 
+$(TARGET) : libs $(OBJS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(LIBSTATIC) $(OBJS) -L $(MLXDIR) -lmlx
+
 libs:
 	make bonus -C $(LIBFTDIR)
 	make -C $(MLXDIR)
 	cp $(LIBDINAMIC) .
-
-$(TARGET) : libs $(OBJS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(LIBSTATIC) $(OBJS) -L $(MLXDIR) -lmlx
 
 clean:
 	rm -f $(OBJS)
@@ -31,9 +31,10 @@ clean:
 	make clean -C $(MLXDIR)
 
 fclean: clean
-	rm -f $(TARGET)
+	$(RM) $(TARGET)
 	make fclean -C $(LIBFTDIR)
-	rm -f libmlx.dylib
+	$(RM) libmlx.dylib
+	$(RM) $(LIBDINAMIC)
 
 re: fclean all
 
