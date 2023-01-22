@@ -8,6 +8,7 @@
 #include <fcntl.h>
 #include <mlx.h>
 
+#define WALL "./image/wall/wall.xpm"
 typedef struct s_vector
 {
     int x;
@@ -78,6 +79,6 @@ void    start_render(t_game *game);
 
 //render.c
 void    init_ptr(t_game *game);
-void    new_img(t_game *game, char *img_path);
+void    new_img(t_game *game);
 
 # endif
