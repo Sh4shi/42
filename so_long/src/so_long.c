@@ -4,8 +4,7 @@
 void    start_render(t_game *game)
 {
     init_ptr(game);
-    new_img(game);
-    mlx_put_image_to_window(game->mlx, game->win_ptr, game->img.img_ptr, 0, 0);
+    mlx_put_image_to_window(game->mlx, game->win_ptr, new_img(game), 0, 0);
 }
 
 int main(int ac, char **av)
