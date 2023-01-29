@@ -8,19 +8,29 @@
 #include <fcntl.h>
 #include <mlx.h>
 
+// tile's image path
 #define WALL "./image/wall/wall.xpm"
+
+
+//index for images' storage array
+#define I 0 /*complete image*/
+#define W 1 /*wall*/
+#define E 2 /*exit*/
+#define C 3 /*collectible*/
+#define P 4 /*player*/
+
 typedef struct s_vector
 {
     int x;
     int y;
 }               t_vector;
 
-typedef struct s_img
+typedef struct s_img         //type definition for all the img utility
 {
     void        *img_ptr;
     t_vector    size;
-    t_vector    position;
-    char        *pixels;      //an array that store all the image's pixels
+    char        *path;
+    char        *pixels;     //an array that store all the image's pixels
     int         line_size;   //size of an image's line
     int         pixel_bits;  //nbr of bite for one pixel
     int         endian;
