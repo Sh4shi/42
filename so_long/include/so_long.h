@@ -121,7 +121,7 @@ void    draw_new_image(t_game *game);
 
 //render_utility.c
 void    define_path(t_img *img);
-char    *read_map_and_find_right_img(t_img *img, char **map, int y, int x);
-void    copy_pixel(char *full_img, char *tile, int len);
+t_img   *read_map_and_find_right_img(t_img *img, char **map, int y, int x);
+void    copy_pixel(char *full_img, t_img *tile);
 
 # endif

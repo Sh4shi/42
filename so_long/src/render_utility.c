@@ -1,27 +1,27 @@
 #include "./../include/so_long.h"
 
-void    copy_pixel(char *full_img, char *tile, int len)
+void    copy_pixel(char *full_img, t_img *tile)
 {
     int i;
 
     i = 0;
-    while (i / 8 < len)
+    while (*(tile->pixels))
     {
-        full_img[i] = tile[i];
+        full_img++ = tile->pixels[i];
         i++;
     }
 }
 
-char    *read_map_and_find_right_img(t_img *img, char **map, int y, int x)
+t_img   *read_map_and_find_right_img(t_img *img, char **map, int y, int x)
 {
     if (map[y][x] == '1')
-        return (img[1]->pixels);
+        return (img[1]);
     else if (map[y][x] == 'E')
-        return (img[2]->pixels);
+        return (img[2]);
     else if (map[y][x] == 'C')
-        return (img[3]->pixels);
+        return (img[3]);
     else if (map[y][x] == 'P')
-        return (img[5]->pixels);
+        return (img[5]);
 }
 
 void    define_path(t_img *img)

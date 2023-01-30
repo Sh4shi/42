@@ -15,8 +15,7 @@ void    draw_new_image(t_game *game)
         {
             copy_pixel(&(game->img[0]->pixels[i]),
                        read_map_and_find_right_img(game->img,game->map.map_matrix,
-                                                   game->map.pos.y, game->map.pos.x),
-                                                   game->img->line_size);
+                                                   game->map.pos.y, game->map.pos.x));
             game->map.pos.x += 1;
             i = INDEX;
         }
@@ -42,7 +41,7 @@ void      fill_image_storage(t_game *game)
     define_path(game->img);
     while (i <= 12)
     {
-        game->img[i]->img_ptr = mlx_xpm_file_to_image(game->mlx, *(game->img[i]->path), &game->img[i]->size.x, &game->img[i]->size.y);
+        game->img[i]->img_ptr = mlx_xpm_file_to_image(game->mlx, game->img[i]->path, &game->img[i]->size.x, &game->img[i]->size.y);
         if (!game->img[i]->img_ptr)
             error("Error\nimage issue\n");
         game->img[i]->pixels = mlx_get_data_addr(game->img[i]->img_ptr, &game->img[i]->pixel_bits, &game->img[i]->line_size, &game->img[i]->endian);
