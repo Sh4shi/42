@@ -9,21 +9,21 @@
 #include <mlx.h>
 
 // formula to set the index for the img pixel's array
-#define INDEX img[0]->pixels + ((img[0]->line_size * game->map.pos.y) + ((img[0]->pixel_bits / 8) * game->map.pos.x))
+#define INDEX game->img[0]->pixels + ((game->img[0]->line_size * game->map.pos.y) + ((game->img[0]->pixel_bits / 8) * game->map.pos.x))
 
 // macro for tile's image path
 #define WALL "./image/wall/wall.xpm"
-#define EXIT "./image/ "
-#define COLL1 "./image/ "
-#define COLL2 "./image/ "
-#define PF1 "./image/ "
-#define PF2 "./image/ "
-#define PB1 "./image/ "
-#define PB2 "./image/ "
-#define PR1 "./image/ "
-#define PR2 "./image/ "
-#define PL1 "./image/ "
-#define PL2 "./image/ "
+#define EXIT "./image/exit/exit.xpm"
+#define COLL1 "./image/collectible/collectible1.xpm"
+#define COLL2 "./image/"
+#define PF1 "./image/player/playerfront1.xpm"
+#define PF2 "./image/"
+#define PB1 "./image/"
+#define PB2 "./image/"
+#define PR1 "./image/"
+#define PR2 "./image/"
+#define PL1 "./image/"
+#define PL2 "./image/"
 
 /**** INDEX FOR IMAGE'S STORAGE ARRAY ****\
 *       ( used also x the path arr )      *

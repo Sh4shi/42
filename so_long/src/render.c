@@ -53,6 +53,6 @@ void    init_ptr(t_game *game)
 {
     game->mlx = mlx_init();
     game->win_ptr = mlx_new_window(game->mlx, game->map.n_row * 32, game->map.n_col * 32, "So_long");
-    game->img = ft_calloc(13, sizeof(t_img));
+    game->img = ft_calloc(13, sizeof(t_img *));
     fill_image_storage(game);
 }

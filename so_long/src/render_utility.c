@@ -29,13 +29,13 @@ void    define_path(t_img *img)
     img[1]->path = WALL;
     img[2]->path = EXIT;
     img[3]->path = COLL1;
-    img[4]->path = COLL2;
+    //img[4]->path = COLL2;
     img[5]->path = PF1;
-    img[6]->path = PF2;
+    /*img[6]->path = PF2;
     img[7]->path = PB1;
     img[8]->path = PB2;
     img[9]->path = PR1;
     img[10]->path = PR2;
     img[11]->path = PL1;
-    img[12]->path = PL2;
+    img[12]->path = PL2;*/
 }
