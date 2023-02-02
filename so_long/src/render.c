@@ -2,22 +2,26 @@
 
 void    draw_new_image(t_game *game)
 {
-    char    *tile;
+    //char    *tile;
     int     i;
+    t_img   tmp;
 
     game->map.pos.y = 0;
     game->map.pos.x = 0;
-    i = INDEX;
+    i = 0; //INDEX;
     while (i <= game->img[0].line_size * game->map.n_row)
     {
         game->map.pos.x = 0;
         while (game->map.pos.x <= game->map.n_col)
         {
-            copy_pixel(&(game->img[0].pixels[i]),
-                       read_map_and_find_right_img(game->img, game->map.map_matrix, 
-                       game->map.pos.y, game->map.pos.x));
+            tmp = read_map_and_find_right_img(game->img, game->map.map_matrix, 
+                       game->map.pos.y, game->map.pos.x);
+            printf("%d", tmp.pixel_bits);
+            ft_memcpy(&(game->img[0].pixels[i]), tmp.pixels, (tmp.size.x * tmp.size.y) * (tmp.pixel_bits / 8));
+            //copy_pixel(&(game->img[0].pixels[i]), read_map_and_find_right_img(game->img, game->map.map_matrix, 
+            //         game->map.pos.y, game->map.pos.x).pixels );
             game->map.pos.x += 1;
-            i = INDEX;
+            i += (tmp.size.x * tmp.size.y) * (tmp.pixel_bits / 8);
         }
         game->map.pos.y += 1;
     }

@@ -11,7 +11,7 @@
 #define SIZE(x) (x * 32)
 
 // formula to set the index for the img pixel's array
-#define INDEX (game->img[0].pixels + ((game->img[0].line_size * game->map.pos.y) + ((game->img[0].pixel_bits / 8) * game->map.pos.x)))
+#define INDEX (((game->img[0].line_size * game->map.pos.y) * ((game->img[0].pixel_bits / 8) * game->map.pos.x)))
 
 // macro for tile's image path
 #define WALL "./image/wall/wall.xpm"
@@ -125,7 +125,7 @@ void    draw_new_image(t_game *game);
 
 //render_utility.c
 void    define_path(t_img *img);
-t_img   *read_map_and_find_right_img(t_img *img, char **map, int y, int x);
+t_img   read_map_and_find_right_img(t_img *img, char **map, int y, int x);
 void    copy_pixel(char *full_img, t_img *tile);
 
 # endif

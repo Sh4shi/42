@@ -12,17 +12,16 @@ void    copy_pixel(char *full_img, t_img *tile)
     }
 }
 
-t_img   *read_map_and_find_right_img(t_img *img, char **map, int y, int x)
+t_img   read_map_and_find_right_img(t_img *img, char **map, int y, int x)
 {
     if (map[y][x] == '1')
-        return (&img[1]);
+        return (img[1]);
     else if (map[y][x] == 'E')
-        return (&img[2]);
+        return (img[2]);
     else if (map[y][x] == 'C')
-        return (&img[3]);
+        return (img[3]);
     else if (map[y][x] == 'P')
-        return (&img[5]);
-    return 0;
+        return (img[5]);
 }
 
 void    define_path(t_img *img)
