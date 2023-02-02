@@ -8,22 +8,26 @@
 #include <fcntl.h>
 #include <mlx.h>
 
+#define SIZE(x) (x * 32)
+
 // formula to set the index for the img pixel's array
-#define INDEX game->img[0]->pixels + ((game->img[0]->line_size * game->map.pos.y) + ((game->img[0]->pixel_bits / 8) * game->map.pos.x))
+#define INDEX (game->img[0].pixels + ((game->img[0].line_size * game->map.pos.y) + ((game->img[0].pixel_bits / 8) * game->map.pos.x)))
 
 // macro for tile's image path
 #define WALL "./image/wall/wall.xpm"
 #define EXIT "./image/exit/exit.xpm"
 #define COLL1 "./image/collectible/collectible1.xpm"
-#define COLL2 "./image/"
+#define COLL2 "./image/collectible/collectible2.xpm" //!!!
 #define PF1 "./image/player/playerfront1.xpm"
-#define PF2 "./image/"
-#define PB1 "./image/"
-#define PB2 "./image/"
-#define PR1 "./image/"
-#define PR2 "./image/"
-#define PL1 "./image/"
-#define PL2 "./image/"
+#define PF2 "./image/player/playerfront2.xpm"   //!!! 
+#define PB1 "./image/player/playerback1.xpm"    //!!!
+#define PB2 "./image/player/playerback2.xpm"    //!!!
+#define PR1 "./image/player/playerright1.xpm"   //!!!
+#define PR2 "./image/player/playerright2.xpm"   //!!!
+#define PL1 "./image/player/playerleft1.xpm"    //!!!
+#define PL2 "./image/player/playerleft2.xpm"    //!!!
+
+#define MAX_IMG 13
 
 /**** INDEX FOR IMAGE'S STORAGE ARRAY ****\
 *       ( used also x the path arr )      *
@@ -75,7 +79,7 @@ typedef struct s_game
     void    *mlx;
     void    *win_ptr;
     t_map   map;
-    t_img   *img;
+    t_img   img[MAX_IMG];
 }               t_game;
 
 

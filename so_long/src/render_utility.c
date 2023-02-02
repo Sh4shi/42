@@ -7,7 +7,7 @@ void    copy_pixel(char *full_img, t_img *tile)
     i = 0;
     while (*(tile->pixels))
     {
-        full_img++ = tile->pixels[i];
+        full_img[i] = (char)tile->pixels[i];
         i++;
     }
 }
@@ -15,27 +15,28 @@ void    copy_pixel(char *full_img, t_img *tile)
 t_img   *read_map_and_find_right_img(t_img *img, char **map, int y, int x)
 {
     if (map[y][x] == '1')
-        return (img[1]);
+        return (&img[1]);
     else if (map[y][x] == 'E')
-        return (img[2]);
+        return (&img[2]);
     else if (map[y][x] == 'C')
-        return (img[3]);
+        return (&img[3]);
     else if (map[y][x] == 'P')
-        return (img[5]);
+        return (&img[5]);
+    return 0;
 }
 
 void    define_path(t_img *img)
 {
-    img[1]->path = WALL;
-    img[2]->path = EXIT;
-    img[3]->path = COLL1;
-    //img[4]->path = COLL2;
-    img[5]->path = PF1;
-    /*img[6]->path = PF2;
-    img[7]->path = PB1;
-    img[8]->path = PB2;
-    img[9]->path = PR1;
-    img[10]->path = PR2;
-    img[11]->path = PL1;
-    img[12]->path = PL2;*/
+    img[1].path = WALL;
+    img[2].path = EXIT;
+    img[3].path = COLL1;
+    img[4].path = COLL2;
+    img[5].path = PF1;
+    img[6].path = PF2;
+    img[7].path = PB1;
+    img[8].path = PB2;
+    img[9].path = PR1;
+    img[10].path = PR2;
+    img[11].path = PL1;
+    img[12].path = PL2;
 }
