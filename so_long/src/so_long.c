@@ -3,8 +3,11 @@
 
 void    start_render(t_game *game)
 {
+    void *ptr;
+
     init_ptr(game);
-    mlx_put_image_to_window(game->mlx, game->win_ptr, new_img(game), 0, 0);
+    ptr = new_img(game);
+    mlx_put_image_to_window(game->mlx, game->win_ptr, ptr, 0, 0);
 }
 
 int main(int ac, char **av)
