@@ -27,7 +27,7 @@
 #define PL1 "./image/player/playerleft1.xpm"    //!!!
 #define PL2 "./image/player/playerleft2.xpm"    //!!!
 
-#define MAX_IMG 13
+#define MAX_IMG 13 //nbr of img_ptr in my img* storage
 
 /**** INDEX FOR IMAGE'S STORAGE ARRAY ****\
 *       ( used also x the path arr )      *
@@ -126,6 +126,6 @@ void    draw_new_image(t_game *game);
 //render_utility.c
 void    define_path(t_img *img);
 t_img   *read_map_and_find_right_img(t_img *img, char **map, int y, int x);
-void    copy_pixel(char *full_img, t_img *tile);
+//void    copy_pixel(char *full_img, t_game *game, int tile_size);
 
 # endif

@@ -1,6 +1,6 @@
 #include "./../include/so_long.h"
 
-void    copy_pixel(char *full_img, t_img *tile)
+/*void    copy_pixel(int *full_img, t_img *tile, int tile_size)
 {
     int i;
 
@@ -10,7 +10,7 @@ void    copy_pixel(char *full_img, t_img *tile)
         full_img[i] = (char)tile->pixels[i];
         i++;
     }
-}
+}*/
 
 t_img   *read_map_and_find_right_img(t_img *img, char **map, int y, int x)
 {

@@ -1,75 +1,18 @@
 #include "./../include/so_long.h"
 
-void	img_pix_put(t_img *img, int x, int y, int color)
+/*void	img_pix_put(t_img *img, int x, int y, int color)
 {
 	char    *pixel;
 
     pixel = img->pixels + (y * img->line_size + x * (img->pixel_bits / 8));
 	*(int *)pixel = color;
-}
+} */
 
 void    draw_new_image(t_game *game)
 {
-    int     x;
-    int     y;
-    int     img_height;
-    t_img   *tmp;
-    int     tmp_height;
-
-    x = 0;
-    y = 0;
-    img_height = 0;
-
-    while (y < game->map.n_row)
-    {
-        tmp_height = img_height + 32;
-        while (img_height < tmp_height)
-        {
-            x = 0;
-            while (x < game->map.n_col)
-            {
-                tmp = read_map_and_find_right_img(game->img, game->map.map_matrix, y, x);
-                /* ft_memcpy((game->img[0].pixels + (game->img[0].line_size * y)) + ((x * 32) * 4), 
-                           tmp->pixels + (tmp->line_size * y),
-                           32 * 4); */
-                //ft_memcpy(game->img[0].pixels + (y * game->img[0].line_size + x * (game->img[0].pixel_bits / 8)),  tmp->pixels + (y * tmp->line_size + x * (tmp->pixel_bits / 8)), /* tmp->line_size */32*4);
-                img_pix_put(&(game->img[0]), y * 32, x * 32, 0x0000ffd8);
-                x++;
-            }
-            img_height++;
-        }
-        y++;
-        /* if (y == 1)
-            break; */
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /* char    *tile;
+    char    *tile;
     int     i;
-    t_img   tmp;
+    t_img   *tmp;
 
     game->map.pos.y = 0;
     game->map.pos.x = 0;
@@ -79,17 +22,15 @@ void    draw_new_image(t_game *game)
         game->map.pos.x = 0;
         while (game->map.pos.x <= game->map.n_col)
         {
-            tmp = read_map_and_find_right_img(game->img, game->map.map_matrix, 
-                       game->map.pos.y, game->map.pos.x);
-            printf("%d", tmp.pixel_bits);
-            ft_memcpy(&(game->img[0].pixels[i]), tmp.pixels, (tmp.size.x * tmp.size.y) * (tmp.pixel_bits / 8));
-            //copy_pixel(&(game->img[0].pixels[i]), read_map_and_find_right_img(game->img, game->map.map_matrix, 
-            //         game->map.pos.y, game->map.pos.x).pixels );
+            tmp = read_map_and_find_right_img(game->img, game->map.map_matrix, game->map.pos.y, game->map.pos.x);
+            ft_memcpy(&game->img[0].pixels[i], tmp->pixels, (tmp->line_size * (tmp->size.y * (tmp->pixel_bits / 8))));
             game->map.pos.x += 1;
-            i += (tmp.size.x * tmp.size.y) * (tmp.pixel_bits / 8);
+            i += ((((tmp->size.y * (tmp->pixel_bits / 8))) * tmp->line_size)); /*(tmp->size.x * tmp->size.y) * (tmp->pixel_bits);*/
+            /*printf("line size:%d\n", game->img[0].line_size);
+            break;*/
         }
         game->map.pos.y += 1;
-    } */
+    } 
 }
 
 void    *new_img(t_game *game)
