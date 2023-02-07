@@ -35,7 +35,7 @@ void    draw_new_image(t_game *game)
 
 void    *new_img(t_game *game)
 {
-    game->img[0].img_ptr = mlx_new_image(game->mlx, SIZE(game->map.n_row), SIZE(game->map.n_col));
+    game->img[0].img_ptr = mlx_new_image(game->mlx, SIZE(game->map.n_col), SIZE(game->map.n_row));
     if (!game->img[0].img_ptr)
         error("Error\nimage issue: can't create new full image\n");
     game->img[0].pixels = mlx_get_data_addr(game->img[0].img_ptr, &game->img[0].pixel_bits, &game->img[0].line_size, &game->img[0].endian);
