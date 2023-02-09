@@ -5,13 +5,24 @@
 #include "./../lib/libft/libft.h"
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdint.h>
 #include <fcntl.h>
 #include <mlx.h>
 
+
+
 #define SIZE(x) (x * 32)
 
-// formula to set the index for the img pixel's array
-#define INDEX (((game->img[0].line_size * game->map.pos.y) * ((game->img[0].pixel_bits / 8) * game->map.pos.x)))
+//full image's nbr of byte
+#define FULL_IMG_SIZE (SIZE(game->map.n_row) * SIZE(game->map.n_col))
+
+//full image's nbr of byte
+#define TILE_SIZE (SIZE(game->img[1].line_size / 8))
+
+//nbr of img_ptr in my img* storage
+#define MAX_IMG 13
+
+
 
 // macro for tile's image path
 #define WALL "./image/wall/wall.xpm"
@@ -25,9 +36,7 @@
 #define PR1 "./image/player/playerright1.xpm"   //!!!
 #define PR2 "./image/player/playerright2.xpm"   //!!!
 #define PL1 "./image/player/playerleft1.xpm"    //!!!
-#define PL2 "./image/player/playerleft2.xpm"    //!!!
-
-#define MAX_IMG 13 //nbr of img_ptr in my img* storage
+#define PL2 "./image/player/playerleft2.xpm"    //!!! 
 
 /**** INDEX FOR IMAGE'S STORAGE ARRAY ****\
 *       ( used also x the path arr )      *
@@ -48,6 +57,8 @@
 *                                         *
 ******************************************/
 
+
+
 typedef struct s_vector
 {
     int x;
@@ -60,7 +71,7 @@ typedef struct s_img //struct for all the img utility
     t_vector        size;
     char            *path;
     char            *pixels;     //an array that store all the image's pixels
-    int             line_size;   //size of an image's line (amount of byte)
+    int             line_size;   //size of an image's line (in bit)
     int             pixel_bits;  //nbr of bit for one pixel
     int             endian;
 }               t_img;
@@ -125,7 +136,7 @@ void    draw_new_image(t_game *game);
 
 //render_utility.c
 void    define_path(t_img *img);
-t_img   *read_map_and_find_right_img(t_img *img, char **map, int y, int x);
-//void    copy_pixel(char *full_img, t_game *game, int tile_size);
+t_img   *read_map_and_find_right_img(t_img *img, char tile_type);
+int     copy_tile(uint32_t *full_img, uint32_t *tile, int tile_size);
 
 # endif

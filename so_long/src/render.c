@@ -6,7 +6,7 @@
 
     pixel = img->pixels + (y * img->line_size + x * (img->pixel_bits / 8));
 	*(int *)pixel = color;
-} */
+}
 
 void    draw_new_image(t_game *game)
 {
@@ -16,7 +16,7 @@ void    draw_new_image(t_game *game)
 
     game->map.pos.y = 0;
     game->map.pos.x = 0;
-    i = 0; //INDEX;
+    i = 0;
     while (i <= game->img[0].line_size * game->map.n_row)
     {
         game->map.pos.x = 0;
@@ -25,17 +25,42 @@ void    draw_new_image(t_game *game)
             tmp = read_map_and_find_right_img(game->img, game->map.map_matrix, game->map.pos.y, game->map.pos.x);
             ft_memcpy(&game->img[0].pixels[i], tmp->pixels, (tmp->line_size * (tmp->size.y * (tmp->pixel_bits / 8))));
             game->map.pos.x += 1;
-            i += ((((tmp->size.y * (tmp->pixel_bits / 8))) * tmp->line_size)); /*(tmp->size.x * tmp->size.y) * (tmp->pixel_bits);*/
-            /*printf("line size:%d\n", game->img[0].line_size);
-            break;*/
+            i += ((((tmp->size.y * (tmp->pixel_bits / 8))) * tmp->line_size)); (tmp->size.x * tmp->size.y) * (tmp->pixel_bits);
+            printf("line size:%d\n", game->img[0].line_size);
+            break;
         }
         game->map.pos.y += 1;
     } 
+}*/
+
+void    draw_new_image(t_game *game)
+{
+    int         i;
+    int         line;
+    t_img       *tile;
+    t_vector    pos;
+
+    line = 0;
+    pos.x = 0;
+    pos.y = 0;
+    while (line <= FULL_IMG_SIZE) //finche non scrivo tutta l'immagine
+    {
+        i = 0;
+        if (pos.x == game->map.n_col)
+        {
+            pos.y++;
+            pos.x = 0;
+        }
+        tile = read_map_and_find_right_img(game->img, game->map.map_matrix[pos.y][pos.x]);
+        i += copy_tile((uint32_t *)game->img[0].pixels[i], (uint32_t *)tile->pixels, TILE_SIZE);
+        line += TILE_SIZE;
+        pos.x++;
+    }
 }
 
 void    *new_img(t_game *game)
 {
-    game->img[0].img_ptr = mlx_new_image(game->mlx, SIZE(game->map.n_col), SIZE(game->map.n_row));
+    game->img[0].img_ptr = mlx_new_image(game->mlx, SIZE(game->map.n_row), SIZE(game->map.n_col));
     if (!game->img[0].img_ptr)
         error("Error\nimage issue: can't create new full image\n");
     game->img[0].pixels = mlx_get_data_addr(game->img[0].img_ptr, &game->img[0].pixel_bits, &game->img[0].line_size, &game->img[0].endian);
