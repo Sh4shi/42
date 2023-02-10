@@ -1,5 +1,13 @@
 #include "./../include/so_long.h"
 
+int	get_pixel(t_img *img, int y, int x)
+{
+	int    *pixel;
+
+    pixel = (int *)(img->pixels + (y * img->line_size + x * (img->pixel_bits / 8)));
+	return *pixel;
+}
+
 int    copy_tile(uint32_t *full_img, uint32_t *tile, int tile_size)
 {
     int i;
@@ -13,16 +21,19 @@ int    copy_tile(uint32_t *full_img, uint32_t *tile, int tile_size)
     return (i);
 }
 
-t_img   *read_map_and_find_right_img(t_img *img, char tile_type)
+t_img   *read_map_and_find_right_img(t_game *game, char tile_type)
 {
     if (tile_type == '1')
-        return (&(img[1]));
+        return (&(game->img[1]));
     else if (tile_type == 'E')
-        return (&(img[2]));
+        return (&(game->img[2]));
     else if (tile_type == 'C')
-        return (&(img[3]));
+        return (&(game->img[3]));
     else if (tile_type == 'P')
-        return (&(img[5]));
+        return (&(game->img[5]));
+    else if (tile_type == '0')
+        return (&(game->img[13]));
+    return 0;
 }
 
 void    define_path(t_img *img)
@@ -39,4 +50,5 @@ void    define_path(t_img *img)
     img[10].path = PR2;
     img[11].path = PL1;
     img[12].path = PL2;
+    img[13].path = FLOOR;
 }

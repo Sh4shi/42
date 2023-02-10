@@ -20,7 +20,7 @@
 #define TILE_SIZE (SIZE(game->img[1].line_size / 8))
 
 //nbr of img_ptr in my img* storage
-#define MAX_IMG 13
+#define MAX_IMG 14
 
 
 
@@ -37,6 +37,7 @@
 #define PR2 "./image/player/playerright2.xpm"   //!!!
 #define PL1 "./image/player/playerleft1.xpm"    //!!!
 #define PL2 "./image/player/playerleft2.xpm"    //!!! 
+#define FLOOR "./image/tiffany.xpm"
 
 /**** INDEX FOR IMAGE'S STORAGE ARRAY ****\
 *       ( used also x the path arr )      *
@@ -54,6 +55,7 @@
 *       10 =  *   right 2                 *
 *       11 =  *   left 1                  *
 *       12 =  *   left 2                  *
+*       13 = floor                        *
 *                                         *
 ******************************************/
 
@@ -136,7 +138,8 @@ void    draw_new_image(t_game *game);
 
 //render_utility.c
 void    define_path(t_img *img);
-t_img   *read_map_and_find_right_img(t_img *img, char tile_type);
+t_img   *read_map_and_find_right_img(t_game *game, char tile_type);
+int     get_pixel(t_img *img, int y, int x);
 int     copy_tile(uint32_t *full_img, uint32_t *tile, int tile_size);
 
 # endif
