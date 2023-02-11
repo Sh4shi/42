@@ -65,27 +65,19 @@ void    draw_new_image(t_game *game)
     int *new_img = (int *)game->img[0].pixels;
     int x = 0;
     int y = 0;
-    t_img *tile = 0;
-
-    int *ptr = 0;
 
     while (y < tot_pixel_y)
     {
         x = 0;
         while (x < tot_pixel_x)
         {
-            tile = read_map_and_find_right_img(game, game->map.map_matrix[y/32][x/32]);
-            printf("%c ", game->map.map_matrix[y/32][x/32]);
-
-            ptr = new_img + (y * x);
-            *ptr = get_pixel(tile, y % 32, x % 32);
-            //*(((new_img + x) * y) ) = get_pixel(tile, y % 32, x % 32);
+            *new_img = get_pixel(read_map_and_find_right_img(game, game->map.map_matrix[y/32][x/32]),
+                y % 32, x % 32);
+            new_img++;
             x++;
         }
-        puts("");
         y++;
     }
-    
 }
 
 void    *new_img(t_game *game)
