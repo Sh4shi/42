@@ -153,5 +153,6 @@ void    event(t_game *game);
 
 //event.c
 int    wait_event(t_game *game);
+int    event_handler(int keycode, t_game *game);
 
 # endif

@@ -1,5 +1,10 @@
 #include "./../include/so_long.h"
 
+int event_handler(int keycode, t_game *game)
+{
+    
+}
+
 int    wait_event(t_game *game)
 {
     game->frame++;

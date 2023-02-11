@@ -18,7 +18,7 @@ LIBDINAMIC = $(MLXDIR)/libmlx.dylib
 all: $(TARGET)
 
 $(TARGET) : libs $(OBJS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(LIBSTATIC) $(OBJS) -L $(MLXDIR) -lmlx
+	$(CC) $(CFLAGS) -o $(TARGET) $(LIBSTATIC) $(OBJS) -framework OpenGL -framework AppKit -lz -L $(MLXDIR) -lmlx
 
 libs:
 	make bonus -C $(LIBFTDIR)

@@ -3,6 +3,7 @@
 void    event(t_game *game)
 {
     mlx_loop_hook(game->mlx, &wait_event, &game);
+    mlx_hook(game->mlx, 3, 0, &event_handler, &game);
 }
 
 void    start_render(t_game *game)

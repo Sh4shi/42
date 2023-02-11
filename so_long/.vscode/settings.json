@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "event.h": "c",
+        "mlx.h": "c",
+        "types.h": "c",
+        "cdefs.h": "c"
+    }
+}
