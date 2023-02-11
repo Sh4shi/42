@@ -2,9 +2,9 @@
 
 int	get_pixel(t_img *img, int y, int x)
 {
-	int    *pixel;
+	uint32_t    *pixel;
 
-    pixel = (int *)(img->pixels + (y * img->line_size + x * (img->pixel_bits / 8)));
+    pixel = (uint32_t *)(img->pixels + (y * img->line_size + x * (img->pixel_bits / 8)));
 	return *pixel;
 }
 
@@ -21,17 +21,17 @@ int    copy_tile(uint32_t *full_img, uint32_t *tile, int tile_size)
     return (i);
 }
 
-t_img   *read_map_and_find_right_img(t_game *game, char tile_type)
+t_img   *read_map_and_find_right_img(t_game *game, char **matrix, int y, int x)
 {
-    if (tile_type == '1')
+    if (matrix[y][x] == '1')
         return (&(game->img[1]));
-    else if (tile_type == 'E')
+    else if (matrix[y][x] == 'E')
         return (&(game->img[2]));
-    else if (tile_type == 'C')
+    else if (matrix[y][x] == 'C')
         return (&(game->img[3]));
-    else if (tile_type == 'P')
+    else if (matrix[y][x] == 'P')
         return (&(game->img[5]));
-    else if (tile_type == '0')
+    else if (matrix[y][x] == '0')
         return (&(game->img[13]));
     return 0;
 }

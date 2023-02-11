@@ -13,11 +13,11 @@
 
 #define SIZE(x) (x * 32)
 
-//full image's nbr of byte
-#define FULL_IMG_SIZE (SIZE(game->map.n_row) * SIZE(game->map.n_col))
+//nbr of pixel in a collumn
+#define TOTAL_PIXEL_COL SIZE(game->map.n_row)
 
-//full image's nbr of byte
-#define TILE_SIZE (SIZE(game->img[1].line_size / 8))
+//nbr of pixel in a row
+#define TOTAL_PIXEL_ROW SIZE(game->map.n_col)
 
 //nbr of img_ptr in my img* storage
 #define MAX_IMG 14
@@ -37,7 +37,7 @@
 #define PR2 "./image/player/playerright2.xpm"   //!!!
 #define PL1 "./image/player/playerleft1.xpm"    //!!!
 #define PL2 "./image/player/playerleft2.xpm"    //!!! 
-#define FLOOR "./image/tiffany.xpm"
+#define FLOOR "./image/floor/floor.xpm"
 
 /**** INDEX FOR IMAGE'S STORAGE ARRAY ****\
 *       ( used also x the path arr )      *
@@ -71,6 +71,7 @@ typedef struct s_img //struct for all the img utility
 {
     void            *img_ptr;
     t_vector        size;
+    t_vector        pos;
     char            *path;
     char            *pixels;     //an array that store all the image's pixels
     int             line_size;   //size of an image's line (in bit)
@@ -89,10 +90,11 @@ typedef struct s_map
 
 typedef struct s_game
 {
-    void    *mlx;
-    void    *win_ptr;
-    t_map   map;
-    t_img   img[MAX_IMG];
+    void            *mlx;
+    void            *win_ptr;
+    t_map           map;
+    t_img           img[MAX_IMG]; //array that store all the img pointer from xpm_file_to_image
+    unsigned int    frame;
 }               t_game;
 
 
@@ -138,7 +140,7 @@ void    draw_new_image(t_game *game);
 
 //render_utility.c
 void    define_path(t_img *img);
-t_img   *read_map_and_find_right_img(t_game *game, char tile_type);
+t_img   *read_map_and_find_right_img(t_game *game, char **matrix, int y, int x);
 int     get_pixel(t_img *img, int y, int x);
 int     copy_tile(uint32_t *full_img, uint32_t *tile, int tile_size);
 
