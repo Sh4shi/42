@@ -15,3 +15,9 @@ void    alloc_map(t_game *game)
         i++;
     }
 }
+
+int error(char *str)
+{
+    ft_printf(str);
+    exit(0);
+}

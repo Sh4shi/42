@@ -1,6 +1,7 @@
 #include "./../include/so_long.h"
 
-void    draw_new_image(t_game *game)
+
+void    draw_new_image(t_game *game, int animation)
 {
     uint32_t *new_img;
     t_vector pos;
@@ -13,7 +14,7 @@ void    draw_new_image(t_game *game)
        pos.x = 0;
         while (pos.x < TOTAL_PIXEL_ROW)
         {
-            *new_img = get_pixel(read_map_and_find_right_img(game, game->map.map_matrix, pos.y/32, pos.x/32),
+            *new_img = get_pixel(read_map_and_find_right_img(game, game->map.map_matrix, pos.y/32, pos.x/32, animation),
                 pos.y % 32, pos.x % 32);
             new_img++;
             pos.x++;
@@ -28,7 +29,7 @@ void    *new_img(t_game *game)
     if (!game->img[0].img_ptr)
         error("Error\nimage issue: can't create new full image\n");
     game->img[0].pixels = mlx_get_data_addr(game->img[0].img_ptr, &game->img[0].pixel_bits, &game->img[0].line_size, &game->img[0].endian);
-    draw_new_image(game);
+    draw_new_image(game, 0);
     return (game->img[0].img_ptr);
 }
 
@@ -52,5 +53,5 @@ void    init_ptr(t_game *game)
 {
     game->mlx = mlx_init();
     fill_image_storage(game);
-    game->win_ptr = mlx_new_window(game->mlx,  SIZE(game->map.n_col), SIZE(game->map.n_row), "So_long");
+    game->win_ptr = mlx_new_window(game->mlx, SIZE(game->map.n_col), SIZE(game->map.n_row), "So_long");
 }

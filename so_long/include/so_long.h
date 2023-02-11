@@ -22,6 +22,8 @@
 //nbr of img_ptr in my img* storage
 #define MAX_IMG 14
 
+//nbr of frames to draw an animation
+#define ANIMATION 300000000
 
 
 // macro for tile's image path
@@ -71,7 +73,6 @@ typedef struct s_img //struct for all the img utility
 {
     void            *img_ptr;
     t_vector        size;
-    t_vector        pos;
     char            *path;
     char            *pixels;     //an array that store all the image's pixels
     int             line_size;   //size of an image's line (in bit)
@@ -99,8 +100,8 @@ typedef struct s_game
 
 
 
-//---------------------------------------------------- CHECK INPUT FILE
 
+//---------------------------------------------------- CHECK INPUT FILE
 //checker.c
 
 void    check_file(int ac, char **av, t_game *game);
@@ -117,31 +118,40 @@ void check_char(t_game *game);
 void add_char(char *str, char *arr);
 
 
+
+
 //---------------------------------------------------- UTILITY
+//utility.c
+int     error(char *str);
+void    alloc_map(t_game *game);
 
-//error.c
-int error(char *str);
 
-//map_utility.c
-void   alloc_map(t_game *game);
 
 
 //---------------------------------------------------- START RENDER
-
 //main.c
 void    start_render(t_game *game);
-
 
 //render.c
 void    init_ptr(t_game *game);
 void    fill_image_storage(t_game *game);
 void    *new_img(t_game *game);
-void    draw_new_image(t_game *game);
+void    draw_new_image(t_game *game, int animation);
 
 //render_utility.c
 void    define_path(t_img *img);
-t_img   *read_map_and_find_right_img(t_game *game, char **matrix, int y, int x);
+t_img   *read_map_and_find_right_img(t_game *game, char **matrix, int y, int x, int animation);
 int     get_pixel(t_img *img, int y, int x);
 int     copy_tile(uint32_t *full_img, uint32_t *tile, int tile_size);
+
+
+
+
+//---------------------------------------------------- EVENT
+//main.c
+void    event(t_game *game);
+
+//event.c
+int    wait_event(t_game *game);
 
 # endif

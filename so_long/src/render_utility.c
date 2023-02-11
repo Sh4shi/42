@@ -8,29 +8,20 @@ int	get_pixel(t_img *img, int y, int x)
 	return *pixel;
 }
 
-int    copy_tile(uint32_t *full_img, uint32_t *tile, int tile_size)
-{
-    int i;
-
-    i = 0;
-    while (i <= tile_size)
-    {
-        full_img[i] = tile[i];
-        i++;
-    }
-    return (i);
-}
-
-t_img   *read_map_and_find_right_img(t_game *game, char **matrix, int y, int x)
+t_img   *read_map_and_find_right_img(t_game *game, char **matrix, int y, int x, int animation)
 {
     if (matrix[y][x] == '1')
         return (&(game->img[1]));
     else if (matrix[y][x] == 'E')
         return (&(game->img[2]));
-    else if (matrix[y][x] == 'C')
+    else if (matrix[y][x] == 'C' && animation == 0)
         return (&(game->img[3]));
-    else if (matrix[y][x] == 'P')
+    else if (matrix[y][x] == 'C' && animation == 1)
+        return (&(game->img[4]));
+    else if (matrix[y][x] == 'P' && animation == 0)
         return (&(game->img[5]));
+    else if (matrix[y][x] == 'P' && animation == 1)
+        return (&(game->img[6]));
     else if (matrix[y][x] == '0')
         return (&(game->img[13]));
     return 0;

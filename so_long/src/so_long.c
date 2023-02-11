@@ -1,10 +1,17 @@
 
 #include "./../include/so_long.h"
+void    event(t_game *game)
+{
+    mlx_loop_hook(game->mlx, &wait_event, &game);
+}
 
 void    start_render(t_game *game)
 {
+    t_img   *img;
+
     init_ptr(game);
-    mlx_put_image_to_window(game->mlx, game->win_ptr, new_img(game), 0, 0);
+    img = new_img(game);
+    mlx_put_image_to_window(game->mlx, game->win_ptr, img, 0, 0);
 }
 
 int main(int ac, char **av)
@@ -15,7 +22,7 @@ int main(int ac, char **av)
     check_file(ac, av, &game);
     alloc_map(&game);
     start_render(&game);
-   // mlx_loop_hook(game.mlx, &wait_event, &game);
+    event(&game);
     mlx_loop(game.mlx);
     return (0);
 }
