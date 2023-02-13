@@ -29,12 +29,12 @@
 
 // keycode
 #define KEY_W 13
-#define KEY_A 1
-#define KEY_S 0
+#define KEY_A 0
+#define KEY_S 1
 #define KEY_D 2
 
-#define KEY_LEFT 124
-#define KEY_RIGHT 123
+#define KEY_LEFT 123
+#define KEY_RIGHT 124
 #define KEY_UP 0x7E
 #define KEY_DOWN 0x7D
 
@@ -98,7 +98,6 @@ typedef struct s_map
 {
     t_list      *list_map;
     char        **map_matrix;
-    t_vector    pos;
     int         n_row;
     int         n_col;
 }               t_map;

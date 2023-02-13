@@ -14,7 +14,8 @@ void    draw_new_image(t_game *game, int animation)
        pos.x = 0;
         while (pos.x < TOTAL_PIXEL_ROW)
         {
-            *new_img = get_pixel(read_map_and_find_right_img(game, game->map.map_matrix, pos.y/32, pos.x/32, animation),
+            t_img *tmp = read_map_and_find_right_img(game, game->map.map_matrix, pos.y/32, pos.x/32, animation);
+            *new_img = get_pixel(tmp,
                 pos.y % 32, pos.x % 32);
             new_img++;
             pos.x++;

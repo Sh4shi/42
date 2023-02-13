@@ -1,6 +1,6 @@
 TARGET = so_long
 CC = gcc
-CFLAGS = -g#-Wall -Wextra -Werror
+CFLAGS = -g -fsanitize=address#-Wall -Wextra -Werror
 RM = rm -f
 SRCS = $(wildcard ./src/*.c)
 OBJS = $(SRCS:.c=.o)

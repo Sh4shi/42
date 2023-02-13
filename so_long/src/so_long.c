@@ -2,9 +2,9 @@
 #include "./../include/so_long.h"
 void    event(t_game *game)
 {
-    mlx_loop_hook(game->mlx, &wait_event, &game);
-    mlx_hook(game->mlx, 2, 0, &event_handler, &game);
-    mlx_hook(game->mlx, 17, 0, &exit_game, &game);
+    mlx_hook(game->win_ptr, 2, 0, &event_handler, &game);
+    //mlx_loop_hook(game->mlx, &wait_event, &game);
+    //mlx_hook(game->mlx, 17, 0, &exit_game, &game);
 }
 
 void    start_render(t_game *game)
