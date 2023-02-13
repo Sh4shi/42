@@ -1,5 +1,11 @@
 #include "./../include/so_long.h"
 
+int exit_game(t_game *game)
+{
+    mlx_destroy_window(game->mlx, game->win_ptr);
+    exit(0);
+}
+
 void    alloc_map(t_game *game)
 {
     t_list  *node;

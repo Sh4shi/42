@@ -10,8 +10,10 @@
 #include <mlx.h>
 
 
-
 #define SIZE(x) (x * 32)
+
+//full img nbr of byte
+#define IMG_SIZE TOTAL_PIXEL_COL * TOTAL_PIXEL_ROW
 
 //nbr of pixel in a collumn
 #define TOTAL_PIXEL_COL SIZE(game->map.n_row)
@@ -25,6 +27,18 @@
 //nbr of frames to draw an animation
 #define ANIMATION 300000000
 
+// keycode
+#define KEY_W 13
+#define KEY_A 1
+#define KEY_S 0
+#define KEY_D 2
+
+#define KEY_LEFT 124
+#define KEY_RIGHT 123
+#define KEY_UP 0x7E
+#define KEY_DOWN 0x7D
+
+#define KEY_ESC 53
 
 // macro for tile's image path
 #define WALL "./image/wall/wall.xpm"
@@ -96,6 +110,7 @@ typedef struct s_game
     t_map           map;
     t_img           img[MAX_IMG]; //array that store all the img pointer from xpm_file_to_image
     unsigned int    frame;
+    t_vector        p_pos;
 }               t_game;
 
 
@@ -124,7 +139,7 @@ void add_char(char *str, char *arr);
 //utility.c
 int     error(char *str);
 void    alloc_map(t_game *game);
-
+int     exit_game(t_game *game);
 
 
 
@@ -154,5 +169,6 @@ void    event(t_game *game);
 //event.c
 int    wait_event(t_game *game);
 int    event_handler(int keycode, t_game *game);
+int    moovements(int x, int y, t_game *game);
 
 # endif
