@@ -110,6 +110,7 @@ typedef struct s_game
     t_img           img[MAX_IMG]; //array that store all the img pointer from xpm_file_to_image
     unsigned int    frame;
     t_vector        p_pos;
+    int             nbr_colls;
 }               t_game;
 
 

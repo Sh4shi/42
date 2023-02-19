@@ -32,6 +32,7 @@ void    check_char(t_game *game)
             error("Error\nFound invalid character!\n");
         i++;
     }
+    game->nbr_colls = arr['C'];
 }
 
 bool side_wall(char *str)
