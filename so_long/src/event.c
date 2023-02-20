@@ -20,6 +20,8 @@ int moovements(int next_x, int next_y, t_game *game)
         mlx_clear_window(game->mlx, game->win_ptr);
         mlx_put_image_to_window(game->mlx, game->win_ptr, game->img[0].img_ptr, 0, 0);
     }
+    game->steps += 1;
+    ft_printf("You're away from your darkside:%d steps\n", game->steps);
     return (0);
 }
 

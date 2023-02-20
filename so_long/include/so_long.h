@@ -1,4 +1,3 @@
-
 #ifndef SO_LONG_H
 #define SO_LONG_H
 
@@ -111,6 +110,7 @@ typedef struct s_game
     unsigned int    frame;
     t_vector        p_pos;
     int             nbr_colls;
+    int             steps;
 }               t_game;
 
 
@@ -140,7 +140,6 @@ void add_char(char *str, char *arr);
 int     error(char *str);
 void    alloc_map(t_game *game);
 int     exit_game(t_game *game);
-
 
 
 //---------------------------------------------------- START RENDER
