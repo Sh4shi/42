@@ -41,7 +41,7 @@
     read_file(map, game);
     check_layout(game);
     check_char(game);
-   // print_shell_map(game);
+   //print_shell_map(game);
 }
 
 void    check_file(int ac, char **av, t_game *game)
