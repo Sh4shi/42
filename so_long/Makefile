@@ -38,4 +38,5 @@ fclean: clean
 
 re: fclean all
 
-
+norme:
+	norminette $(SRCS) $(LIBFTDIR)
