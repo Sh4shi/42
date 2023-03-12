@@ -53,6 +53,7 @@ bool	check_args(t_table *table, int ac, char **av)
 	{
 		if (!is_digit(av[i]) || ft_atoi(av[i]) > INT_MAX)
 			return (0);
+        i++;
 	}
 	return (1);
 }
