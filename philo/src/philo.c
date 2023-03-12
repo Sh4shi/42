@@ -1,16 +1,22 @@
 #include "./../include/philo.h"
 
-uint64_t	get_time(void)
+void    kronos(t_table *table)
 {
-	struct timeval	tv;
-
-	gettimeofday(&tv, 0);
-	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
+    
 }
 
 void	start_lunch(t_table *table)
 {
-	
+    pthread_t   pthread;
+    int         i;
+
+    i = 0;
+    table->start_time = get_time();
+    /*while (table->some_die == 0 && table->all_eat < (table->nbr_meal * table->nbr_philos))
+    {
+        pthread_create();
+    }*/
+    pthread_create(&table->monitor, NULL, kronos, &table);
 }
 
 int	main(int ac, char **av)
@@ -19,9 +25,9 @@ int	main(int ac, char **av)
 
 	memset(&table, 0, sizeof(t_table));
 	if (!check_args(&table, ac, av))
-		return (1);
+		return (-1);
 	if (!init_struct(&table, ac, av))
-        return (1);
+        return (-1);
 	start_lunch(&table);
 	return (0);
 }
