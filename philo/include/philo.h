@@ -11,20 +11,42 @@
 # include <pthread.h>
 # include <sys/time.h>
 
+#define WRONG_ARG "Error!\nWrong arguments"
+#define INIT_ERR "Error!\nImpossible reserve space for structs"
+#define THRD_CREATE_ERR "Error!\nImpossible create thread"
+#define THRD_DETACH_ERR "Error!\nSomething went wrong while detatching thread"
+#define THRD_JOIN_ERR "Error\nMain thread get issue while joining monitor thread"
+
+// philo's state
+#define EAT 1
+#define THINK 2
+#define SLEEP 3
+#define DIE 4
+
+#define DINNING 1
+
 typedef struct s_forks
 {
 	pthread_mutex_t 	*left;
 	pthread_mutex_t 	*right;
+    pthread_mutex_t     *locked;
 }				t_forks;
+
+typedef struct  s_input
+{
+    int expiration;
+    int	eating_time;
+    int	sleeping_time;
+    int nbr_meal;
+}               t_input;
 
 typedef struct s_philo
 {
     pthread_t   thread;
 	int		    id;
-	int		    expiration;
-	int		    eating_time;
-	int		    sleeping_time;
+    int         state;
 	t_forks	    fork;
+    t_input     *info;
 	int		    meal_did;
 }				t_philo;
 
@@ -35,8 +57,8 @@ typedef struct s_table
     pthread_mutex_t *forks;
     pthread_t       monitor;
     uint64_t        start_time;
+    t_input         input;
     int             some_die;
-    int             nbr_meal;
     int             all_eat;
 }				t_table;
 
@@ -49,5 +71,8 @@ int         init_struct(t_table *table, int ac, char **av);
 int		    init_fork(t_table *table);
 int		    init_philo(t_table *table);
 uint64_t	get_time(void);
+int         end(char *msg);
+void        *philo(void *arg);
+void        *monitor(void *arg);
 
 #endif

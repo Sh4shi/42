@@ -1,5 +1,12 @@
 #include "./../include/philo.h"
 
+
+int end(char *msg)
+{
+    printf("\n%s", msg);
+    return (0);
+}
+
 uint64_t	get_time(void)
 {
     struct timeval	tv;
