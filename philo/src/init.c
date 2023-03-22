@@ -26,15 +26,20 @@ int	init_philo(t_table *table)
 	while (i < table->nbr_philos - 1)
 	{
 		table->philo[i].id = i + 1;
+        table->philo[i].alive = TRUE;
         if (table->philo[i].id % 2 == 0)
             table->philo[i].state = EAT;
         else
             table->philo[i].state = THINK;
-		table->philo[i].fork.left = table->forks[i];
+		table->philo[i].l_fork.fork = table->forks[i];
+        table->philo[i].l_fork.taken = FALSE;
+        table->philo[i].l_fork.bywho = -1;
         if (i == 0)
-            table->philo[i].fork.right = table->forks[table->nbr_philos - 1];
+            table->philo[i].r_fork.fork = table->forks[table->nbr_philos - 1];
         else
-            table->philo[i].fork.right = table->philo[i - 1].fork.left;
+            table->philo[i].r_fork.fork = table->philo[i - 1].l_fork.fork;
+        table->philo[i].r_fork.taken = FALSE;
+        table->philo[i].r_fork.bywho = -1;
         table->philo[i].meal_did = 0;
         table->philo[i]->info = &table->input;
 		i++;
@@ -44,7 +49,7 @@ int	init_philo(t_table *table)
 
 int init_struct(t_table *table, int ac, char **av)
 {
-	table->nbr_philos = ft_atoi(av[1]);
+	table->input.nbr_philos = ft_atoi(av[1]);
     table->input.expiration = ft_atoi(av[2]);
     table->input.eating_time = ft_atoi(av[3]);
     table->input.sleeping_time = ft_atoi(av[4]);
@@ -52,6 +57,7 @@ int init_struct(t_table *table, int ac, char **av)
         table->input.nbr_meal = ft_atoi(av[5]);
     else
         table->input.nbr_meal = 1;
+    table->input.barrier = CLOSED;
 	table->philo = malloc(sizeof(t_philo) * table->nbr_philos);
 	if (!table->philo)
 		return (0);

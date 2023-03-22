@@ -2,25 +2,28 @@
 
 void *philo(void *arg)
 {
-    t_philo *philo;
+    t_philo         *philo;
+    __thread int    *routine;
 
+    routine = define_routine();
     philo = (t_philo *)arg;
-    if (philo->state == EAT)
-        philo->state = philo_eat(philo);
-    if (philo->state == THINK)
-        philo->state = philo_think(philo);
-    if (philo->state == SLEEP)
-        philo->state = philo_sleep(philo);
-    if (philo->state == DIE)
-        philo->state = philo_die(philo);
+    while (philo->info->barrier == CLOSED)
+        continue ;
+    while (philo->alive == TRUE)
+        execute(routine[philo->state], arg);
 }
 
 void *monitor(void *arg)
 {
-    (uint64_t *)arg->start_time = get_time();
+    t_table *table;
+
+    table = (t_table *)arg;
+    table->start_time = get_time();
+    delay(table->start_time, table->input.nbr_philos * 2 * 10);
+    table->input.barrier = OPEN;
     while (DINNING)
     {
-        if (arg->start_time >)
+
     }
 }
 

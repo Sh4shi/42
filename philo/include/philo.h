@@ -10,6 +10,8 @@
 # include <threads.h>
 # include <pthread.h>
 # include <sys/time.h>
+# include <stdbool.h>
+# include <stdio.h>
 
 #define WRONG_ARG "Error!\nWrong arguments"
 #define INIT_ERR "Error!\nImpossible reserve space for structs"
@@ -18,61 +20,68 @@
 #define THRD_JOIN_ERR "Error\nMain thread get issue while joining monitor thread"
 
 // philo's state
-#define EAT 1
-#define THINK 2
-#define SLEEP 3
-#define DIE 4
+#define EAT 0
+#define THINK 1
+#define SLEEP 2
+#define DIE 3
+
+// barrier state
+#define CLOSED 0
+#define OPEN 1
 
 #define DINNING 1
 
-typedef struct s_forks
+typedef struct s_fork
 {
-	pthread_mutex_t 	*left;
-	pthread_mutex_t 	*right;
-    pthread_mutex_t     *locked;
-}				t_forks;
+	pthread_mutex_t 	*fork;
+    bool                taken;
+    int                 bywho;
+}				t_fork;
 
 typedef struct  s_input
 {
+    int nbr_philos;
     int expiration;
     int	eating_time;
     int	sleeping_time;
     int nbr_meal;
+    int barrier;
 }               t_input;
 
 typedef struct s_philo
 {
     pthread_t   thread;
 	int		    id;
+    bool        alive;
     int         state;
-	t_forks	    fork;
+	t_fork	    l_fork;
+    t_fork      r_fork;
     t_input     *info;
 	int		    meal_did;
 }				t_philo;
 
 typedef struct s_table
 {
-	int             nbr_philos;
 	t_philo         *philo;
     pthread_mutex_t *forks;
     pthread_t       monitor;
     uint64_t        start_time;
     t_input         input;
-    int             some_die;
-    int             all_eat;
 }				t_table;
 
-/*-------------------------check*/
-/*--check.c--*/
-bool		check_args(t_table *table, int ac, char **av);
-bool		is_digit(char *str);
-int			ft_atoi(const char *str);
-int         init_struct(t_table *table, int ac, char **av);
-int		    init_fork(t_table *table);
-int		    init_philo(t_table *table);
-uint64_t	get_time(void);
-int         end(char *msg);
-void        *philo(void *arg);
-void        *monitor(void *arg);
+bool		    check_args(t_table *table, int ac, char **av);
+bool		    is_digit(char *str);
+int			    ft_atoi(const char *str);
+int             init_struct(t_table *table, int ac, char **av);
+int		        init_fork(t_table *table);
+int		        init_philo(t_table *table);
+uint64_t	    get_time(void);
+int             end(char *msg);
+void            *philo(void *arg);
+void            *monitor(void *arg);
+__thread int    *define_routine();
+int             execute(int (*routine)(void *arg));
+void            take_fork(t_fork *l_fork, t_fork *r_fork);
+void            delay(uint64_t start_time, int delay);
 
 #endif
