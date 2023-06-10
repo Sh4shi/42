@@ -7,7 +7,9 @@ int main()
     int     p_status;
     char  *cmd[] = {"/bin/ls", "-l", 0};
 
-    ft_memset(&shell, 0, sizeof(t_shell)); //------make init struct functions
+    ft_memset(&shell, 0, sizeof(t_shell));
+    //------make init struct functions
+    //-----------------------------------------------
     shell.path = ft_split(getenv("PATH"), ':');
     while (STATUS)
     {
